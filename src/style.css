@@ -1,7 +1,442 @@
-.menu{
-                                    display:flex
-                                    }
+@font-face {
+  font-family: 'AcuminPro';
+  src: url('fonts/AcuminPro-Thin.otf') format('opentype');
+  font-weight: 100;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'AcuminPro';
+  src: url('fonts/AcuminPro-ThinItalic.otf') format('opentype');
+  font-weight: 100;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'AcuminPro';
+  src: url('fonts/AcuminPro-ExtraLight.otf') format('opentype');
+  font-weight: 200;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'AcuminPro';
+  src: url('fonts/AcuminPro-ExtraLightItalic.otf') format('opentype');
+  font-weight: 200;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'AcuminPro';
+  src: url('fonts/AcuminPro-Light.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'AcuminPro';
+  src: url('fonts/AcuminPro-LightItalic.otf') format('opentype');
+  font-weight: 300;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'AcuminPro';
+  src: url('fonts/AcuminPro-Italic.otf') format('opentype');
+  font-weight: 400;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'AcuminPro';
+  src: url('fonts/AcuminPro-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'AcuminPro';
+  src: url('fonts/AcuminPro-Medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'AcuminPro';
+  src: url('fonts/AcuminPro-MediumItalic.otf') format('opentype');
+  font-weight: 500;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'AcuminPro';
+  src: url('fonts/AcuminPro-Semibold.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'AcuminPro';
+  src: url('fonts/AcuminPro-SemiboldItalic.otf') format('opentype');
+  font-weight: 600;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'AcuminPro';
+  src: url('fonts/AcuminPro-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'AcuminPro';
+  src: url('fonts/AcuminPro-BoldItalic.otf') format('opentype');
+  font-weight: 700;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'AcuminPro';
+  src: url('fonts/AcuminPro-Black.otf') format('opentype');
+  font-weight: 900;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'AcuminPro';
+  src: url('fonts/AcuminPro-BlackItalic.otf') format('opentype');
+  font-weight: 900;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'AcuminPro';
+  src: url('fonts/AcuminPro-UltraBlack.otf') format('opentype');
+  font-weight: 950;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'AcuminPro';
+  src: url('fonts/AcuminPro-UltraBlackItalic.otf') format('opentype');
+  font-weight: 950;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Bilo';
+  src: url('fonts/Bilo-Hairline.otf') format('opentype');
+  font-weight: 50;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Bilo';
+  src: url('fonts/Bilo-HairlineItalic.otf') format('opentype');
+  font-weight: 50;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Bilo';
+  src: url('fonts/Bilo-Thin.otf') format('opentype');
+  font-weight: 100;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Bilo';
+  src: url('fonts/Bilo-ThinItalic.otf') format('opentype');
+  font-weight: 100;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Bilo';
+  src: url('fonts/Bilo-ExtraLight.otf') format('opentype');
+  font-weight: 200;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Bilo';
+  src: url('fonts/Bilo-ExtraLightItalic.otf') format('opentype');
+  font-weight: 200;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Bilo';
+  src: url('fonts/Bilo-Light.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Bilo';
+  src: url('fonts/Bilo-LightItalic.otf') format('opentype');
+  font-weight: 300;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Bilo';
+  src: url('fonts/Bilo-Italic.otf') format('opentype');
+  font-weight: 400;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Bilo';
+  src: url('fonts/Bilo.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Bilo';
+  src: url('fonts/Bilo-Medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Bilo';
+  src: url('fonts/Bilo-MediumItalic.otf') format('opentype');
+  font-weight: 500;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Bilo';
+  src: url('fonts/Bilo-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Bilo';
+  src: url('fonts/Bilo-BoldItalic.otf') format('opentype');
+  font-weight: 700;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Bilo';
+  src: url('fonts/Bilo-ExtraBold.otf') format('opentype');
+  font-weight: 800;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Bilo';
+  src: url('fonts/Bilo-ExtraBoldItalic.otf') format('opentype');
+  font-weight: 800;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Bilo';
+  src: url('fonts/Bilo-Black.otf') format('opentype');
+  font-weight: 900;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Bilo';
+  src: url('fonts/Bilo-BlackItalic.otf') format('opentype');
+  font-weight: 900;
+  font-style: italic;
+}
+body {
+  font-family: 'AcuminPro';
+  background-color: #000;
+}
 
+p,
+a,
+h1 {
+  color: white;
+}
+h1 {
+  font-family: 'Acumin Pro';
+  font-weight: 800;
+}
+p,
+a {
+  font-family: 'Bilo';
+  font-weight: 400;
+  font-style: normal;
+  font-size: 16px;
+}
 
+#logo {
+  height: 30px;
+  /* height: 16px; */
+  padding: calc(min(1vmax, 15px) - (30px - 19px) / 2);
+  /*1vmax = 1vmax margin-top of menu + 0.5vmax*2 padding (top+bottom) of menu*/
+  background-color: #cddd51;
+}
 
-                                    
+.menu {
+  display: flex;
+}
+.menu a,
+.menu p {
+  font-family: 'Acumin Pro';
+  font-weight: 400;
+  /* background-color: rgba(255, 255, 0, 1); */
+  margin: min(1vmax, 15px);
+  text-decoration: none;
+  padding: min(0.5vmax, calc(15px / 2));
+  background: linear-gradient(
+    to top,
+    #cddd5100 25%,
+    #cddd51 25% 50%,
+    #cddd5100 50%
+  );
+  background-position: left top;
+  background-size: 100% 270%;
+  transition: all 0.2s linear;
+  animation: all 0.2s linear;
+}
+.menu .current {
+  color: white;
+  /* text-decoration: underline solid #CDDD51; */
+  border-bottom: 2px solid#CDDD51;
+}
+
+.menu a:visited {
+  /* background-color: rgba(255, 255, 0, 1); */
+  color: white;
+}
+
+.menu a:hover {
+  /* background: linear-gradient(to top, #CDDD5100 20%, #CDDD51 20% 70%, #CDDD5100 50%); */
+  background-position: left bottom 30%;
+  color: black;
+  /* background-color: #CDDD51; */
+}
+.content {
+  overflow-y: auto;
+}
+.flex .centre {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  align-content: center;
+  flex-wrap: wrap;
+}
+.flex h1 {
+  font-size: 30px;
+  margin-bottom: 0;
+  margin-top: 2vh;
+}
+.italics {
+  font-style: italic;
+}
+.tagline {
+  margin-top: 0;
+  font-size: 20px;
+}
+
+.flex .seperator {
+  /* margin: 0 15vw; */
+  height: 10px;
+  border-radius: 2px;
+  background: #111111;
+}
+.article p.last {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+.tooltip-text {
+  position: relative;
+  text-decoration: underline dotted 2px #cddd51;
+  text-underline-offset: 3px;
+}
+.tooltip {
+  visibility: hidden;
+  opacity: 0;
+  width: 120px;
+  background-color: #cddd51;
+  color: black;
+  text-align: center;
+  vertical-align: middle;
+  padding: 5px;
+  border-radius: 6px;
+  transition: all 0.1s linear;
+
+  /* Position the tooltip text - see examples below! */
+  position: absolute;
+  top: 0%;
+  left: 50%;
+  margin-left: -65px;
+  margin-top: 5px;
+  z-index: 1;
+}
+.tooltip::after {
+  content: ' ';
+  position: absolute;
+  top: 0%; /* At the bottom of the tooltip */
+  left: 50%;
+  margin-left: -5px;
+  margin-top: -10px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent#cddd51 transparent;
+}
+
+.tooltip-text:hover .tooltip {
+  opacity: 100%;
+  visibility: visible;
+  top: 100%;
+}
+
+.tooltip-text:active .tooltip {
+  visibility: visible;
+  bottom: 100%;
+}
+@media (min-aspect-ratio: 6/10) {
+  .menu {
+    /* position: absolute; */
+    justify-content: center;
+    align-items: flex-start;
+  }
+  #logo {
+    margin-right: 1vmax;
+  }
+  .content {
+    height: calc(
+      100vh - (19px + 2px + 2 * min(0.5vmax, 15px / 2) + 2 * min(1vmax, 15px))
+    );
+  }
+  .flex {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    align-content: flex-start;
+    margin: 2.5vh 0;
+  }
+  .flex .seperator {
+    min-width: 525px;
+    width: 60vw;
+    max-width: calc(1000px + 5vw);
+  }
+  #caricature {
+    max-width: 300px;
+    width: 25vw;
+    margin-right: 5vw;
+  }
+
+  .flex .article {
+    min-width: 500px;
+    width: 35vw;
+    max-width: 650px;
+  }
+}
+@media (max-aspect-ratio: 6/10) {
+  .menu {
+    width: 100vw;
+    position: absolute;
+    bottom: 5vh;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    align-items: center;
+    align-content: center;
+  }
+  .flex {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    margin: 2vh 0;
+  }
+
+  #caricature {
+    max-width: 40vw;
+  }
+
+  .flex .article {
+    min-width: 70vw;
+    max-width: 85vw;
+  }
+}
+
+@media (max-aspect-ratio: 6/10) and (hover: none) {
+  #logo {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+  }
+}
