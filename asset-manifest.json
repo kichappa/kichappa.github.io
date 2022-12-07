@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.9bca54fc.css",
-    "main.js": "/static/js/main.c0e271b1.js",
+    "main.css": "/static/css/main.81b276e7.css",
+    "main.js": "/static/js/main.fe88c969.js",
     "static/js/787.52294c95.chunk.js": "/static/js/787.52294c95.chunk.js",
     "static/media/AcuminPro-UltraBlackItalic.otf": "/static/media/AcuminPro-UltraBlackItalic.faa5ae482899b0d58e71.otf",
     "static/media/AcuminPro-BlackItalic.otf": "/static/media/AcuminPro-BlackItalic.cb7df7060f967bcd3824.otf",
@@ -43,12 +43,12 @@
     "static/media/Logo.svg": "/static/media/Logo.15c00499008e3e553098bcc9ddf56c66.svg",
     "static/media/logo.svg": "/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
     "index.html": "/index.html",
-    "main.9bca54fc.css.map": "/static/css/main.9bca54fc.css.map",
-    "main.c0e271b1.js.map": "/static/js/main.c0e271b1.js.map",
+    "main.81b276e7.css.map": "/static/css/main.81b276e7.css.map",
+    "main.fe88c969.js.map": "/static/js/main.fe88c969.js.map",
     "787.52294c95.chunk.js.map": "/static/js/787.52294c95.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.9bca54fc.css",
-    "static/js/main.c0e271b1.js"
+    "static/css/main.81b276e7.css",
+    "static/js/main.fe88c969.js"
   ]
 }
