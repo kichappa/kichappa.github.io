@@ -62,11 +62,26 @@ function App() {
       />
       <div className="content">
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/projects" element={<Projects />} />
-          <Route path="/publications" element={<Publications />} />
-          <Route path="/questions" element={<Questions />} />
-          <Route path="/about" element={<About />} />
+          <Route
+            path="/"
+            element={<Home mobile={mobile} portrait={portrait} />}
+          />
+          <Route
+            path="/projects"
+            element={<Projects mobile={mobile} portrait={portrait} />}
+          />
+          <Route
+            path="/publications"
+            element={<Publications mobile={mobile} portrait={portrait} />}
+          />
+          <Route
+            path="/questions"
+            element={<Questions mobile={mobile} portrait={portrait} />}
+          />
+          <Route
+            path="/about"
+            element={<About mobile={mobile} portrait={portrait} />}
+          />
         </Routes>
       </div>
     </div>
