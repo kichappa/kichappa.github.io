@@ -638,6 +638,7 @@ a {
     background-color: var(--bg-color);
     position: relative;
     width: 100vw;
+    padding-top: 10px;
     /* overflow: hidden; */
   }
   #logo {
