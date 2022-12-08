@@ -33,13 +33,13 @@ function App() {
   useEffect(() => {
     console.log(window.location);
     setPathname(window.location.hash);
-    if ((pathname.match(/#/g) || []).length > 1) {
-      console.log(pathname.match(/#(?!\/).*/g)[0].slice(1));
+    if ((pathname.match(/#(?!\/).+/g) || []).length > 0) {
+      console.log(pathname.match(/#(?!\/).+/g)[0].slice(1));
       console.log(
-        document.getElementById(pathname.match(/#(?!\/).*/g)[0].slice(1))
+        document.getElementById(pathname.match(/#(?!\/).+/g)[0].slice(1))
       );
       document
-        .getElementById(pathname.match(/#(?!\/).*/g)[0].slice(1))
+        .getElementById(pathname.match(/#(?!\/).+/g)[0].slice(1))
         .scrollIntoView({ behavior: 'auto', block: 'end' });
     }
   }, [location]);
