@@ -555,6 +555,9 @@ a {
   #caricature {
     max-width: 40vw;
   }
+  .big-picture {
+    width: 80vw;
+  }
 
   .flex .article {
     min-width: 70vw;
