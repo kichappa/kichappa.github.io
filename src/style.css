@@ -254,7 +254,9 @@ body {
 
 p,
 a,
-h1 {
+h1,
+h2,
+h3 {
   color: var(--text-color);
 }
 
@@ -262,12 +264,19 @@ h1 {
   font-family: var(--head-font);
   font-weight: 800;
 }
+h2 {
+  font-family: var(--head-font);
+  font-weight: 700;
+}
 p,
 a {
   font-family: var(--content-font);
   font-weight: 400;
   font-style: normal;
   font-size: var(--content-size);
+}
+a {
+  text-decoration: none;
 }
 ::selection {
   background: var(--accent-color);
@@ -344,8 +353,46 @@ a {
   margin-bottom: 0;
   margin-top: 2vh;
 }
+.flex h2 {
+  font-size: var(--h1-size);
+  margin-bottom: 0;
+  margin-top: 2vh;
+}
 .italics {
   font-style: italic;
+}
+.fw50 {
+  font-weight: 50;
+}
+.fw100 {
+  font-weight: 100;
+}
+.fw200 {
+  font-weight: 200;
+}
+.fw300 {
+  font-weight: 300;
+}
+.fw400 {
+  font-weight: 400;
+}
+.fw500 {
+  font-weight: 500;
+}
+.fw600 {
+  font-weight: 600;
+}
+.fw700 {
+  font-weight: 700;
+}
+.fw800 {
+  font-weight: 800;
+}
+.fw900 {
+  font-weight: 900;
+}
+.fw950 {
+  font-weight: 950;
 }
 .tagline {
   margin-top: 0;
@@ -368,9 +415,13 @@ a {
   text-underline-offset: 3px;
 }
 .tooltip {
+  font-family: var(--content-font);
+  font-weight: 400;
+  font-style: normal;
+
   visibility: hidden;
   opacity: 0;
-  max-width: 120px;
+  max-width: 300px;
   background-color: var(--accent-color);
   color: var(--bg-color);
   text-align: center;
@@ -410,6 +461,26 @@ a {
   visibility: visible;
   bottom: 100%;
 }
+
+.authors,
+.authors a {
+  font-style: italic;
+  font-weight: 200;
+}
+.authors a {
+  text-decoration: underline dotted 2px var(--accent-color);
+  text-underline-offset: 3px;
+}
+.citation {
+  padding-top: 5px;
+}
+.citation .title {
+  text-decoration: none;
+  background-color: var(--accent-color);
+  color: var(--bg-color);
+  font-family: var(--head-font);
+  font-weight: 600;
+}
 @media (min-aspect-ratio: 6/10) {
   .menu {
     /* position: absolute; */
@@ -436,6 +507,9 @@ a {
     align-content: flex-start;
     margin: var(--flex-margin) 0;
   }
+  .flex.centre {
+    align-items: center;
+  }
   .flex .seperator {
     min-width: 525px;
     width: 60vw;
@@ -447,6 +521,11 @@ a {
     margin-right: 5vw;
   }
 
+  .big-picture {
+    max-width: 500px;
+    width: 35vw;
+    margin-right: 5vw;
+  }
   .flex .article {
     /* overflow-y: auto;
     overflow-x: hidden;
