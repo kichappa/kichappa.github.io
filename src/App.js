@@ -49,7 +49,7 @@ function App() {
     document.documentElement.msRequestFullscreen;
 
   useEffect(() => {
-    rFS.call(window.document.documentElement);
+    // rFS.call(window.document.documentElement);
   }, []);
 
   return (
