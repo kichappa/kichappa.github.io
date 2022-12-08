@@ -13,8 +13,8 @@ const Navbar = ({ portrait, mobile, expanded, setExpanded }) => {
     setPathname(window.location.pathname);
   }, [location]);
 
-  const expandMenu = () => {
-    if (!expanded) {
+  const expandMenu = ({ expand = expanded }) => {
+    if (!expand) {
       menuExpandContainer.current.className += ' expanded';
       menuContainer.current.className += ' expanded';
       document.documentElement.style.setProperty('--menu-expanded', 1);
@@ -29,10 +29,10 @@ const Navbar = ({ portrait, mobile, expanded, setExpanded }) => {
       );
       document.documentElement.style.setProperty('--menu-expanded', 0);
     }
-    setExpanded(!expanded);
+    setExpanded(!expand);
   };
 
-  console.log(portrait);
+  // console.log(portrait);
   if (!portrait) {
     return (
       <>
@@ -94,7 +94,11 @@ const Navbar = ({ portrait, mobile, expanded, setExpanded }) => {
                   <p className="current">Home</p>
                 </div>
               ) : (
-                <Link className="menu-item" to="/">
+                <Link
+                  className="menu-item"
+                  onClick={() => expandMenu(false)}
+                  to="/"
+                >
                   <p className="link">Home</p>
                 </Link>
               )}
@@ -103,7 +107,11 @@ const Navbar = ({ portrait, mobile, expanded, setExpanded }) => {
                   <p className="current">Projects</p>
                 </div>
               ) : (
-                <Link className="menu-item" to="/projects">
+                <Link
+                  className="menu-item"
+                  onClick={() => expandMenu(false)}
+                  to="/projects"
+                >
                   <p className="link">Projects</p>
                 </Link>
               )}
@@ -112,7 +120,11 @@ const Navbar = ({ portrait, mobile, expanded, setExpanded }) => {
                   <p className="current">Publications</p>
                 </div>
               ) : (
-                <Link className="menu-item" to="/publications">
+                <Link
+                  className="menu-item"
+                  onClick={() => expandMenu(false)}
+                  to="/publications"
+                >
                   <p className="link">Publications</p>
                 </Link>
               )}
@@ -121,7 +133,11 @@ const Navbar = ({ portrait, mobile, expanded, setExpanded }) => {
                   <p className="current">Questions</p>
                 </div>
               ) : (
-                <Link className="menu-item" to="/questions">
+                <Link
+                  className="menu-item"
+                  onClick={() => expandMenu(false)}
+                  to="/questions"
+                >
                   <p className="link">Questions</p>
                 </Link>
               )}
@@ -130,7 +146,11 @@ const Navbar = ({ portrait, mobile, expanded, setExpanded }) => {
                   <p className="current">About</p>
                 </div>
               ) : (
-                <Link className="menu-item" to="/about">
+                <Link
+                  className="menu-item"
+                  onClick={() => expandMenu(false)}
+                  to="/about"
+                >
                   <p className="link">About</p>
                 </Link>
               )}
@@ -166,7 +186,11 @@ const Navbar = ({ portrait, mobile, expanded, setExpanded }) => {
                   <p className="current">Home</p>
                 </div>
               ) : (
-                <Link className="menu-item" to="/">
+                <Link
+                  className="menu-item"
+                  onClick={() => expandMenu(false)}
+                  to="/"
+                >
                   <p className="link">Home</p>
                 </Link>
               )}
@@ -175,7 +199,11 @@ const Navbar = ({ portrait, mobile, expanded, setExpanded }) => {
                   <p className="current">Projects</p>
                 </div>
               ) : (
-                <Link className="menu-item" to="/projects">
+                <Link
+                  className="menu-item"
+                  onClick={() => expandMenu(false)}
+                  to="/projects"
+                >
                   <p className="link">Projects</p>
                 </Link>
               )}
@@ -184,7 +212,11 @@ const Navbar = ({ portrait, mobile, expanded, setExpanded }) => {
                   <p className="current">Publications</p>
                 </div>
               ) : (
-                <Link className="menu-item" to="/publications">
+                <Link
+                  className="menu-item"
+                  onClick={() => expandMenu(false)}
+                  to="/publications"
+                >
                   <p className="link">Publications</p>
                 </Link>
               )}
@@ -193,7 +225,11 @@ const Navbar = ({ portrait, mobile, expanded, setExpanded }) => {
                   <p className="current">Questions</p>
                 </div>
               ) : (
-                <Link className="menu-item" to="/questions">
+                <Link
+                  className="menu-item"
+                  onClick={() => expandMenu(false)}
+                  to="/questions"
+                >
                   <p className="link">Questions</p>
                 </Link>
               )}
@@ -202,7 +238,11 @@ const Navbar = ({ portrait, mobile, expanded, setExpanded }) => {
                   <p className="current">About</p>
                 </div>
               ) : (
-                <Link className="menu-item" to="/about">
+                <Link
+                  className="menu-item"
+                  onClick={() => expandMenu(false)}
+                  to="/about"
+                >
                   <p className="link">About</p>
                 </Link>
               )}

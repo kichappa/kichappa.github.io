@@ -257,6 +257,7 @@ a,
 h1 {
   color: var(--text-color);
 }
+
 h1 {
   font-family: var(--head-font);
   font-weight: 800;
@@ -268,7 +269,11 @@ a {
   font-style: normal;
   font-size: var(--content-size);
 }
-
+::selection {
+  background: var(--accent-color);
+  color: var(--bg-color);
+  margin: 10px;
+}
 #logo,
 .menu-button {
   z-index: 2;
@@ -592,8 +597,9 @@ a {
     width: 100vw;
   }
   .content {
+    /* I don't know why, but for some unholy reason, Firefox doesn't let me see the whole page. Hence the 10vh */
     margin-bottom: calc(
-      (2 * var(--logo-padding-mobile) + var(--logo-size)) +
+      10vh + (2 * var(--logo-padding-mobile) + var(--logo-size)) +
         (
           var(--menu-expanded) *
             (
