@@ -42,6 +42,16 @@ function App() {
     }
   }, [size]);
 
+  var rFS =
+    document.documentElement.requestFullscreen ||
+    document.documentElement.mozRequestFullScreen ||
+    document.documentElement.webkitRequestFullScreen ||
+    document.documentElement.msRequestFullscreen;
+
+  useEffect(() => {
+    rFS.call(window.document.documentElement);
+  }, []);
+
   return (
     <div className="App">
       <Navbar

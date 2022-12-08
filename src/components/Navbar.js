@@ -1,13 +1,36 @@
-import React, { useState, useEffect, useLayoutEffect } from 'react';
+import React, { useState, useEffect, useLayoutEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import logo from '../images/Logo.svg';
+import hamburger from '../images/Hamburger.svg';
+import cross from '../images/Cross.svg';
 
 const Navbar = ({ portrait, mobile, expanded, setExpanded }) => {
   let location = useLocation();
   const [pathname, setPathname] = useState(window.location.pathname);
+  const menuExpandContainer = useRef(null);
+  const menuContainer = useRef(null);
   useEffect(() => {
     setPathname(window.location.pathname);
   }, [location]);
+
+  const expandMenu = () => {
+    if (!expanded) {
+      menuExpandContainer.current.className += ' expanded';
+      menuContainer.current.className += ' expanded';
+      document.documentElement.style.setProperty('--menu-expanded', 1);
+    } else {
+      menuExpandContainer.current.className = menuExpandContainer.current.className.replace(
+        ' expanded',
+        ''
+      );
+      menuContainer.current.className = menuContainer.current.className.replace(
+        ' expanded',
+        ''
+      );
+      document.documentElement.style.setProperty('--menu-expanded', 0);
+    }
+    setExpanded(!expanded);
+  };
 
   console.log(portrait);
   if (!portrait) {
@@ -46,10 +69,146 @@ const Navbar = ({ portrait, mobile, expanded, setExpanded }) => {
   } else if (mobile) {
     if (!expanded) {
       return (
-        <>
-          <img src={logo} alt="My Logo" id="logo" />
-          <div className="menu"></div>
-        </>
+        <div id="navbar">
+          <div className="wrapper">
+            <img src={logo} alt="My Logo" id="logo" />
+            <div className="menu-buttons-container" onClick={expandMenu}>
+              <div className="wrapper1">
+                <div className="wrapper2" ref={menuExpandContainer}>
+                  <img
+                    src={hamburger}
+                    alt="hamburger menu"
+                    className="menu-button"
+                  />
+                  <img
+                    src={cross}
+                    alt="hamburger menu"
+                    className="menu-button"
+                  />
+                </div>
+              </div>
+            </div>
+            <div className="menu" ref={menuContainer}>
+              {pathname === '/' ? (
+                <div className="menu-item">
+                  <p className="current">Home</p>
+                </div>
+              ) : (
+                <Link className="menu-item" to="/">
+                  <p className="link">Home</p>
+                </Link>
+              )}
+              {pathname === '/projects' ? (
+                <div className="menu-item">
+                  <p className="current">Projects</p>
+                </div>
+              ) : (
+                <Link className="menu-item" to="/projects">
+                  <p className="link">Projects</p>
+                </Link>
+              )}
+              {pathname === '/publications' ? (
+                <div className="menu-item">
+                  <p className="current">Publications</p>
+                </div>
+              ) : (
+                <Link className="menu-item" to="/publications">
+                  <p className="link">Publications</p>
+                </Link>
+              )}
+              {pathname === '/questions' ? (
+                <div className="menu-item">
+                  <p className="current">Questions</p>
+                </div>
+              ) : (
+                <Link className="menu-item" to="/questions">
+                  <p className="link">Questions</p>
+                </Link>
+              )}
+              {pathname === '/about' ? (
+                <div className="menu-item">
+                  <p className="current">About</p>
+                </div>
+              ) : (
+                <Link className="menu-item" to="/about">
+                  <p className="link">About</p>
+                </Link>
+              )}
+            </div>
+          </div>
+        </div>
+      );
+    } else {
+      return (
+        <div id="navbar">
+          <div className="wrapper">
+            <img src={logo} alt="My Logo" id="logo" />
+            <div className="menu-buttons-container" onClick={expandMenu}>
+              <div className="wrapper1">
+                <div className="wrapper2" ref={menuExpandContainer}>
+                  <img
+                    src={hamburger}
+                    alt="hamburger menu"
+                    className="menu-button"
+                  />
+                  <img
+                    src={cross}
+                    alt="hamburger menu"
+                    className="menu-button"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div className="menu" ref={menuContainer}>
+              {pathname === '/' ? (
+                <div className="menu-item">
+                  <p className="current">Home</p>
+                </div>
+              ) : (
+                <Link className="menu-item" to="/">
+                  <p className="link">Home</p>
+                </Link>
+              )}
+              {pathname === '/projects' ? (
+                <div className="menu-item">
+                  <p className="current">Projects</p>
+                </div>
+              ) : (
+                <Link className="menu-item" to="/projects">
+                  <p className="link">Projects</p>
+                </Link>
+              )}
+              {pathname === '/publications' ? (
+                <div className="menu-item">
+                  <p className="current">Publications</p>
+                </div>
+              ) : (
+                <Link className="menu-item" to="/publications">
+                  <p className="link">Publications</p>
+                </Link>
+              )}
+              {pathname === '/questions' ? (
+                <div className="menu-item">
+                  <p className="current">Questions</p>
+                </div>
+              ) : (
+                <Link className="menu-item" to="/questions">
+                  <p className="link">Questions</p>
+                </Link>
+              )}
+              {pathname === '/about' ? (
+                <div className="menu-item">
+                  <p className="current">About</p>
+                </div>
+              ) : (
+                <Link className="menu-item" to="/about">
+                  <p className="link">About</p>
+                </Link>
+              )}
+            </div>
+          </div>
+        </div>
       );
     }
   }

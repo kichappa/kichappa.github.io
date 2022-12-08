@@ -60,6 +60,7 @@ const Home = () => {
           </p>
         </div>
       </div>
+
       {/* <div className="flex">
         <div className="seperator"></div>
       </div> */}
