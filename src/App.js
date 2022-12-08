@@ -6,7 +6,7 @@ import Publications from './components/Publications.js';
 import Questions from './components/Questions.js';
 import About from './components/About.js';
 import Navbar from './components/Navbar.js';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import { useState, useEffect, useLayoutEffect } from 'react';
 
 function App() {
@@ -27,6 +27,22 @@ function App() {
     updateSize();
     return () => window.removeEventListener('resize', updateSize);
   }, []);
+
+  let location = useLocation();
+  const [pathname, setPathname] = useState(window.location.hash);
+  useEffect(() => {
+    console.log(window.location);
+    setPathname(window.location.hash);
+    if ((pathname.match(/#/g) || []).length > 1) {
+      console.log(pathname.match(/#(?!\/).*/g)[0].slice(1));
+      console.log(
+        document.getElementById(pathname.match(/#(?!\/).*/g)[0].slice(1))
+      );
+      document
+        .getElementById(pathname.match(/#(?!\/).*/g)[0].slice(1))
+        .scrollIntoView({ behavior: 'auto', block: 'end' });
+    }
+  }, [location]);
 
   useEffect(() => {
     if (portrait !== window.matchMedia('(max-aspect-ratio: 6/10)').matches) {
@@ -59,28 +75,51 @@ function App() {
         mobile={mobile}
         expanded={expanded}
         setExpanded={setExpanded}
+        pathName={pathname}
       />
       <div className="content">
         <Routes>
           <Route
             path="/"
-            element={<Home mobile={mobile} portrait={portrait} />}
+            element={
+              <Home mobile={mobile} portrait={portrait} pathName={pathname} />
+            }
           />
           <Route
             path="/projects"
-            element={<Projects mobile={mobile} portrait={portrait} />}
+            element={
+              <Projects
+                mobile={mobile}
+                portrait={portrait}
+                pathName={pathname}
+              />
+            }
           />
           <Route
             path="/publications"
-            element={<Publications mobile={mobile} portrait={portrait} />}
+            element={
+              <Publications
+                mobile={mobile}
+                portrait={portrait}
+                pathName={pathname}
+              />
+            }
           />
           <Route
             path="/questions"
-            element={<Questions mobile={mobile} portrait={portrait} />}
+            element={
+              <Questions
+                mobile={mobile}
+                portrait={portrait}
+                pathName={pathname}
+              />
+            }
           />
           <Route
             path="/about"
-            element={<About mobile={mobile} portrait={portrait} />}
+            element={
+              <About mobile={mobile} portrait={portrait} pathName={pathname} />
+            }
           />
         </Routes>
       </div>

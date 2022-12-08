@@ -1,5 +1,40 @@
 import React from 'react';
 
+const makeLink = (text, link, text_classes = []) => {
+  let classes = '';
+  for (let i in text_classes) {
+    classes += text_classes[i] + ' ';
+  }
+  return (
+    <a href={link} className={classes + 'tooltip-text'} target="_blank">
+      {text}
+      <span className="tooltip">Go to website</span>
+    </a>
+  );
+};
+
+const makeAuthors = (authors, text_classes) => {
+  let output = [];
+  output.push(
+    <>
+      by
+      <br />
+    </>
+  );
+
+  for (let i in authors) {
+    if (authors[i].length === 1) {
+      output.push(<>{authors[i][0]}, </>);
+    } else if (authors[i].length === 2) {
+      output.push(
+        <>{makeLink(authors[i][0], authors[i][1], text_classes)}, </>
+      );
+    }
+  }
+
+  return output;
+};
+
 const Article = ({
   type,
   img,
@@ -8,6 +43,7 @@ const Article = ({
   tagline = null,
   authors = null,
   citation = null,
+  id = '',
   options = {},
   portrait,
 }) => {
@@ -52,7 +88,7 @@ const Article = ({
       if (authors) {
         rightC.push(
           <p key={key++} className="authors">
-            {authors}
+            {makeAuthors(authors)}
           </p>
         );
       }
@@ -60,14 +96,7 @@ const Article = ({
       if (citation) {
         rightC.push(
           <p key={key++} className="citation">
-            <a
-              href={citation.link}
-              target="_blank"
-              className="title tooltip-text"
-            >
-              {citation.title}
-              <span className="tooltip">Go to website</span>
-            </a>
+            {makeLink(citation.title, citation.link, ['title'])}
             <br />
             <span className="authors">{citation.authors}</span>
             <br />
@@ -112,7 +141,7 @@ const Article = ({
     // console.log({ leftC, rightC });
 
     output = (
-      <div className="flex article centre">
+      <div className="flex article centre" id={id}>
         <div className="article-item">{leftC}</div>
         <div className="article-item">{rightC}</div>
       </div>

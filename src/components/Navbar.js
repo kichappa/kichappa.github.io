@@ -4,15 +4,9 @@ import logo from '../images/Logo.svg';
 import hamburger from '../images/Hamburger.svg';
 import cross from '../images/Cross.svg';
 
-const Navbar = ({ portrait, mobile, expanded, setExpanded }) => {
-  let location = useLocation();
-  const [pathname, setPathname] = useState(window.location.hash);
+const Navbar = ({ portrait, mobile, expanded, setExpanded, pathName }) => {
   const menuExpandContainer = useRef(null);
   const menuContainer = useRef(null);
-  useEffect(() => {
-    // console.log(window.location);
-    setPathname(window.location.hash);
-  }, [location]);
 
   const expandMenu = ({ expand = expanded }) => {
     if (!expand) {
@@ -39,27 +33,29 @@ const Navbar = ({ portrait, mobile, expanded, setExpanded }) => {
       <>
         <div className="menu">
           <img src={logo} alt="My Logo" id="logo" />
-          {(pathname === '#/') | (pathname === '') ? (
+          {pathName.startsWith('#/#') |
+          (pathName === '') |
+          (pathName === '#/') ? (
             <p className="current">Home</p>
           ) : (
             <Link to="/">Home</Link>
           )}
-          {pathname === '#/projects' ? (
+          {pathName.startsWith('#/projects') ? (
             <p className="current">Projects</p>
           ) : (
             <Link to="/projects">Projects</Link>
           )}
-          {pathname === '#/publications' ? (
+          {pathName.startsWith('#/publications') ? (
             <p className="current">Publications</p>
           ) : (
             <Link to="/publications">Publications</Link>
           )}
-          {pathname === '#/questions' ? (
+          {pathName.startsWith('#/questions') ? (
             <p className="current">Questions</p>
           ) : (
             <Link to="/questions">Questions</Link>
           )}
-          {pathname === '#/about' ? (
+          {pathName.startsWith('#/about') ? (
             <p className="current">About</p>
           ) : (
             <Link to="/about">About</Link>
@@ -90,7 +86,7 @@ const Navbar = ({ portrait, mobile, expanded, setExpanded }) => {
               </div>
             </div>
             <div className="menu" ref={menuContainer}>
-              {(pathname === '#/') | (pathname === '') ? (
+              {pathName.startsWith('#/') | (pathName === '') ? (
                 <div className="menu-item">
                   <p className="current">Home</p>
                 </div>
@@ -103,7 +99,7 @@ const Navbar = ({ portrait, mobile, expanded, setExpanded }) => {
                   <p className="link">Home</p>
                 </Link>
               )}
-              {pathname === '#/projects' ? (
+              {pathName.startsWith('#/projects') ? (
                 <div className="menu-item">
                   <p className="current">Projects</p>
                 </div>
@@ -116,7 +112,7 @@ const Navbar = ({ portrait, mobile, expanded, setExpanded }) => {
                   <p className="link">Projects</p>
                 </Link>
               )}
-              {pathname === '#/publications' ? (
+              {pathName.startsWith('#/publications') ? (
                 <div className="menu-item">
                   <p className="current">Publications</p>
                 </div>
@@ -129,7 +125,7 @@ const Navbar = ({ portrait, mobile, expanded, setExpanded }) => {
                   <p className="link">Publications</p>
                 </Link>
               )}
-              {pathname === '#/questions' ? (
+              {pathName.startsWith('#/questions') ? (
                 <div className="menu-item">
                   <p className="current">Questions</p>
                 </div>
@@ -142,7 +138,7 @@ const Navbar = ({ portrait, mobile, expanded, setExpanded }) => {
                   <p className="link">Questions</p>
                 </Link>
               )}
-              {pathname === '#/about' ? (
+              {pathName.startsWith('#/about') ? (
                 <div className="menu-item">
                   <p className="current">About</p>
                 </div>
@@ -182,7 +178,7 @@ const Navbar = ({ portrait, mobile, expanded, setExpanded }) => {
             </div>
 
             <div className="menu" ref={menuContainer}>
-              {(pathname === '#/') | (pathname === '') ? (
+              {pathName.startsWith('#/') | (pathName === '') ? (
                 <div className="menu-item">
                   <p className="current">Home</p>
                 </div>
@@ -195,7 +191,7 @@ const Navbar = ({ portrait, mobile, expanded, setExpanded }) => {
                   <p className="link">Home</p>
                 </Link>
               )}
-              {pathname === '#/projects' ? (
+              {pathName.startsWith('#/projects') ? (
                 <div className="menu-item">
                   <p className="current">Projects</p>
                 </div>
@@ -208,7 +204,7 @@ const Navbar = ({ portrait, mobile, expanded, setExpanded }) => {
                   <p className="link">Projects</p>
                 </Link>
               )}
-              {pathname === '#/publications' ? (
+              {pathName.startsWith('#/publications') ? (
                 <div className="menu-item">
                   <p className="current">Publications</p>
                 </div>
@@ -221,7 +217,7 @@ const Navbar = ({ portrait, mobile, expanded, setExpanded }) => {
                   <p className="link">Publications</p>
                 </Link>
               )}
-              {pathname === '#/questions' ? (
+              {pathName.startsWith('#/questions') ? (
                 <div className="menu-item">
                   <p className="current">Questions</p>
                 </div>
@@ -234,7 +230,7 @@ const Navbar = ({ portrait, mobile, expanded, setExpanded }) => {
                   <p className="link">Questions</p>
                 </Link>
               )}
-              {pathname === '#/about' ? (
+              {pathName.startsWith('#/about') ? (
                 <div className="menu-item">
                   <p className="current">About</p>
                 </div>

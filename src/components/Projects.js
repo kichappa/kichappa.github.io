@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import origami from '../images/IASS-Origami.png';
 import Article from './Article';
 
-const Projects = ({ mobile, portrait }) => {
+const Projects = ({ mobile, portrait, pathName }) => {
+  //   console.log([pathName, (pathName.match(/#/g) || []).length]);
+  //   useEffect(() => {}, []);
+
   return (
     <>
       {/* <Article
@@ -102,6 +105,7 @@ const Projects = ({ mobile, portrait }) => {
         options={{ ltr: false }}
       ></Article> */}
       <Article
+        id={'computation-origami-IASS'}
         type={'2c'}
         portrait={portrait}
         options={{ ltr: true }}
@@ -116,30 +120,14 @@ const Projects = ({ mobile, portrait }) => {
         tagline={
           'Quad-Origami "Miura-like" Tesselations that Rigidly Fold into Arbitrary Design Forms.'
         }
-        authors={
-          <>
-            by
-            <br />
-            Kishore Shenoy,{' '}
-            <a
-              href="https://themadchan.github.io/Portfolio/"
-              className="tooltip-text"
-              target="_blank"
-            >
-              Sree Chandana Madabhushi
-              <span className="tooltip">Go to website</span>
-            </a>
-            ,{' '}
-            <a
-              href="https://www.pppratapa.com/"
-              className="tooltip-text"
-              target="_blank"
-            >
-              Phanisri Pradeep Pratapa
-              <span className="tooltip">Go to website</span>
-            </a>
-          </>
-        }
+        authors={[
+          ['Kishore Shenoy'],
+          [
+            'Sree Chandana Madabhushi',
+            'https://themadchan.github.io/Portfolio/',
+          ],
+          ['Phanisri Pradeep Pratapa', 'https://www.pppratapa.com/'],
+        ]}
         text={
           <>
             <p>

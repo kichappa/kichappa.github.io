@@ -606,6 +606,7 @@ a {
   }
   html {
     overflow: hidden;
+    scroll-behavior: smooth;
     width: 100%;
   }
   body {
