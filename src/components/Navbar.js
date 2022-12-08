@@ -10,7 +10,7 @@ const Navbar = ({ portrait, mobile, expanded, setExpanded }) => {
   const menuExpandContainer = useRef(null);
   const menuContainer = useRef(null);
   useEffect(() => {
-    console.log(window.location);
+    // console.log(window.location);
     setPathname(window.location.hash);
   }, [location]);
 
@@ -39,7 +39,7 @@ const Navbar = ({ portrait, mobile, expanded, setExpanded }) => {
       <>
         <div className="menu">
           <img src={logo} alt="My Logo" id="logo" />
-          {pathname === '#/' ? (
+          {(pathname === '#/') | (pathname === '') ? (
             <p className="current">Home</p>
           ) : (
             <Link to="/">Home</Link>
@@ -90,7 +90,7 @@ const Navbar = ({ portrait, mobile, expanded, setExpanded }) => {
               </div>
             </div>
             <div className="menu" ref={menuContainer}>
-              {pathname === '#/' ? (
+              {(pathname === '#/') | (pathname === '') ? (
                 <div className="menu-item">
                   <p className="current">Home</p>
                 </div>
@@ -182,7 +182,7 @@ const Navbar = ({ portrait, mobile, expanded, setExpanded }) => {
             </div>
 
             <div className="menu" ref={menuContainer}>
-              {pathname === '#/' ? (
+              {(pathname === '#/') | (pathname === '') ? (
                 <div className="menu-item">
                   <p className="current">Home</p>
                 </div>
