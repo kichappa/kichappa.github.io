@@ -6,11 +6,12 @@ import cross from '../images/Cross.svg';
 
 const Navbar = ({ portrait, mobile, expanded, setExpanded }) => {
   let location = useLocation();
-  const [pathname, setPathname] = useState(window.location.pathname);
+  const [pathname, setPathname] = useState(window.location.hash);
   const menuExpandContainer = useRef(null);
   const menuContainer = useRef(null);
   useEffect(() => {
-    setPathname(window.location.pathname);
+    console.log(window.location);
+    setPathname(window.location.hash);
   }, [location]);
 
   const expandMenu = ({ expand = expanded }) => {
@@ -38,27 +39,27 @@ const Navbar = ({ portrait, mobile, expanded, setExpanded }) => {
       <>
         <div className="menu">
           <img src={logo} alt="My Logo" id="logo" />
-          {pathname === '/' ? (
+          {pathname === '#/' ? (
             <p className="current">Home</p>
           ) : (
             <Link to="/">Home</Link>
           )}
-          {pathname === '/projects' ? (
+          {pathname === '#/projects' ? (
             <p className="current">Projects</p>
           ) : (
             <Link to="/projects">Projects</Link>
           )}
-          {pathname === '/publications' ? (
+          {pathname === '#/publications' ? (
             <p className="current">Publications</p>
           ) : (
             <Link to="/publications">Publications</Link>
           )}
-          {pathname === '/questions' ? (
+          {pathname === '#/questions' ? (
             <p className="current">Questions</p>
           ) : (
             <Link to="/questions">Questions</Link>
           )}
-          {pathname === '/about' ? (
+          {pathname === '#/about' ? (
             <p className="current">About</p>
           ) : (
             <Link to="/about">About</Link>
@@ -89,7 +90,7 @@ const Navbar = ({ portrait, mobile, expanded, setExpanded }) => {
               </div>
             </div>
             <div className="menu" ref={menuContainer}>
-              {pathname === '/' ? (
+              {pathname === '#/' ? (
                 <div className="menu-item">
                   <p className="current">Home</p>
                 </div>
@@ -102,7 +103,7 @@ const Navbar = ({ portrait, mobile, expanded, setExpanded }) => {
                   <p className="link">Home</p>
                 </Link>
               )}
-              {pathname === '/projects' ? (
+              {pathname === '#/projects' ? (
                 <div className="menu-item">
                   <p className="current">Projects</p>
                 </div>
@@ -115,7 +116,7 @@ const Navbar = ({ portrait, mobile, expanded, setExpanded }) => {
                   <p className="link">Projects</p>
                 </Link>
               )}
-              {pathname === '/publications' ? (
+              {pathname === '#/publications' ? (
                 <div className="menu-item">
                   <p className="current">Publications</p>
                 </div>
@@ -128,7 +129,7 @@ const Navbar = ({ portrait, mobile, expanded, setExpanded }) => {
                   <p className="link">Publications</p>
                 </Link>
               )}
-              {pathname === '/questions' ? (
+              {pathname === '#/questions' ? (
                 <div className="menu-item">
                   <p className="current">Questions</p>
                 </div>
@@ -141,7 +142,7 @@ const Navbar = ({ portrait, mobile, expanded, setExpanded }) => {
                   <p className="link">Questions</p>
                 </Link>
               )}
-              {pathname === '/about' ? (
+              {pathname === '#/about' ? (
                 <div className="menu-item">
                   <p className="current">About</p>
                 </div>
@@ -181,7 +182,7 @@ const Navbar = ({ portrait, mobile, expanded, setExpanded }) => {
             </div>
 
             <div className="menu" ref={menuContainer}>
-              {pathname === '/' ? (
+              {pathname === '#/' ? (
                 <div className="menu-item">
                   <p className="current">Home</p>
                 </div>
@@ -194,7 +195,7 @@ const Navbar = ({ portrait, mobile, expanded, setExpanded }) => {
                   <p className="link">Home</p>
                 </Link>
               )}
-              {pathname === '/projects' ? (
+              {pathname === '#/projects' ? (
                 <div className="menu-item">
                   <p className="current">Projects</p>
                 </div>
@@ -207,7 +208,7 @@ const Navbar = ({ portrait, mobile, expanded, setExpanded }) => {
                   <p className="link">Projects</p>
                 </Link>
               )}
-              {pathname === '/publications' ? (
+              {pathname === '#/publications' ? (
                 <div className="menu-item">
                   <p className="current">Publications</p>
                 </div>
@@ -220,7 +221,7 @@ const Navbar = ({ portrait, mobile, expanded, setExpanded }) => {
                   <p className="link">Publications</p>
                 </Link>
               )}
-              {pathname === '/questions' ? (
+              {pathname === '#/questions' ? (
                 <div className="menu-item">
                   <p className="current">Questions</p>
                 </div>
@@ -233,7 +234,7 @@ const Navbar = ({ portrait, mobile, expanded, setExpanded }) => {
                   <p className="link">Questions</p>
                 </Link>
               )}
-              {pathname === '/about' ? (
+              {pathname === '#/about' ? (
                 <div className="menu-item">
                   <p className="current">About</p>
                 </div>
