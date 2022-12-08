@@ -177,26 +177,17 @@ const Projects = ({ mobile, portrait }) => {
               This work was presented at the IASS Spatial Structures
               International Conference.
             </p>
-            <p className="citation">
-              <a
-                href="https://www.ingentaconnect.com/contentone/iass/piass/2020/00002020/00000023/art00008"
-                target="_blank"
-                className="title tooltip-text"
-              >
-                Generating developable and rigidly foldable origami surfaces
-                with arbitrary Gaussian curvatures.
-                <span className="tooltip">Go to website</span>
-              </a>
-              <br />
-              <span className="authors">
-                Madabhushi, S. C., Shenoy, K. S., Pratapa, P. P.
-              </span>
-              <br />
-              Proceedings of the International Conference on Spatial Structures
-              2020/21 (IASS2020/21-Surrey7), UK.
-            </p>
           </>
         }
+        citation={{
+          link:
+            'https://www.ingentaconnect.com/contentone/iass/piass/2020/00002020/00000023/art00008',
+          title:
+            'Generating developable and rigidly foldable origami surfaces with arbitrary Gaussian curvatures.',
+          authors: 'Madabhushi, S. C., Shenoy, K. S., Pratapa, P. P.',
+          journal:
+            'Proceedings of the International Conference on Spatial Structures 2020/21 (IASS2020/21-Surrey7), UK.',
+        }}
       ></Article>
     </>
   );

@@ -7,6 +7,7 @@ const Article = ({
   heading = null,
   tagline = null,
   authors = null,
+  citation = null,
   options = {},
   portrait,
 }) => {
@@ -56,6 +57,24 @@ const Article = ({
         );
       }
       rightC.push(text);
+      if (citation) {
+        rightC.push(
+          <p key={key++} className="citation">
+            <a
+              href={citation.link}
+              target="_blank"
+              className="title tooltip-text"
+            >
+              {citation.title}
+              <span className="tooltip">Go to website</span>
+            </a>
+            <br />
+            <span className="authors">{citation.authors}</span>
+            <br />
+            {citation.journal}
+          </p>
+        );
+      }
     } else {
       //   console.log('there');
       rightC.push(img);
