@@ -290,7 +290,7 @@ a {
 .menu a {
   text-decoration: none;
 }
-.menu .link,
+.menu a,
 .menu p {
   font-family: var(--head-font);
   font-weight: 400;
@@ -553,6 +553,27 @@ a {
     bottom: 0;
     padding: var(--logo-padding-mobile);
   }
+  /* If you are changing the following, change above at ".menu a, .menu p" as well. */
+  .menu .link {
+    font-family: var(--head-font);
+    font-weight: 400;
+    height: var(--menu-height);
+    /* background-color: rgba(255, 255, 0, 1); */
+    margin: var(--menu-margin);
+    text-decoration: none;
+    padding: var(--menu-padding);
+    background: linear-gradient(
+      to top,
+      var(--bg-color) 25%,
+      var(--accent-color) 25% 50%,
+      var(--bg-color) 50%
+    );
+    background-position: left top;
+    background-size: 100% 270%;
+    transition: var(--std-transition);
+    animation: var(--std-transition);
+  }
+
   .menu-buttons-container {
     position: absolute;
     right: 0;
