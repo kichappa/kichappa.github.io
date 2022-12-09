@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react';
-import origami from '../images/IASS-Origami.png';
+import summary_m3 from '../images/IASS M3.png';
+import summary_m5 from '../images/IASS M5.png';
+import summary_m6 from '../images/IASS M6.png';
 import Article from './Article';
 
 const Projects = ({ mobile, portrait, pathName }) => {
@@ -110,11 +112,28 @@ const Projects = ({ mobile, portrait, pathName }) => {
         portrait={portrait}
         options={{ ltr: true }}
         img={
-          <img
-            src={origami}
-            className="big-picture"
-            alt="Results of Origami algorithm that we presented in the IASS International Conference on Spatial Structures 2020/21."
-          />
+          {
+            type: 'big-picture',
+            images: [
+              [
+                summary_m3,
+                'Results of Origami algorithm that are compliant mechanisms',
+              ],
+              [
+                summary_m5,
+                'Results of Origami algorithm that are rigidly foldable',
+              ],
+              [
+                summary_m6,
+                'Results of Origami algorithm that allow minor deviations from design forms at yellow vertices.',
+              ],
+            ],
+          }
+          //   <img
+          //     src={origami}
+          //     className="big-picture"
+          //     alt="Results of Origami algorithm that we presented in the IASS International Conference on Spatial Structures 2020/21."
+          //   />
         }
         heading={'Computational Origami Design'}
         tagline={

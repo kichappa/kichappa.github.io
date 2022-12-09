@@ -1,5 +1,5 @@
 import React from 'react';
-
+import Images from './Images';
 const makeLink = (text, link, text_classes = []) => {
   let classes = '';
   for (let i in text_classes) {
@@ -53,6 +53,8 @@ const Article = ({
   if (!('head' in options)) {
     options.head = 2;
   }
+  let images = <Images img={img}></Images>;
+
   //   console.log({ heading, tagline, authors, options });
   //   console.log({ portrait });
   let output = [],
@@ -62,7 +64,7 @@ const Article = ({
   if (type === '2c') {
     if (options.ltr | portrait) {
       //   console.log('here');
-      leftC.push(img);
+      leftC.push(images);
       if (heading) {
         if (options.head === 1) {
           rightC.push(
@@ -106,7 +108,7 @@ const Article = ({
       }
     } else {
       //   console.log('there');
-      rightC.push(img);
+      rightC.push(images);
       if (heading) {
         if (options.head === 1) {
           leftC.push(
