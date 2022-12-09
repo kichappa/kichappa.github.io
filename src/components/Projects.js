@@ -13,6 +13,8 @@ import amp_plan1 from '../images/AMP Relax/AMP-Plan1.png';
 import amp_plan2 from '../images/AMP Relax/AMP-Plan2.png';
 import amp_plan3 from '../images/AMP Relax/AMP-Plan3.png';
 import amp_section from '../images/AMP Relax/AMP-Section.png';
+import draggy_point1 from '../images/Draggy/draggy-point1.png';
+import draggy_point2 from '../images/Draggy/draggy-point2.png';
 import Article from './Article';
 import { makeAuthors, makeLink } from './Article';
 
@@ -258,10 +260,10 @@ const Projects = ({ mobile, portrait, pathName }) => {
               programs of the building.
             </p>
             <p>
-              AMP is organised so that as you move upward, the program becomes
-              less socially interactive. This is so students can quickly come
-              into the building for breaks and have coffee at the cafe on the
-              ground floor.
+              AMP is organised so that the program becomes less socially
+              interactive as you move upward. This is so students can quickly
+              come into the building for breaks and have coffee at the cafe on
+              the ground floor.
             </p>
             <p>
               The ground floor features a bowling alley and an indoor skate
@@ -295,15 +297,65 @@ const Projects = ({ mobile, portrait, pathName }) => {
             </p>
           </>
         }
-        citation={{
-          link:
-            'https://www.ingentaconnect.com/contentone/iass/piass/2020/00002020/00000023/art00008',
-          title:
-            'Generating developable and rigidly foldable origami surfaces with arbitrary Gaussian curvatures.',
-          authors: 'Madabhushi, S. C., Shenoy, K. S., Pratapa, P. P.',
-          journal:
-            'Proceedings of the International Conference on Spatial Structures 2020/21 (IASS2020/21-Surrey7), UK.',
-        }}
+      ></Article>
+      <Article
+        id={'draggy'}
+        type={'2c'}
+        portrait={portrait}
+        options={{ ltr: true }}
+        img={
+          {
+            type: 'big-picture',
+            images: [
+              [draggy_point1, 'Point peak halo'],
+              [draggy_point2, 'Green crescent'],
+              //   [amp_gf_r2, 'Ground floor, view 2'],
+            ],
+          }
+          //   <img
+          //     src={origami}
+          //     className="big-picture"
+          //     alt="Results of Origami algorithm that we presented in the IASS International Conference on Spatial Structures 2020/21."
+          //   />
+        }
+        heading={'Draggy!'}
+        tagline={'Freeform Gradients'}
+        text={
+          <>
+            <p>Draggy is a first-of-its-kind freeform gradient generator.</p>
+            <p>
+              Draggy is built on the ReactJS framework and uses the GPU through
+              WebGL for colour processing. Colours are calculated using a
+              Laurent polynomial that uses the distances and weights of each
+              colour point. These distances are then used to get a weighted
+              colour value through a mix of RGB and HSL. I found that using just
+              either was not beautiful as either saturation or fringing occurs.
+            </p>
+            <p>
+              I plan on adding some more functionality to Draggy to make it
+              useful as a design tool. These include changing algorithms used in
+              the colour generation, forming a framework that allows the
+              lossless saving of gradient and adding a curve-colour controller
+              in addition to points. I have to think a lot about this to make
+              the UX perfect before adding functionality.
+            </p>
+            <p>
+              {makeLink(
+                'Let me make some!',
+                'https://draggy.ramdon.team/?points=W3sicmFkaXVzIjowLCJjb2xvdXIiOnsiaHNsIjp7ImgiOjE5OS4xMzA0MzQ3ODI2MDg3LCJzIjowLjY4MDY3MjI2ODkwNzU2MzIsImwiOjAuMTI2OTEzNDk5OTk5OTk5OTgsImEiOjF9LCJoZXgiOiIjMGEyODM2IiwicmdiIjp7InIiOjEwLCJnIjo0MCwiYiI6NTQsImEiOjF9LCJoc3YiOnsiaCI6MTk5LjEzMDQzNDc4MjYwODcsInMiOjAuODEsInYiOjAuMjEzMywiYSI6MX0sIm9sZEh1ZSI6MTk5LjEzMDQzNDc4MjYwODcsInNvdXJjZSI6ImhzdiJ9LCJzaG93UGlja2VyIjpmYWxzZSwiY3VycmVudFhZIjp7IngiOjgxNCwieSI6NzI5fSwic2l6ZSI6WzI2LDI2XSwiY29udGFpbmVyU2l6ZSI6WzM2LDM2XX0seyJyZWYiOm51bGwsInJhZGl1cyI6MCwiY29sb3VyIjp7ImhzbCI6eyJoIjo2MCwicyI6MCwibCI6MSwiYSI6MX0sImhleCI6IiNmZmZmZmYiLCJyZ2IiOnsiciI6MjU1LCJnIjoyNTUsImIiOjI1NSwiYSI6MX0sImhzdiI6eyJoIjo2MCwicyI6MCwidiI6MSwiYSI6MX0sIm9sZEh1ZSI6NjAsInNvdXJjZSI6ImhzdiJ9LCJzaG93UGlja2VyIjpmYWxzZSwicG9pbnRlck9mZnNldCI6eyJ4IjowLCJ5IjowfSwiY3VycmVudFhZIjp7IngiOjIxODgsInkiOjk5Mn0sInNpemUiOlsyNiwyNl0sImNvbnRhaW5lclNpemUiOlszNiwzNl19LHsicmVmIjpudWxsLCJyYWRpdXMiOjQuMDY4ODgzNzA3NDk3MjY3NSwiY29sb3VyIjp7InJnYiI6eyJyIjoxMjEuMDU4NjM1MzM2MTE1NDMsImciOjgwLjk1MjYzNzMwNTkzNjE2LCJiIjoxOTUuNDE4NjE3MjQzODgwMSwiYSI6MX0sImhzdiI6eyJoIjoyNjEuMDIyNDg5Njc4NzI2NjMsInMiOjAuNTg1NzQ3NTY4NzQ0MTM3NSwidiI6MC43NjYzNDc1MTg2MDM0NTE0LCJhIjoxfSwiaHNsIjp7ImgiOjI2MS4wMjI0ODk2Nzg3MjY2MywicyI6MC40ODk5NDgxODU2MDI2NjMxLCJsIjowLjU0MTkwNDQyMDY4NTkxNDMsImEiOjF9LCJoZXgiOiIjNzk1MGMzIn0sInNob3dQaWNrZXIiOmZhbHNlLCJwb2ludGVyT2Zmc2V0Ijp7IngiOjAsInkiOjB9LCJjdXJyZW50WFkiOnsieCI6NzI1LCJ5Ijo3MTJ9LCJzaXplIjpbMjYsMjZdLCJjb250YWluZXJTaXplIjpbMzYsMzZdfSx7InJlZiI6bnVsbCwicmFkaXVzIjozLjY1MzA5NzU2Mzc4ODgwNSwiY29sb3VyIjp7InJnYiI6eyJyIjozMy4wNDUxMjk5ODUxOTA2NSwiZyI6MjI0LjU0NzAzNDkzOTEwMjY3LCJiIjoyNTIuNDAwNzMzOTM1Mjc4MjUsImEiOjF9LCJoc3YiOnsiaCI6MTg3LjYxODc3OTMyMzA1MjA4LCJzIjowLjg2OTA3NjcyNzgyODkxMjcsInYiOjAuOTg5ODA2Nzk5NzQ2MTg5MiwiYSI6MX0sImhzbCI6eyJoIjoxODcuNjE4Nzc5MzIzMDUyMDgsInMiOjAuOTc2ODQ5NTM3Mzk3OTU2LCJsIjowLjU1OTY5Nzc3MjM5MzA3NjMsImEiOjF9LCJoZXgiOiIjMjFlMGZjIn0sInNob3dQaWNrZXIiOmZhbHNlLCJwb2ludGVyT2Zmc2V0Ijp7IngiOjAsInkiOjB9LCJjdXJyZW50WFkiOnsieCI6MTI2MSwieSI6Mzk4fSwic2l6ZSI6WzI2LDI2XSwiY29udGFpbmVyU2l6ZSI6WzM2LDM2XX1d',
+                [],
+                'Open Draggy'
+              )}
+              ,{' '}
+              {makeLink(
+                'Where is the second picture?',
+                'https://draggy.ramdon.team/?points=W3sicmFkaXVzIjowLCJjb2xvdXIiOnsiaHNsIjp7ImgiOjE5OS4xMzA0MzQ3ODI2MDg3LCJzIjowLjY4MDY3MjI2ODkwNzU2MzIsImwiOjAuMTI2OTEzNDk5OTk5OTk5OTgsImEiOjF9LCJoZXgiOiIjMGEyODM2IiwicmdiIjp7InIiOjEwLCJnIjo0MCwiYiI6NTQsImEiOjF9LCJoc3YiOnsiaCI6MTk5LjEzMDQzNDc4MjYwODcsInMiOjAuODEsInYiOjAuMjEzMywiYSI6MX0sIm9sZEh1ZSI6MTk5LjEzMDQzNDc4MjYwODcsInNvdXJjZSI6ImhzdiJ9LCJzaG93UGlja2VyIjpmYWxzZSwiY3VycmVudFhZIjp7IngiOjgxNCwieSI6NzI5fSwic2l6ZSI6WzI2LDI2XSwiY29udGFpbmVyU2l6ZSI6WzM2LDM2XX0seyJyZWYiOm51bGwsInJhZGl1cyI6MCwiY29sb3VyIjp7ImhzbCI6eyJoIjo2MCwicyI6MCwibCI6MSwiYSI6MX0sImhleCI6IiNmZmZmZmYiLCJyZ2IiOnsiciI6MjU1LCJnIjoyNTUsImIiOjI1NSwiYSI6MX0sImhzdiI6eyJoIjo2MCwicyI6MCwidiI6MSwiYSI6MX0sIm9sZEh1ZSI6NjAsInNvdXJjZSI6ImhzdiJ9LCJzaG93UGlja2VyIjpmYWxzZSwicG9pbnRlck9mZnNldCI6eyJ4IjowLCJ5IjowfSwiY3VycmVudFhZIjp7IngiOjIxODgsInkiOjk5Mn0sInNpemUiOlsyNiwyNl0sImNvbnRhaW5lclNpemUiOlszNiwzNl19LHsicmVmIjpudWxsLCJyYWRpdXMiOjQuMDY4ODgzNzA3NDk3MjY3NSwiY29sb3VyIjp7InJnYiI6eyJyIjoxMjEuMDU4NjM1MzM2MTE1NDMsImciOjgwLjk1MjYzNzMwNTkzNjE2LCJiIjoxOTUuNDE4NjE3MjQzODgwMSwiYSI6MX0sImhzdiI6eyJoIjoyNjEuMDIyNDg5Njc4NzI2NjMsInMiOjAuNTg1NzQ3NTY4NzQ0MTM3NSwidiI6MC43NjYzNDc1MTg2MDM0NTE0LCJhIjoxfSwiaHNsIjp7ImgiOjI2MS4wMjI0ODk2Nzg3MjY2MywicyI6MC40ODk5NDgxODU2MDI2NjMxLCJsIjowLjU0MTkwNDQyMDY4NTkxNDMsImEiOjF9LCJoZXgiOiIjNzk1MGMzIn0sInNob3dQaWNrZXIiOmZhbHNlLCJwb2ludGVyT2Zmc2V0Ijp7IngiOjAsInkiOjB9LCJjdXJyZW50WFkiOnsieCI6NzI1LCJ5Ijo3MTJ9LCJzaXplIjpbMjYsMjZdLCJjb250YWluZXJTaXplIjpbMzYsMzZdfSx7InJlZiI6bnVsbCwicmFkaXVzIjozLjY1MzA5NzU2Mzc4ODgwNSwiY29sb3VyIjp7InJnYiI6eyJyIjozMy4wNDUxMjk5ODUxOTA2NSwiZyI6MjI0LjU0NzAzNDkzOTEwMjY3LCJiIjoyNTIuNDAwNzMzOTM1Mjc4MjUsImEiOjF9LCJoc3YiOnsiaCI6MTg3LjYxODc3OTMyMzA1MjA4LCJzIjowLjg2OTA3NjcyNzgyODkxMjcsInYiOjAuOTg5ODA2Nzk5NzQ2MTg5MiwiYSI6MX0sImhzbCI6eyJoIjoxODcuNjE4Nzc5MzIzMDUyMDgsInMiOjAuOTc2ODQ5NTM3Mzk3OTU2LCJsIjowLjU1OTY5Nzc3MjM5MzA3NjMsImEiOjF9LCJoZXgiOiIjMjFlMGZjIn0sInNob3dQaWNrZXIiOmZhbHNlLCJwb2ludGVyT2Zmc2V0Ijp7IngiOjAsInkiOjB9LCJjdXJyZW50WFkiOnsieCI6MTI2MSwieSI6Mzk4fSwic2l6ZSI6WzI2LDI2XSwiY29udGFpbmVyU2l6ZSI6WzM2LDM2XX1d',
+                [],
+                'Open in Draggy'
+              )}
+            </p>
+          </>
+        }
       ></Article>
       {/* <Article
         id={'computation-origami-IASS2'}
