@@ -24,9 +24,7 @@ const Publications = () => {
           id="QIP2020"
           type="Journal"
           year={2020}
-          link={
-            'https://www.ingentaconnect.com/contentone/iass/piass/2020/00002020/00000023/art00008'
-          }
+          link={'https://link.springer.com/article/10.1007/s11128-020-02657-x'}
           title={
             'Demonstration of a measurement-based adaptation protocol with quantum reinforcement learning on the IBM Q experience platform'
           }
