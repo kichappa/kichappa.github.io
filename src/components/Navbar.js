@@ -27,6 +27,7 @@ const Navbar = ({ portrait, mobile, expanded, setExpanded, pathName }) => {
     setExpanded(!expand);
   };
 
+  console.log(pathName);
   // console.log(portrait);
   if (!portrait) {
     return (
@@ -86,7 +87,9 @@ const Navbar = ({ portrait, mobile, expanded, setExpanded, pathName }) => {
               </div>
             </div>
             <div className="menu" ref={menuContainer}>
-              {pathName.startsWith('#/') | (pathName === '') ? (
+              {pathName.startsWith('#/#') |
+              (pathName === '') |
+              (pathName === '#/') ? (
                 <div className="menu-item">
                   <p className="current">Home</p>
                 </div>
@@ -178,7 +181,9 @@ const Navbar = ({ portrait, mobile, expanded, setExpanded, pathName }) => {
             </div>
 
             <div className="menu" ref={menuContainer}>
-              {pathName.startsWith('#/') | (pathName === '') ? (
+              {pathName.startsWith('#/#') |
+              (pathName === '') |
+              (pathName === '#/') ? (
                 <div className="menu-item">
                   <p className="current">Home</p>
                 </div>

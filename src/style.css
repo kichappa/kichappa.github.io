@@ -252,6 +252,7 @@ body {
   background-color: var(--bg-color);
   /* overflow: hidden; */
   height: 100vh;
+  overflow: auto;
 }
 
 p,
@@ -269,6 +270,47 @@ h1 {
 h2 {
   font-family: var(--head-font);
   font-weight: 700;
+}
+
+.italics {
+  font-style: italic;
+}
+.fw50 {
+  font-weight: 50;
+}
+.fw100 {
+  font-weight: 100;
+}
+.fw200 {
+  font-weight: 200;
+}
+.fw300 {
+  font-weight: 300;
+}
+.fw400 {
+  font-weight: 400;
+}
+.fw500 {
+  font-weight: 500;
+}
+.fw600 {
+  font-weight: 600;
+}
+.fw700 {
+  font-weight: 700;
+}
+.fw800 {
+  font-weight: 800;
+}
+.fw900 {
+  font-weight: 900;
+}
+.fw950 {
+  font-weight: 950;
+}
+.tagline {
+  margin-top: 0;
+  font-size: 20px;
 }
 p,
 a {
@@ -340,6 +382,7 @@ a {
 }
 .content {
   overflow-y: auto;
+  scroll-snap-type: y mandatory;
   transition: var(--std-transition);
   animation: var(--std-transition);
 }
@@ -360,52 +403,15 @@ a {
   margin-bottom: 0;
   margin-top: 2vh;
 }
-.italics {
-  font-style: italic;
-}
-.fw50 {
-  font-weight: 50;
-}
-.fw100 {
-  font-weight: 100;
-}
-.fw200 {
-  font-weight: 200;
-}
-.fw300 {
-  font-weight: 300;
-}
-.fw400 {
-  font-weight: 400;
-}
-.fw500 {
-  font-weight: 500;
-}
-.fw600 {
-  font-weight: 600;
-}
-.fw700 {
-  font-weight: 700;
-}
-.fw800 {
-  font-weight: 800;
-}
-.fw900 {
-  font-weight: 900;
-}
-.fw950 {
-  font-weight: 950;
-}
-.tagline {
-  margin-top: 0;
-  font-size: 20px;
-}
 
 .article .seperator {
   /* margin: 0 15vw; */
   height: 10px;
   border-radius: 2px;
   background: #111111;
+}
+.article {
+  scroll-snap-align: start;
 }
 .home-article p.last {
   margin-bottom: 0;
@@ -488,7 +494,8 @@ a {
   font-weight: 600;
 }
 .big-picture {
-  width: 100%;
+  width: var(--article-item-width);
+  scroll-snap-align: center;
 }
 .gallery-wrapper0 {
   margin-top: min(5vh, 50px);
@@ -512,12 +519,12 @@ a {
   transition: var(--std-transition);
   margin: 5px;
   padding: 5px;
-  border: 0px var(--accent-color) solid;
+  box-shadow: 0 0 0 0 var(--accent-color);
 }
 .gallery.current {
   opacity: 100%;
-  border-width: 2px;
-  margin: 3px;
+  box-shadow: 0 0 0 2px var(--accent-color);
+  /* margin: 3px; */
 }
 .images-wrapper0 {
   width: 100%;
@@ -525,6 +532,7 @@ a {
   /* overflow-x: hidden; */
   overflow-x: scroll;
   scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
 }
 
 .images-wrapper1 {
@@ -637,8 +645,8 @@ a {
     border: 0px var(--accent-color) solid;
   }
   .gallery.current {
-    border-width: 1px;
-    margin: 3px;
+    box-shadow: 0 0 0 1px var(--accent-color);
+    /* margin: 3px; */
   }
 }
 
