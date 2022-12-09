@@ -1,9 +1,11 @@
 {
   "files": {
-    "main.css": "/static/css/main.757c2d69.css",
-    "main.js": "/static/js/main.083fb88d.js",
+    "main.css": "/static/css/main.d40b4a3e.css",
+    "main.js": "/static/js/main.2482c8b8.js",
     "static/js/787.52294c95.chunk.js": "/static/js/787.52294c95.chunk.js",
-    "static/media/IASS-Origami.png": "/static/media/IASS-Origami.01bad83a38e92ef0e03a.png",
+    "static/media/IASS M3.png": "/static/media/IASS M3.9b8c38798910ff86989c.png",
+    "static/media/IASS M6.png": "/static/media/IASS M6.293e43c7d8d589c8f500.png",
+    "static/media/IASS M5.png": "/static/media/IASS M5.ef9a3446f0e6cf46db2f.png",
     "static/media/AcuminPro-UltraBlackItalic.otf": "/static/media/AcuminPro-UltraBlackItalic.faa5ae482899b0d58e71.otf",
     "static/media/AcuminPro-BlackItalic.otf": "/static/media/AcuminPro-BlackItalic.cb7df7060f967bcd3824.otf",
     "static/media/AcuminPro-Black.otf": "/static/media/AcuminPro-Black.57cd4e6886726a6c975a.otf",
@@ -46,12 +48,12 @@
     "index.html": "/index.html",
     "static/media/Cross.svg": "/static/media/Cross.7291d8b3fa4498a59ca8b2f02debd75a.svg",
     "static/media/Hamburger.svg": "/static/media/Hamburger.8d2e2f829922b0866fd92d904bd80008.svg",
-    "main.757c2d69.css.map": "/static/css/main.757c2d69.css.map",
-    "main.083fb88d.js.map": "/static/js/main.083fb88d.js.map",
+    "main.d40b4a3e.css.map": "/static/css/main.d40b4a3e.css.map",
+    "main.2482c8b8.js.map": "/static/js/main.2482c8b8.js.map",
     "787.52294c95.chunk.js.map": "/static/js/787.52294c95.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.757c2d69.css",
-    "static/js/main.083fb88d.js"
+    "static/css/main.d40b4a3e.css",
+    "static/js/main.2482c8b8.js"
   ]
 }
