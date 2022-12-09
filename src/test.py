@@ -218,8 +218,19 @@ fonts = [
         "font-style": "normal",
     },
 ]
-print(
-    sorted(fonts, key=lambda item: (item["font-family"], item["font-weight"])), sep="\n"
-)
+# print(
+#     sorted(fonts, key=lambda item: (item["font-family"], item["font-weight"])), sep="\n"
+# )
+
+from os import listdir
+
+files = listdir("images/AMP Relax")
+i = 0
+for file in files:
+    print(
+        "import {} from '../images/AMP Relax/{}';".format(
+            file.lower().replace("-", "_")[:-4], file
+        )
+    )
 # for k, v in sorted(x.items(), key=lambda item: item[1]):
 #     print(k, v)

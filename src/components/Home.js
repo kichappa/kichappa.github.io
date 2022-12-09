@@ -80,6 +80,13 @@ const Home = ({ portrait }) => {
           <p>Howdy, visitor. Let me tell you a bit about myself.</p>{' '}
           <p>
             I love math, coding, and design. I am a{' '}
+            {/* <span className="tooltip-text">
+              civil engineer
+              <span
+                className="tooltip2"
+                data-tooltip="Bachelor of Technology"
+              ></span>
+            </span>{' '} */}
             <span className="tooltip-text">
               civil engineer
               <span className="tooltip">Bachelor of Technology</span>

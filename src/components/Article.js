@@ -1,6 +1,6 @@
 import React from 'react';
 import Images from './Images';
-const makeLink = (text, link, text_classes = []) => {
+export const makeLink = (text, link, text_classes = [], tooltip = null) => {
   let classes = '';
   for (let i in text_classes) {
     classes += text_classes[i] + ' ';
@@ -8,12 +8,12 @@ const makeLink = (text, link, text_classes = []) => {
   return (
     <a href={link} className={classes + 'tooltip-text'} target="_blank">
       {text}
-      <span className="tooltip">Go to website</span>
+      <span className="tooltip">{tooltip ? tooltip : 'Go to website'}</span>
     </a>
   );
 };
 
-const makeAuthors = (authors, text_classes) => {
+export const makeAuthors = (authors, text_classes) => {
   let output = [];
   output.push(
     <>
@@ -153,3 +153,4 @@ const Article = ({
   return output;
 };
 export default Article;
+// export makeAuthors;

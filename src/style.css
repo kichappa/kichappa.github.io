@@ -237,6 +237,7 @@
     1.5 * var(--menu-margin) - (var(--logo-size) - var(--menu-height)) / 2
   );
   --std-transition: all 0.2s linear;
+  --std-transition-slow: all 2s linear;
   --flex-margin: 2.5vh;
   --article-margin: 2.5vh;
   --vh: min(
@@ -394,7 +395,7 @@ a {
 }
 .content {
   overflow-y: auto;
-  scroll-snap-type: y mandatory;
+  scroll-snap-type: y proximity;
   transition: var(--std-transition);
   animation: var(--std-transition);
 }
@@ -434,6 +435,81 @@ a {
   text-decoration: underline dotted 2px var(--accent-color);
   text-underline-offset: 3px;
 }
+
+/* .tooltip-text {
+	 display: block;
+	 position: relative;
+	 padding: 16px 8px;
+	 border: 1px solid;
+} */
+.tooltip-text:hover .tooltip2 {
+  display: flex;
+}
+.tooltip-text:hover .tooltip2::before,
+.tooltip-text:hover .tooltip2::after {
+  display: block;
+  opacity: 1;
+  /* transition: var(--std-transition-slow); */
+}
+.tooltip2 {
+  display: none;
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 0;
+  z-index: auto !important;
+  flex-direction: column;
+  align-items: center;
+}
+.tooltip2::before,
+.tooltip2::after {
+  content: '';
+  display: none;
+  box-sizing: border-box;
+  opacity: 0;
+  font-size: 14px;
+  line-height: 1;
+  user-select: none;
+  pointer-events: none;
+}
+.tooltip2::before {
+  z-index: 1001;
+  /* border: 6px solid transparent; */
+  border-color: transparent transparent var(--accent-color) transparent;
+  margin-left: -5px;
+  /* margin-top: -10px; */
+  border-width: 5px;
+  border-style: solid;
+  top: 0;
+  left: 50%;
+  /* transform: translate(0, 0.5em); */
+  /* border-top-width: 0; */
+  /* border-bottom-color: rgba(97, 97, 97, 1); */
+}
+.tooltip2::after {
+  content: attr(data-tooltip);
+  z-index: 1000;
+  min-width: 3em;
+  max-width: 280px;
+  flex-shrink: 0;
+  height: auto;
+  width: auto;
+  border-radius: 2px;
+  padding: 8px 16px;
+  background: rgba(97, 97, 97, 1);
+  box-shadow: 0 1em 2em -0.5em rgba(0, 0, 0, 0.35);
+  color: white;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+  overflow-wrap: break-word;
+}
+.tooltip2::after {
+  top: calc(100% + 4px);
+  transform: translate(0, 0.5em);
+}
+
 .tooltip {
   font-family: var(--content-font);
   font-weight: 400;
@@ -441,6 +517,8 @@ a {
 
   visibility: hidden;
   opacity: 0;
+  min-width: 75px;
+  /* width: 100%; */
   max-width: 300px;
   background-color: var(--accent-color);
   color: var(--bg-color);
@@ -525,7 +603,7 @@ a {
   height: 100%;
 }
 .gallery {
-  height: 10vh;
+  height: 5vh;
   max-height: 200px;
   opacity: 50%;
   transition: var(--std-transition);

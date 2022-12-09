@@ -13,7 +13,7 @@ const Publications = () => {
             'https://www.ingentaconnect.com/contentone/iass/piass/2020/00002020/00000023/art00008'
           }
           title={
-            'Generating developable and rigidly foldable origami surfaces with arbitrary Gaussian curvatures'
+            'Generating developable and rigidly foldable origami surfaces with arbitrary Gaussian curvatures.'
           }
           authors={'Madabhushi, S. C., Shenoy, K. S., Pratapa, P. P.'}
           journal={
@@ -26,7 +26,7 @@ const Publications = () => {
           year={2020}
           link={'https://link.springer.com/article/10.1007/s11128-020-02657-x'}
           title={
-            'Demonstration of a measurement-based adaptation protocol with quantum reinforcement learning on the IBM Q experience platform'
+            'Demonstration of a measurement-based adaptation protocol with quantum reinforcement learning on the IBM Q experience platform.'
           }
           authors={
             'Kishore S. Shenoy, Dev Y. Sheth, Bikash K. Behera, Prasanta K. Panigrahi '
