@@ -5,14 +5,20 @@ const Images = ({ img }) => {
   const [currentImg, setCurrentImg] = useState(0);
 
   const imageClicked = (e, i) => {
-    console.log({ e, i });
+    // console.log({ e, i });
     setCurrentImg(i);
+    // console.log(mainImgRef.current.childNodes[0].width);
+    // console.log(mainImgRef.current.parentNode);
+    mainImgRef.current.parentNode.scroll(
+      i * mainImgRef.current.childNodes[0].width,
+      0
+    );
     let translate = `translateX(calc(0px - ${i} *${getComputedStyle(
       document.body
     ).getPropertyValue('--article-item-width')}))`;
     // let translate = `translateX(0px - calc(${i} * var(--article-item-width)))`;
-    console.log(translate);
-    mainImgRef.current.style.transform = translate;
+    // console.log(translate);
+    // mainImgRef.current.style.transform = translate;
   };
 
   let images = [],
