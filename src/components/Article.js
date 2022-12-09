@@ -68,13 +68,13 @@ const Article = ({
       if (heading) {
         if (options.head === 1) {
           rightC.push(
-            <h1 key={key++} className="centre">
+            <h1 key={key++} className="v-centre">
               {heading}
             </h1>
           );
         } else if (options.head === 2) {
           rightC.push(
-            <h2 key={key++} className="centre">
+            <h2 key={key++} className="v-centre">
               {heading}
             </h2>
           );
@@ -112,13 +112,13 @@ const Article = ({
       if (heading) {
         if (options.head === 1) {
           leftC.push(
-            <h1 key={key++} className="centre">
+            <h1 key={key++} className="v-centre">
               {heading}
             </h1>
           );
         } else if (options.head === 2) {
           leftC.push(
-            <h2 key={key++} className="centre">
+            <h2 key={key++} className="v-centre">
               {heading}
             </h2>
           );
@@ -143,7 +143,7 @@ const Article = ({
     // console.log({ leftC, rightC });
 
     output = (
-      <div className="flex article centre" id={id}>
+      <div className="flex article v-centre" id={id}>
         <div className="article-item">{leftC}</div>
         <div className="article-item">{rightC}</div>
       </div>

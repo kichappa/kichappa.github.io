@@ -1,25 +1,44 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 
 const Images = ({ img }) => {
   const mainImgRef = useRef(null);
   const [currentImg, setCurrentImg] = useState(0);
+  const [imagesLoaded, setImagesLoaded] = useState(0);
 
-  const imageClicked = (e, i) => {
+  const imageLoaded = () => {
+    console.log(imagesLoaded);
+    console.log(mainImgRef.current.parentNode.scrollLeft);
+    mainImgRef.current.parentNode.scroll(0, 0);
+
+    setImagesLoaded(imagesLoaded + 1);
+  };
+
+  const imageClicked = (e = null, i = currentImg) => {
     // console.log({ e, i });
     setCurrentImg(i);
     // console.log(mainImgRef.current.childNodes[0].width);
     // console.log(mainImgRef.current.parentNode);
-    mainImgRef.current.parentNode.scroll(
-      i * mainImgRef.current.childNodes[0].width,
-      0
-    );
-    let translate = `translateX(calc(0px - ${i} *${getComputedStyle(
-      document.body
-    ).getPropertyValue('--article-item-width')}))`;
+    // mainImgRef.current.childNodes[0].width;
+    // mainImgRef.current.parentNode;
+
+    // let translate = `translateX(calc(0px - ${i} *${getComputedStyle(
+    //   document.body
+    // ).getPropertyValue('--article-item-width')}))`;
     // let translate = `translateX(0px - calc(${i} * var(--article-item-width)))`;
     // console.log(translate);
     // mainImgRef.current.style.transform = translate;
   };
+  useEffect(() => {
+    mainImgRef.current.parentNode.scroll(
+      currentImg * mainImgRef.current.childNodes[0].width,
+      0
+    );
+  }, [currentImg]);
+
+  useEffect(() => {
+    imageClicked();
+    // console.log(mainImgRef.current.parentNode.scrollLeft);
+  }, []);
 
   let images = [],
     gallery = [];
@@ -36,6 +55,7 @@ const Images = ({ img }) => {
           src={img.images[i][0]}
           className={img.type}
           alt={img.images[i][1]}
+          onLoad={imageLoaded}
         />
       );
       gImages.push(
