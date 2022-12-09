@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useLayoutEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import logo from '../images/Logo.svg';
+import logoBlack from '../images/LogoBlack.svg';
 import hamburger from '../images/Hamburger.svg';
 import cross from '../images/Cross.svg';
 
@@ -26,14 +27,17 @@ const Navbar = ({ portrait, mobile, expanded, setExpanded, pathName }) => {
     }
     setExpanded(!expand);
   };
-
+  let appropriate_logo = logo;
+  if (mobile) {
+    appropriate_logo = logoBlack;
+  }
   console.log(pathName);
   // console.log(portrait);
   if (!portrait) {
     return (
       <>
         <div className="menu">
-          <img src={logo} alt="My Logo" id="logo" />
+          <img src={appropriate_logo} alt="My Logo" id="logo" />
           {pathName.startsWith('#/#') |
           (pathName === '') |
           (pathName === '#/') ? (
@@ -69,7 +73,7 @@ const Navbar = ({ portrait, mobile, expanded, setExpanded, pathName }) => {
       return (
         <div id="navbar">
           <div className="wrapper">
-            <img src={logo} alt="My Logo" id="logo" />
+            <img src={appropriate_logo} alt="My Logo" id="logo" />
             <div className="menu-buttons-container" onClick={expandMenu}>
               <div className="wrapper1">
                 <div className="wrapper2" ref={menuExpandContainer}>
@@ -162,7 +166,7 @@ const Navbar = ({ portrait, mobile, expanded, setExpanded, pathName }) => {
       return (
         <div id="navbar">
           <div className="wrapper">
-            <img src={logo} alt="My Logo" id="logo" />
+            <img src={appropriate_logo} alt="My Logo" id="logo" />
             <div className="menu-buttons-container" onClick={expandMenu}>
               <div className="wrapper1">
                 <div className="wrapper2" ref={menuExpandContainer}>

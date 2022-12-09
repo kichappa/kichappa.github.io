@@ -741,6 +741,7 @@ a {
     left: 0;
     bottom: 0;
     padding: var(--logo-padding-mobile);
+    background-color: var(--bg-color);
   }
   /* If you are changing the following, change above at ".menu a, .menu p" as well. */
   .menu .link {
