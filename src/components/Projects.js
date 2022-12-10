@@ -322,10 +322,17 @@ const Projects = ({ mobile, portrait, pathName }) => {
         tagline={'Freeform Gradients'}
         text={
           <>
-            <p>Draggy is a first-of-its-kind freeform gradient generator.</p>
+            <p>
+              Draggy is a first-of-its-kind freeform gradient generator. It is a
+              design tool that allows designers to create spatial gradients
+              using colour points in a two-dimensional space.
+            </p>
             <p>
               Draggy is built on the ReactJS framework and uses the GPU through
-              WebGL for colour processing. Colours are calculated using a
+              WebGL for colour processing. Unlike other websites and tools that
+              do something similar, the in-house created renderer doesn't use
+              meshing or interpolations and allows the creation of gradients
+              with even less than four points. Colours are calculated using a
               Laurent polynomial that uses the distances and weights of each
               colour point. These distances are then used to get a weighted
               colour value through a mix of RGB and HSL. I found that using just

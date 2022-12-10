@@ -221,6 +221,7 @@
   --bg-color: #000;
   --text-color: #fff;
   --accent-color: #cddd51;
+  --accent-color-rgb: 205, 221, 81;
   --content-size: 16px;
   --h1-size: 30px;
   --menu-margin: min(1vmax, 15px);
@@ -716,7 +717,9 @@ a {
     align-content: center;
     align-items: center;
     justify-content: center;
-    margin: 2vh 0;
+    margin: 3vh 0;
+    border-bottom: 5px solid #ffffff10;
+    padding-bottom: calc(3vh - 1em);
   }
 
   #caricature {
@@ -744,6 +747,9 @@ a {
   .gallery.current {
     box-shadow: 0 0 0 1px var(--accent-color);
     /* margin: 3px; */
+  }
+  .big-picture {
+    margin: 0 5px;
   }
 }
 
