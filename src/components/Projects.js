@@ -253,49 +253,65 @@ const Projects = ({ mobile, portrait, pathName }) => {
         text={
           <>
             <p>
-              The AMP is a building that I designed for my Architectural Design
-              Studio course. It is a blob exterior, box-in-a-box architectural
-              design that is covered with glass and aluminium cladding in a
-              parametric form, revealing certain parts of the inside to the
-              exterior.
+              The AMP, or Amphitheatre, is a building that was designed for a
+              studio course in architectural design. The building is
+              characterized by its blob-like exterior, which is covered in glass
+              and aluminium cladding in a parametric form. This creates a unique
+              and striking visual appearance, and reveals certain parts of the
+              interior to the exterior.
             </p>
             <p>
-              The building is designed to stand out from the orthogonal
-              buildings of academic usage that are situated around it. The
-              building houses an amphitheatre at its centre that is open to the
-              exterior on its top. As the campus has not similar open-air stage
-              on its grounds, this will serve as a place for students to gather
-              and socialise. The amphitheatre is visible from all floors as it
-              is covered with glass curtain walls. In spirit, it unites all
-              programs of the building.
+              One of the key motivations behind the design of the AMP was to
+              create a building that stood out from the orthogonal buildings
+              that are typically found on academic campuses. By using a
+              non-orthogonal form and incorporating elements like the parametric
+              cladding, the building is able to break free from the constraints
+              of traditional architectural design and create a more dynamic and
+              engaging visual experience.
             </p>
             <p>
-              AMP is organised so that the program becomes less socially
-              interactive as you move upward. This is so students can quickly
-              come into the building for breaks and have coffee at the cafe on
-              the ground floor.
+              Another important design motivation for the AMP was the inclusion
+              of an open-air amphitheatre at its core. This provides a central
+              gathering space for students, and allows for social and cultural
+              events to take place within the building. The amphitheatre is open
+              to the exterior at the top, and is visible from all floors thanks
+              to the use of glass curtain walls. This creates a strong visual
+              and functional connection between the different levels of the
+              building, and reinforces the idea of the amphitheatre as a
+              unifying element.
             </p>
             <p>
-              The ground floor features a bowling alley and an indoor skate
-              park. This floor has a direct entrance into the amphitheatre. It
-              also houses books on its wall shelves that students can read while
-              sitting on the right side of the giant stairs that lead to the
-              first floor, designed as seats.
-            </p>
-            <p>
-              The first floor is designed for a high-end restaurant with
-              seating. The restaurant opens to the amphitheatre's table-chair
-              seats at the top for a more comfortable setting. The interior
-              design incorporates self-service counters that are all accessible
-              from the kitchen. The kitchen also has access to the building's
-              service elevator that exits the building through the building on
-              the ground floor.
-            </p>
-            <p>
+              In terms of the organization of the programs within the AMP, the
+              building is designed to be more socially interactive at the lower
+              levels, and less so at the higher levels. This is intended to
+              create a natural flow and hierarchy within the building, and to
+              encourage students to use the building as a place to gather and
+              socialize. The ground floor features a bowling alley and skate
+              park, as well as outdoor seating, while the first floor is home to
+              a high-end restaurant with seating that opens to the amphitheatre.
               The second floor is a supermarket with a large open area for
-              display racks. This floor has a closed service area for management
-              that is also served by the service elevator. This floor has no
-              access to the amphitheatre despite being visible from here.
+              display racks.
+            </p>
+            <p>
+              The inclusion of outdoor seating on the ground floor is a way to
+              make the building more accessible and inviting to students. It
+              provides an inviting space for students to relax and socialize
+              outside, while still being close to the other programs and
+              amenities within the building. The book shelves along the giant
+              stairs that lead to the first floor and the stairs themselves are
+              designed to be used as seating, and help to create an open and
+              spacious working area within the building.
+            </p>
+            <p>
+              The AMP also incorporates a range of other design elements that
+              enhance its functionality and construction. For example, the
+              placement of the toilets is designed to ensure that the MEP
+              elements are in the same vertical, which simplifies construction
+              and reduces the potential for failure. The back of the building
+              features a backstage area, and the seating of the amphitheatre is
+              supported by a foundation that is located below the seating. The
+              service elevator opens to the back of the building and serves the
+              restaurant kitchen and the supermarket.
             </p>
             <p>
               {makeLink(
@@ -341,28 +357,49 @@ const Projects = ({ mobile, portrait, pathName }) => {
         text={
           <>
             <p>
-              Draggy is a first-of-its-kind freeform gradient generator. It is a
-              design tool that allows designers to create spatial gradients
-              using colour points in a two-dimensional space.
+              Draggy is a dazzling web-based tool that uses magical math to
+              create stunning spatial gradients from color points. With Draggy,
+              you can easily adjust the position, color, and radius of each
+              point to create a limitless variety of gradient effects. And
+              thanks to Draggy's secret ingredient - shaders - you can create
+              these gradients at lightning-fast speeds, with no lag or delay.
             </p>
             <p>
-              Draggy is built on the ReactJS framework and uses the GPU through
-              WebGL for colour processing. Unlike other websites and tools that
-              do something similar, the in-house created renderer doesn't use
-              meshing or interpolations and allows the creation of gradients
-              with even less than four points. Colours are calculated using a
-              Laurent polynomial that uses the distances and weights of each
-              colour point. These distances are then used to get a weighted
-              colour value through a mix of RGB and HSL. I found that using just
-              either was not beautiful as either saturation or fringing occurs.
+              But what makes Draggy truly unique is its ability to create
+              spatial gradients with fewer than four points. Unlike other design
+              tools that rely on interpolation or triangulation, Draggy uses
+              Laurent polynomials to calculate the weight of each color point in
+              the final gradient. This allows for smooth, efficient gradients
+              that are free of the color banding and unsaturated hues that
+              plague other tools.
             </p>
             <p>
-              I plan on adding some more functionality to Draggy to make it
-              useful as a design tool. These include changing algorithms used in
-              the colour generation, forming a framework that allows the
-              lossless saving of gradient and adding a curve-colour controller
-              in addition to points. I have to think a lot about this to make
-              the UX perfect before adding functionality.
+              To achieve the best possible color quality in the final gradient,
+              Draggy uses a clever mix of RGB and HSL color values. Pure HSL can
+              create color banding, while pure RGB can result in unsaturated
+              colors when the hues of the color points are far apart. By using a
+              mix of these color spaces, Draggy is able to avoid these problems
+              and create gradients with rich, vibrant colors.
+            </p>
+            <p>
+              And thanks to Draggy's use of shaders, the whole process is
+              super-speedy and smooth. Shaders are programs that run on the
+              graphics processing unit (GPU) and are specifically designed to
+              handle the complex mathematical operations required for rendering
+              graphics. By using shaders to calculate the colors in Draggy, you
+              can take advantage of the GPU's specialized capabilities and
+              achieve a level of performance that simply isn't possible with
+              other tools.
+            </p>
+            <p>
+              In the future, Draggy will get even more awesome with the addition
+              of new features and functionality. You'll be able to change the
+              algorithm used for color generation, create a framework for saving
+              gradients, and even add a curve-color controller in addition to
+              points. Whether you're a designer, artist, or just someone who
+              loves playing with color, Draggy is the perfect tool for creating
+              mesmerizing spatial gradients. So why not give it a spin and see
+              what magic you can create?
             </p>
             <p>
               {makeLink(
