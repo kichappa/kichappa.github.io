@@ -253,12 +253,12 @@ const Projects = ({ mobile, portrait, pathName }) => {
         text={
           <>
             <p>
-              The AMP, or Amphitheatre, is a building that was designed for a
-              studio course in architectural design. The building is
-              characterized by its blob-like exterior, which is covered in glass
-              and aluminium cladding in a parametric form. This creates a unique
-              and striking visual appearance, and reveals certain parts of the
-              interior to the exterior.
+              The AMP, or Amphitheatre, is a building I designed for a studio
+              course in architectural design. The building is characterized by
+              its blob-like exterior, which is covered in glass and aluminium
+              cladding in a parametric form and its box-in-a-box grammar. This
+              creates a unique and striking visual appearance, and reveals
+              certain parts of the interior to the exterior.
             </p>
             <p>
               One of the key motivations behind the design of the AMP was to
