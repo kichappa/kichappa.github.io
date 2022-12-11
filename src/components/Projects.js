@@ -204,6 +204,9 @@ const Projects = ({ mobile, portrait, pathName }) => {
               and valleys or a seabed for a wave simulation laboratory. It may
               also be used for bettering the acoustics of a concert hall.
             </p>
+            {/* MathJax Example:
+            
+            <p>{'$$x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}$$'}</p> */}
             <p>
               This work was presented at the IASS Spatial Structures
               International Conference.

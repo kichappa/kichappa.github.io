@@ -921,3 +921,29 @@ a {
     top: 0;
   }
 }
+
+.CtxtMenu_Menu {
+  position: absolute !important;
+  background-color: black !important;
+  color: white !important;
+  width: auto !important;
+  padding: 5px 0px !important;
+  border: 1px solid var(--accent-color) !important;
+  border-radius: 0 !important;
+  -webkit-border-radius: 0 !important;
+  -moz-border-radius: 0 !important;
+  -khtml-border-radius: 0 !important;
+
+  box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+  -moz-box-shadow: none !important;
+  -khtml-box-shadow: none !important;
+}
+
+.CtxtMenu_MenuRule {
+  border-top: 1px solid var(--accent-color) !important;
+}
+
+.CtxtMenu_MenuDisabled {
+  color: #ffffff10;
+}

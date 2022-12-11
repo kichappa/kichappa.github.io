@@ -8,6 +8,7 @@ import About from './components/About.js';
 import Navbar from './components/Navbar.js';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { useState, useEffect, useLayoutEffect } from 'react';
+import { MathJaxContext } from 'better-react-mathjax';
 
 function App() {
   const [portrait, setPortrait] = useState(
@@ -69,61 +70,73 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
-      <Navbar
-        portrait={portrait}
-        mobile={mobile}
-        expanded={expanded}
-        setExpanded={setExpanded}
-        pathName={pathname}
-      />
-      <div className="content">
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <Home mobile={mobile} portrait={portrait} pathName={pathname} />
-            }
+    <>
+      <MathJaxContext>
+        <div className="App">
+          <Navbar
+            portrait={portrait}
+            mobile={mobile}
+            expanded={expanded}
+            setExpanded={setExpanded}
+            pathName={pathname}
           />
-          <Route
-            path="/projects"
-            element={
-              <Projects
-                mobile={mobile}
-                portrait={portrait}
-                pathName={pathname}
+          <div className="content">
+            <Routes>
+              <Route
+                path="/"
+                element={
+                  <Home
+                    mobile={mobile}
+                    portrait={portrait}
+                    pathName={pathname}
+                  />
+                }
               />
-            }
-          />
-          <Route
-            path="/publications"
-            element={
-              <Publications
-                mobile={mobile}
-                portrait={portrait}
-                pathName={pathname}
+              <Route
+                path="/projects"
+                element={
+                  <Projects
+                    mobile={mobile}
+                    portrait={portrait}
+                    pathName={pathname}
+                  />
+                }
               />
-            }
-          />
-          <Route
-            path="/questions"
-            element={
-              <Questions
-                mobile={mobile}
-                portrait={portrait}
-                pathName={pathname}
+              <Route
+                path="/publications"
+                element={
+                  <Publications
+                    mobile={mobile}
+                    portrait={portrait}
+                    pathName={pathname}
+                  />
+                }
               />
-            }
-          />
-          <Route
-            path="/about"
-            element={
-              <About mobile={mobile} portrait={portrait} pathName={pathname} />
-            }
-          />
-        </Routes>
-      </div>
-    </div>
+              <Route
+                path="/questions"
+                element={
+                  <Questions
+                    mobile={mobile}
+                    portrait={portrait}
+                    pathName={pathname}
+                  />
+                }
+              />
+              <Route
+                path="/about"
+                element={
+                  <About
+                    mobile={mobile}
+                    portrait={portrait}
+                    pathName={pathname}
+                  />
+                }
+              />
+            </Routes>
+          </div>
+        </div>
+      </MathJaxContext>
+    </>
   );
 }
 
