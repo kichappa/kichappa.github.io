@@ -186,17 +186,16 @@ const Projects = ({ mobile, portrait, pathName }) => {
               aesthetically pleasing and functional.
             </p>
             <p>
-              One of the key advantages of using Miura patterns is as they have
-              a single degree of freedom any tessellations of it can controlled
-              with just one actuator. They allow for structures to be
-              continuously and smoothly changed between different
-              configurations. This makes them incredibly versatile, and they
-              have a wide range of potential applications. They could be used to
-              create deployable structures for architectural and engineering
+              One of the key advantages of using Miura patterns is that they
+              have a single degree of freedom, and any tessellations of them can
+              be controlled with just one actuator. This allows for structures
+              to be continuously and smoothly changed between different
+              configurations, making them incredibly versatile and having a wide
+              range of potential applications. For example, they could be used
+              to create deployable structures for architectural and engineering
               applications, or to design reconfigurable structures for use in
-              space exploration. For example, they can be used as a modifiable
-              army training landscapes that have controllable slopes and
-              valleys.
+              space exploration. They could even be used as modifiable army
+              training landscapes with controllable slopes and valleys.
             </p>
             <p>
               One of the key challenges faced during the development of the
