@@ -25,6 +25,9 @@ import tri_7 from '../images/Triangles/tri-7.svg';
 import tri_8 from '../images/Triangles/tri-8.svg';
 import tri_9 from '../images/Triangles/tri-9.svg';
 import tri_10 from '../images/Triangles/tri-10.svg';
+import CS_1 from '../images/Spatial Modelling of Urban Growth/CS-1.png';
+import CS_2 from '../images/Spatial Modelling of Urban Growth/CS-2.png';
+import CS_3 from '../images/Spatial Modelling of Urban Growth/CS-3.gif';
 import Article from './Article';
 import { makeAuthors, makeLink } from './Article';
 
@@ -496,6 +499,99 @@ const Projects = ({ mobile, portrait, pathName }) => {
                 [],
                 'Open Triangles'
               )}
+            </p>
+          </>
+        }
+      ></Article>
+      <Article
+        id={'urban-growth-models'}
+        type={'2c'}
+        portrait={portrait}
+        options={{ ltr: true }}
+        img={
+          {
+            type: 'big-picture',
+            images: [
+              [
+                CS_3,
+                'City Sandbox: Polarization of cities as tolerance decreases.',
+              ],
+              [
+                CS_1,
+                'City Sandbox: Overlaid images of 8 simulations with TolRad of 4.5units.',
+              ],
+              [
+                CS_2,
+                'City Sandbox: Simulation with TolRad of 5units. Notice how the city clusters are segregated rather than creating cities of similar use types adjacent to different a city of another type.',
+              ],
+            ],
+          }
+          //   <img
+          //     src={origami}
+          //     className="big-picture"
+          //     alt="Results of Origami algorithm that we presented in the IASS International Conference on Spatial Structures 2020/21."
+          //   />
+        }
+        heading={'Spatial Modelling of Urban Growth'}
+        tagline={
+          'Agent Based modelling and simulation of Urban Growth from green-field cities.'
+        }
+        authors={[
+          ['Kishore Shenoy'],
+          ['Junting Huang'],
+          ['Qonita Afnani Firdaus', 'https://www.instagram.com/qonitaafnani/'],
+        ]}
+        text={
+          <>
+            <p>
+              In this project, we used agent-based modeling techniques to
+              simulate city growth and analyze the effects of various design
+              parameters on that growth. Netlogo was used as the modeling
+              framework, and three different models were employed: Structure
+              from Randomness 1 (SfR1), Structure from Randomness 2 (SfR2), and
+              City Sandbox.
+            </p>
+            <p>
+              In SfR1, the potential distribution of a city was grown under
+              identical simulation conditions in order to remove stochasticity
+              from the results. In SfR2, a threshold for growth potential and
+              discretization of the growth process were added to the simulation,
+              simulating the way that humans might decide whether to buy a piece
+              of land. In the City Sandbox model, different land use types and
+              tolerance limits were added to more accurately reflect human
+              behavior in city planning.
+            </p>
+            <p>
+              Image processing techniques were used to identify underlying
+              patterns in the growth of the simulated cities, and the effects of
+              various design parameters on that growth were analyzed. A number
+              of interesting phenomena were observed, such as the way that
+              cities can grow in unexpected ways, and the way that industrial
+              areas often "win out" over residential areas in terms of growth
+              and development when the tolerance of industrial buildings
+              decreased.
+            </p>
+            <p>
+              While the City Sandbox model provides valuable insights into the
+              growth and development of cities, modern cities may differ from
+              the predictions of the model. For example, improvements in
+              transportation technology and urban planning have made it possible
+              for residential and industrial areas to coexist farther apart, and
+              for people to travel easily between them. In addition, advances in
+              environmental protection and sustainability have led to a greater
+              emphasis on preserving natural areas and green space within
+              cities. These and other factors may affect the growth and
+              development of modern cities in ways that the City Sandbox model
+              does not account for.
+            </p>
+            <p>
+              Overall, this project represents a valuable contribution to the
+              field of spatial modeling, providing valuable insights into the
+              way that cities grow and develop over time. The use of different
+              modeling techniques and image processing techniques allowed for a
+              deep understanding of the complex systems at work in urban
+              environments, and the findings of the work could be valuable in
+              informing future planning and development efforts.
             </p>
           </>
         }
