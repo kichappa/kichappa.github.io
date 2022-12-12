@@ -121,7 +121,7 @@ const Home = ({ portrait }) => {
             coding projects as of now. I am currently ideating on a fourth one.
           </p>
           <p>
-            I am currently applying for graduate school in computation science
+            I am currently applying for graduate school in computational science
             and engineering programs in the Fall '23 admission cycle. Hopefully,
             I will get into my dream school. Let me leave you with some
             afterthoughts as you finish this very discontinuous brief about

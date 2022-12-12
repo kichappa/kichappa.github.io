@@ -187,7 +187,7 @@ const Projects = ({ mobile, portrait, pathName }) => {
             </p>
             <p>
               One of the key advantages of using Miura patterns is as they have
-              a single degre of freedom any tessellations of it can controlled
+              a single degree of freedom any tessellations of it can controlled
               with just one actuator. They allow for structures to be
               continuously and smoothly changed between different
               configurations. This makes them incredibly versatile, and they

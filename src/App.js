@@ -36,14 +36,16 @@ function App() {
     setPathname(window.location.hash);
     if ((window.location.hash.match(/#(?!\/).+/g) || []).length > 0) {
       console.log(window.location.hash.match(/#(?!\/).+/g)[0].slice(1));
-      console.log(
-        document.getElementById(
-          window.location.hash.match(/#(?!\/).+/g)[0].slice(1)
-        )
-      );
-      document
-        .getElementById(window.location.hash.match(/#(?!\/).+/g)[0].slice(1))
-        .scrollIntoView({ behavior: 'auto', alignToTop: true });
+      try {
+        console.log(
+          document.getElementById(
+            window.location.hash.match(/#(?!\/).+/g)[0].slice(1)
+          )
+        );
+        document
+          .getElementById(window.location.hash.match(/#(?!\/).+/g)[0].slice(1))
+          .scrollIntoView({ behavior: 'auto', alignToTop: true });
+      } catch {}
     }
   }, [location]);
 
