@@ -6,8 +6,8 @@ const Images = ({ img }) => {
   const [imagesLoaded, setImagesLoaded] = useState(0);
 
   const imageLoaded = () => {
-    console.log(imagesLoaded);
-    console.log(mainImgRef.current.parentNode.scrollLeft);
+    // console.log(imagesLoaded);
+    // console.log(mainImgRef.current.parentNode.scrollLeft);
     mainImgRef.current.parentNode.scroll(0, 0);
 
     setImagesLoaded(imagesLoaded + 1);

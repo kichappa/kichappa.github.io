@@ -32,16 +32,18 @@ function App() {
   let location = useLocation();
   const [pathname, setPathname] = useState(window.location.hash);
   useEffect(() => {
-    console.log(window.location);
+    // console.log(window.location);
     setPathname(window.location.hash);
-    if ((pathname.match(/#(?!\/).+/g) || []).length > 0) {
-      console.log(pathname.match(/#(?!\/).+/g)[0].slice(1));
+    if ((window.location.hash.match(/#(?!\/).+/g) || []).length > 0) {
+      console.log(window.location.hash.match(/#(?!\/).+/g)[0].slice(1));
       console.log(
-        document.getElementById(pathname.match(/#(?!\/).+/g)[0].slice(1))
+        document.getElementById(
+          window.location.hash.match(/#(?!\/).+/g)[0].slice(1)
+        )
       );
       document
-        .getElementById(pathname.match(/#(?!\/).+/g)[0].slice(1))
-        .scrollIntoView({ behavior: 'auto', block: 'end' });
+        .getElementById(window.location.hash.match(/#(?!\/).+/g)[0].slice(1))
+        .scrollIntoView({ behavior: 'auto', alignToTop: true });
     }
   }, [location]);
 
