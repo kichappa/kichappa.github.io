@@ -24,11 +24,14 @@ export const makeAuthors = (authors, text_classes) => {
 
   for (let i in authors) {
     if (authors[i].length === 1) {
-      output.push(<>{authors[i][0]}, </>);
+      output.push(<>{authors[i][0]}</>);
     } else if (authors[i].length === 2) {
-      output.push(
-        <>{makeLink(authors[i][0], authors[i][1], text_classes)}, </>
-      );
+      output.push(<>{makeLink(authors[i][0], authors[i][1], text_classes)}</>);
+    }
+    if (i == authors.length - 1) {
+      output.push(<>.</>);
+    } else {
+      output.push(<>, </>);
     }
   }
 

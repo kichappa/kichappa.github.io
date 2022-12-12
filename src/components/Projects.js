@@ -174,35 +174,42 @@ const Projects = ({ mobile, portrait, pathName }) => {
         text={
           <>
             <p>
-              Origami-based deployable surfaces that are developable as well as
-              rigidly foldable are of interest in various architectural and
-              engineering applications. Such structures have been researched in
-              recent years using inverse design techniques based on optimization
-              by formulating an under-constrained equation system that governs
-              the design solution. This work presents an alternative framework
-              that involves directly solving an over-constrained system of
-              equations that dictate the design of generalized Miura-ori
-              surfaces that conform to target surfaces of zero, positive, and
-              negative Gaussian curvatures. The constraint equations involve
-              imposing the developability of vertices, planarity of origami
-              panels, and local flat-foldability of vertices. This project
-              discusses the accuracy of design solutions both with and without
-              the imposition of flat-foldability, as it is critical for strain
-              free deformation of the origami system. The results highlight the
-              feasibility of obtaining practically usable target origami
-              surfaces that are developable and rigidly foldable, using a
-              least-squares-based solution of heavily over-constrained system of
-              equations.
+              This project involves the development of a computational model for
+              creating Miura-like origami tessellations that can be folded into
+              arbitrary design surfaces. We use a modified version of the
+              Levenberg-Marquardt algorithm to iteratively solve for the
+              developability, flat-foldability, and planarity of the origami
+              surfaces, which allows me to generate designs that are both
+              aesthetically pleasing and functional.
             </p>
             <p>
-              Origami structures fold in a continuous and smooth motion between
-              configurations. Since Miura cells have a single degree of freedom,
-              any tessellations of it can controlled with just one actuator.
-              These are, hence, structures with tunable curvatures. The use of
-              this, as unconventional as it might appear, is significant. It may
-              be a modifiable army training landscape with controllable slopes
-              and valleys or a seabed for a wave simulation laboratory. It may
-              also be used for bettering the acoustics of a concert hall.
+              One of the key advantages of using Miura patterns is as they have
+              a single degre of freedom any tessellations of it can controlled
+              with just one actuator. They allow for structures to be
+              continuously and smoothly changed between different
+              configurations. This makes them incredibly versatile, and they
+              have a wide range of potential applications. They could be used to
+              create deployable structures for architectural and engineering
+              applications, or to design reconfigurable structures for use in
+              space exploration. For example, they can be used as a modifiable
+              army training landscapes that have controllable slopes and
+              valleys.
+            </p>
+            <p>
+              One of the key challenges faced during the development of the
+              model was dealing with the over-determined nature of the system of
+              equations that govern the design of these surfaces. In order to
+              make the system more tractable, "soft constraints" were introduced
+              on the coordinates of the vertices, which ensured the solution
+              remained Miura-like in both design and function while still
+              allowing for a wide range of different designs to be produced.
+            </p>
+            <p>
+              Overall, the project has been a success, with the proposed model
+              being able to generate a variety of different Gaussian curvatures
+              that are rigidly foldable. The work represents a novel approach to
+              the design of these structures, and has potential applications in
+              a variety of fields including architecture and engineering.
             </p>
             {/* MathJax Example:
             
