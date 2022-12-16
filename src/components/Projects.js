@@ -35,6 +35,10 @@ const Projects = ({ mobile, portrait, pathName }) => {
   //   console.log([pathName, (pathName.match(/#/g) || []).length]);
   //   useEffect(() => {}, []);
 
+  useEffect(() => {
+    document.title = 'Projects by Me';
+  }, []);
+
   return (
     <>
       {/* <Article

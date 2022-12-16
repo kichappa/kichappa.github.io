@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import caricature from '../images/Caricature.svg';
 import Article from './Article';
 
 const Home = ({ portrait }) => {
+  useEffect(() => {
+    document.title = 'Kishore Shenoy';
+  }, []);
+
   return (
     <>
       {/* <Article

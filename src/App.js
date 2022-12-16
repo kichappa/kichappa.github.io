@@ -6,6 +6,7 @@ import Publications from './components/Publications.js';
 import Questions from './components/Questions.js';
 import About from './components/About.js';
 import Navbar from './components/Navbar.js';
+import Artworks from './components/Artworks.js';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { useState, useEffect, useLayoutEffect } from 'react';
 import { MathJaxContext } from 'better-react-mathjax';
@@ -36,16 +37,7 @@ function App() {
     setPathname(window.location.hash);
     if ((window.location.hash.match(/#(?!\/).+/g) || []).length > 0) {
       console.log(window.location.hash.match(/#(?!\/).+/g)[0].slice(1));
-      try {
-        console.log(
-          document.getElementById(
-            window.location.hash.match(/#(?!\/).+/g)[0].slice(1)
-          )
-        );
-        document
-          .getElementById(window.location.hash.match(/#(?!\/).+/g)[0].slice(1))
-          .scrollIntoView({ behavior: 'auto', alignToTop: true });
-      } catch {}
+      scrollIntoView(window.location.hash);
     }
   }, [location]);
 
@@ -63,6 +55,17 @@ function App() {
     }
   }, [size]);
 
+  const scrollIntoView = (hash) => {
+    try {
+      console.log(
+        document.getElementById(hash.match(/#(?!\/).+/g)[0].slice(1))
+      );
+      document
+        .getElementById(hash.match(/#(?!\/).+/g)[0].slice(1))
+        .scrollIntoView({ behavior: 'auto', alignToTop: true });
+    } catch {}
+  };
+
   var rFS =
     document.documentElement.requestFullscreen ||
     document.documentElement.mozRequestFullScreen ||
@@ -70,7 +73,11 @@ function App() {
     document.documentElement.msRequestFullscreen;
 
   useEffect(() => {
-    // rFS.call(window.document.documentElement);
+    setPathname(window.location.hash);
+    if ((window.location.hash.match(/#(?!\/).+/g) || []).length > 0) {
+      console.log(window.location.hash.match(/#(?!\/).+/g)[0].slice(1));
+      scrollIntoView(window.location.hash);
+    }
   }, []);
 
   return (
@@ -107,9 +114,29 @@ function App() {
                 }
               />
               <Route
+                path="/p"
+                element={
+                  <Projects
+                    mobile={mobile}
+                    portrait={portrait}
+                    pathName={pathname}
+                  />
+                }
+              />
+              <Route
                 path="/publications"
                 element={
                   <Publications
+                    mobile={mobile}
+                    portrait={portrait}
+                    pathName={pathname}
+                  />
+                }
+              />
+              <Route
+                path="/artworks"
+                element={
+                  <Artworks
                     mobile={mobile}
                     portrait={portrait}
                     pathName={pathname}

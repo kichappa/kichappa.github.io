@@ -45,7 +45,7 @@ const Navbar = ({ portrait, mobile, expanded, setExpanded, pathName }) => {
           ) : (
             <Link to="/">Home</Link>
           )}
-          {pathName.startsWith('#/projects') ? (
+          {pathName.startsWith('#/projects') || pathName.startsWith('#/p#') ? (
             <p className="current">Projects</p>
           ) : (
             <Link to="/projects">Projects</Link>
@@ -54,6 +54,11 @@ const Navbar = ({ portrait, mobile, expanded, setExpanded, pathName }) => {
             <p className="current">Publications</p>
           ) : (
             <Link to="/publications">Publications</Link>
+          )}
+          {pathName.startsWith('#/artworks') ? (
+            <p className="current">Artworks</p>
+          ) : (
+            <Link to="/artworks">Artworks</Link>
           )}
           {pathName.startsWith('#/questions') ? (
             <p className="current">Questions</p>
@@ -106,7 +111,8 @@ const Navbar = ({ portrait, mobile, expanded, setExpanded, pathName }) => {
                   <p className="link">Home</p>
                 </Link>
               )}
-              {pathName.startsWith('#/projects') ? (
+              {pathName.startsWith('#/projects') ||
+              pathName.startsWith('#/p#') ? (
                 <div className="menu-item">
                   <p className="current">Projects</p>
                 </div>
@@ -130,6 +136,19 @@ const Navbar = ({ portrait, mobile, expanded, setExpanded, pathName }) => {
                   to="/publications"
                 >
                   <p className="link">Publications</p>
+                </Link>
+              )}
+              {pathName.startsWith('#/artworks') ? (
+                <div className="menu-item">
+                  <p className="current">Artworks</p>
+                </div>
+              ) : (
+                <Link
+                  className="menu-item"
+                  onClick={() => expandMenu(false)}
+                  to="/artworks"
+                >
+                  <p className="link">Artworks</p>
                 </Link>
               )}
               {pathName.startsWith('#/questions') ? (
@@ -183,7 +202,6 @@ const Navbar = ({ portrait, mobile, expanded, setExpanded, pathName }) => {
                 </div>
               </div>
             </div>
-
             <div className="menu" ref={menuContainer}>
               {pathName.startsWith('#/#') |
               (pathName === '') |
@@ -200,7 +218,8 @@ const Navbar = ({ portrait, mobile, expanded, setExpanded, pathName }) => {
                   <p className="link">Home</p>
                 </Link>
               )}
-              {pathName.startsWith('#/projects') ? (
+              {pathName.startsWith('#/projects') ||
+              pathName.startsWith('#/p#') ? (
                 <div className="menu-item">
                   <p className="current">Projects</p>
                 </div>
@@ -224,6 +243,19 @@ const Navbar = ({ portrait, mobile, expanded, setExpanded, pathName }) => {
                   to="/publications"
                 >
                   <p className="link">Publications</p>
+                </Link>
+              )}
+              {pathName.startsWith('#/artworks') ? (
+                <div className="menu-item">
+                  <p className="current">Artworks</p>
+                </div>
+              ) : (
+                <Link
+                  className="menu-item"
+                  onClick={() => expandMenu(false)}
+                  to="/artworks"
+                >
+                  <p className="link">Artworks</p>
                 </Link>
               )}
               {pathName.startsWith('#/questions') ? (

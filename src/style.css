@@ -637,6 +637,14 @@ a {
   transition: var(--std-transition);
 }
 
+.art {
+  /* height: 30vh; */
+  background-color: var(--text-color);
+  margin: 10px;
+  /* padding: 5px; */
+  box-shadow: 0 0 0 4px var(--accent-color);
+}
+
 @media (min-aspect-ratio: 6/10) {
   /* For Webkit */
   ::-webkit-scrollbar {
@@ -784,6 +792,13 @@ a {
   .images-wrapper0::-webkit-scrollbar {
     display: none;
   }
+  .art {
+    height: 30vh;
+    background-color: var(--text-color);
+    margin: 10px;
+    /* padding: 5px; */
+    box-shadow: 0 0 0 4px var(--accent-color);
+  }
 }
 @media (max-aspect-ratio: 6/10) {
   :root {
@@ -829,6 +844,12 @@ a {
   }
   .big-picture {
     margin: 0 5px;
+  }
+  .art {
+    height: 15vh;
+  }
+  .art-gallery {
+    flex-direction: row;
   }
 }
 

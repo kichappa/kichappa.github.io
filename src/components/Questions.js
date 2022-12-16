@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useEffect } from 'react';
 
 const Questions = () => {
-    return (
-        <p>Here are my questions</p>
-    )
-}
+  useEffect(() => {
+    document.title = 'Kishore Shenoy';
+  }, []);
 
-export default Questions
+  return <p>Here are my questions</p>;
+};
+
+export default Questions;

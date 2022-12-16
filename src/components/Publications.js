@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Publication from './Publication';
 
 const Publications = () => {
+  useEffect(() => {
+    document.title = 'My Publications';
+  }, []);
+
   return (
     <>
       <div className="flex h-centre v-flex">
