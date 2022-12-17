@@ -253,7 +253,6 @@ const Artworks = ({ mobile }) => {
             src={artworks[art].src}
             alt=""
             onLoad={(e) => imgOnLoad(e, art)}
-            onClick={(e) => imgOnClick(e)}
           />
         </>
       );
