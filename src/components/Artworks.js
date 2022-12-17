@@ -146,7 +146,6 @@ const Artworks = ({ mobile }) => {
     }
   };
 
-  const imgOnClick = (e) => {};
   // This is the order calculator's math function.
   // It is a dynamic programming implementation of subset-sum problem.
   const subsetSum = (set, sum) => {
