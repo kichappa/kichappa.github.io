@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import summary_m3 from '../images/IASS2021/IASS M3.png';
 import summary_m5 from '../images/IASS2021/IASS M5.png';
 import summary_m6 from '../images/IASS2021/IASS M6.png';
@@ -30,17 +30,57 @@ import CS_2 from '../images/Spatial Modelling of Urban Growth/CS-2.png';
 import CS_3 from '../images/Spatial Modelling of Urban Growth/CS-3.gif';
 import Article from './Article';
 import { makeAuthors, makeLink } from './Article';
+import { documentOnClick } from './Artworks';
 
 const Projects = ({ mobile, portrait, pathName }) => {
   //   console.log([pathName, (pathName.match(/#/g) || []).length]);
   //   useEffect(() => {}, []);
 
+  // This variable keeps track whether an image is clicked.
+  const [isClicked, setIsClicked] = useState(false);
+
   useEffect(() => {
     document.title = 'Projects by Me';
+
+    document.addEventListener('click', (e) =>
+      documentOnClick(e, setIsClicked, 'big-picture')
+    );
+    return () => {
+      document.removeEventListener('click', (e) =>
+        documentOnClick(e, setIsClicked)
+      );
+    };
   }, []);
 
   return (
     <>
+      <div
+        id="expanded-wrapper1"
+        onClick={null}
+        style={
+          isClicked
+            ? {
+                visibility: 'visible',
+                opacity: 1,
+                height: `${window.innerHeight}px`,
+              }
+            : { height: `${window.innerHeight}px` }
+        }
+      >
+        <img
+          id="expanded-img"
+          src=""
+          style={
+            isClicked
+              ? {
+                  visibility: 'visible',
+                  opacity: 1,
+                  backgroundColor: '#00000000',
+                }
+              : { backgroundColor: '#00000000' }
+          }
+        />
+      </div>
       {/* <Article
         type={'2c'}
         portrait={portrait}
