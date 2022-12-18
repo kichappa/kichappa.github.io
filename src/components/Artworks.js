@@ -189,7 +189,7 @@ const Artworks = ({ mobile }) => {
     // Indices of elements in `sum` that give this maximum sum.
     let sumIndices = [];
     for (
-      // Just creating a copy variable just in case the variable gets passed by reference (! am I stupid ?)
+      // Just creating a copy variable just in case the variable gets passed by reference (! am I stupid ? Yes)
       let sumCount = sum;
       (i > 0) & (sumCount > 0);
       //Next sum is current sum-current element. Find i that matches this (dp[??][nextsum]).
@@ -200,31 +200,40 @@ const Artworks = ({ mobile }) => {
     return sumIndices.reverse();
   };
 
+  const nextFitAlgo = (set, sum, sort = false) => {
+    console.log('Next-Fit Algorithm is being called.');
+    let done = [];
+
+    // sorted nextFitAlgo?
+    if (sort) set.sort((a, b) => b - a);
+
+    // Until everyelement is included in the calculation, keep running to find largest total width for that row.
+    while (done.length < set.length) {
+      // aim for total width = sum = division. Numbers that are possible are widthRatios.
+      let longestCombination = subsetSum(set, sum);
+      done.push(...longestCombination);
+      // Once an element is added to width, it shouldn't be included in further width calculation.
+      // So set width to target width + 1.
+      set = set.map((obj, index) => {
+        if (done.includes(index)) {
+          obj = sum + 1;
+        }
+        return obj;
+      });
+    }
+    return done;
+  };
+
   //This functions rearranges the images by attempting to reduce the number of rows.
   const rearrangeImgs = () => {
     let division = getDivision();
-    let done = [];
     let widthRatios = [];
     // calculate widthRatios just in case artwork values are not stored.
     for (let art in artworks) {
       art = parseInt(art);
       widthRatios.push(getDivision(true, artworks[art].target.offsetWidth));
     }
-
-    // Until everyelement is included in the calculation, keep running to find largest total width for that row.
-    while (done.length < artworks.length) {
-      // aim for total width = sum = division. Numbers that are possible are widthRatios.
-      let longestCombination = subsetSum(widthRatios, division);
-      done.push(...longestCombination);
-      // Once an element is added to width, it shouldn't be included in further width calculation.
-      // So set width to target width + 1.
-      widthRatios = widthRatios.map((obj, index) => {
-        if (done.includes(index)) {
-          obj = division + 1;
-        }
-        return obj;
-      });
-    }
+    let done = nextFitAlgo(widthRatios, division);
     return done;
   };
 
@@ -287,7 +296,10 @@ const Artworks = ({ mobile }) => {
           style={isClicked ? { visibility: 'visible', opacity: 1 } : {}}
         />
       </div>
-      <div className="flex art-gallery">{output}</div>
+      <div className="flex art-gallery">
+        {output}
+        <li></li>
+      </div>
     </>
   );
 };
