@@ -77,7 +77,7 @@ const About = () => {
             </a>
           </div>
         </div>
-        <div className="article-item">
+        <div className="article-item" id="contact">
           <h2>Contact me here...</h2>
 
           <>
