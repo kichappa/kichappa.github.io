@@ -80,7 +80,7 @@ function App() {
       !document.getElementById('navbar').contains(e.target),
       expanded && !document.getElementById('navbar').contains(e.target)
     );
-    if (expanded && !document.getElementById('navbar').contains(e.target)) {
+    if (!document.getElementById('navbar').contains(e.target)) {
       setExpanded(false);
     }
   };
