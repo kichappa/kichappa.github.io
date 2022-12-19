@@ -7,11 +7,16 @@ import github from '../images/icons/github.svg';
 const About = () => {
   const [formSubmitted, setFormSubmitted] = useState(false);
   const handleSubmit = (e) => {
+    console.log(e);
+    // e.preventDefault();
+    setFormSubmitted(true);
     console.log(e.target.parentNode.parentNode, e.target.offsetWidth);
     e.target.parentNode.parentNode.scroll(e.target.offsetWidth + 20, 0);
-    let iframe = document.getElementsById('hidden_iframe');
-    iframe.addEventListener('load', () => {
-      // Check for the presence of the CAPTCHA element
+  };
+  const onLoad = () => {
+    // Check for the presence of the CAPTCHA element
+    if (formSubmitted) {
+      let iframe = document.getElementsById('hidden_iframe');
       if (iframe.contentDocument.querySelector('.g-recaptcha')) {
         iframe.style.display = true;
         iframe.style.height = 50;
@@ -23,7 +28,7 @@ const About = () => {
           'No CAPTCHA challenge is required for this form submission.'
         );
       }
-    });
+    }
   };
 
   useEffect(() => {
@@ -77,7 +82,7 @@ const About = () => {
             </a>
           </div>
         </div>
-        <div className="article-item" id="contact">
+        <div className="article-item">
           <h2>Contact me here...</h2>
 
           <>
@@ -146,10 +151,8 @@ const About = () => {
                   encType="text/plain"
                   action="https://docs.google.com/forms/d/e/1FAIpQLScYIU5jEGsiwUvZp0QGKfI1ZyWzD0lx6JsO4XqBZzmba4luDQ/formResponse?"
                   target="hidden_iframe"
-                  onSubmit={() => {
-                    handleSubmit();
-                    return 'submitted = true;';
-                  }}
+                  // onSubmit="submitted=true;"
+                  onSubmit={handleSubmit}
                 >
                   <fieldset id="fs-frm-inputs">
                     <p>
@@ -164,6 +167,7 @@ const About = () => {
                       id="name"
                       placeholder="Bruton Gaster"
                       required=""
+                      pattern=".+"
                     />
                     <label htmlFor="email">Email Address</label>
                     <input
@@ -172,7 +176,7 @@ const About = () => {
                       id="email"
                       placeholder="bud@thecosby.show"
                       required=""
-                      pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                      pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$"
                     />
                     <label htmlFor="message">Message</label>
                     <textarea
@@ -181,7 +185,7 @@ const About = () => {
                       name="entry.132408585"
                       id="message"
                       placeholder="My father was called Mary, his father before him was called Mary and his father before him was called Craig."
-                      required=""
+                      required=".+"
                     ></textarea>
                   </fieldset>
                   <input type="submit" value="Submit" />
@@ -192,7 +196,7 @@ const About = () => {
                     id="hidden_iframe"
                     style={{ width: '100%', height: 0, display: 'none' }}
                     // style="display:none;"
-                    onLoad="if(submitted) {}"
+                    onLoad={onLoad}
                   ></iframe>
                   <p>
                     Heyyo, I got your message. I will reply as soon as possible!

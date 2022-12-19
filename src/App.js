@@ -73,14 +73,14 @@ function App() {
     document.documentElement.msRequestFullscreen;
 
   const documentOnClick = (e, expanded) => {
-    console.log(expanded, document.getElementById('navbar'));
-    console.log(
-      e.target,
-      expanded,
-      !document.getElementById('navbar').contains(e.target),
-      expanded && !document.getElementById('navbar').contains(e.target)
-    );
-    if (!document.getElementById('navbar').contains(e.target)) {
+    // console.log(expanded, document.getElementById('navbar'));
+    // console.log(
+    //   e.target,
+    //   expanded,
+    //   !document.getElementById('navbar').contains(e.target),
+    //   expanded && !document.getElementById('navbar').contains(e.target)
+    // );
+    if (mobile && !document.getElementById('navbar').contains(e.target)) {
       setExpanded(false);
     }
   };
