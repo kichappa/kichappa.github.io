@@ -6,27 +6,13 @@ const Images = ({ img }) => {
   const [imagesLoaded, setImagesLoaded] = useState(0);
 
   const imageLoaded = () => {
-    // console.log(imagesLoaded);
-    // console.log(mainImgRef.current.parentNode.scrollLeft);
     mainImgRef.current.parentNode.scroll(0, 0);
 
     setImagesLoaded(imagesLoaded + 1);
   };
 
   const imageClicked = (e = null, i = currentImg) => {
-    // console.log({ e, i });
     setCurrentImg(i);
-    // console.log(mainImgRef.current.childNodes[0].width);
-    // console.log(mainImgRef.current.parentNode);
-    // mainImgRef.current.childNodes[0].width;
-    // mainImgRef.current.parentNode;
-
-    // let translate = `translateX(calc(0px - ${i} *${getComputedStyle(
-    //   document.body
-    // ).getPropertyValue('--article-item-width')}))`;
-    // let translate = `translateX(0px - calc(${i} * var(--article-item-width)))`;
-    // console.log(translate);
-    // mainImgRef.current.style.transform = translate;
   };
   useEffect(() => {
     mainImgRef.current.parentNode.scroll(
@@ -37,14 +23,26 @@ const Images = ({ img }) => {
 
   useEffect(() => {
     imageClicked();
-    // console.log(mainImgRef.current.parentNode.scrollLeft);
   }, []);
+
+  for (let image in img.image) {
+    if (img.images[image].length === 3) {
+      img.images[image].push({});
+    }
+  }
 
   let images = [],
     gallery = [];
   if (img.images.length === 1) {
     images.push(
-      <img src={img.images[0][0]} className={img.type} alt={img.images[0][1]} />
+      <img
+        key={img.images[0][0]}
+        src={img.images[0][1]}
+        className={img.type}
+        alt={img.images[0][2]}
+        style={img.images[0][3]}
+        onLoad={imageLoaded}
+      />
     );
   } else {
     let bigImages = [],
@@ -52,17 +50,21 @@ const Images = ({ img }) => {
     for (let i in img.images) {
       bigImages.push(
         <img
-          src={img.images[i][0]}
+          key={img.images[i][0]}
+          src={img.images[i][1]}
           className={img.type}
-          alt={img.images[i][1]}
+          alt={img.images[i][2]}
+          style={img.images[0][3]}
           onLoad={imageLoaded}
         />
       );
       gImages.push(
         <img
-          src={img.images[i][0]}
+          key={img.images[i][0]}
+          src={img.images[i][1]}
           className={i == currentImg ? 'gallery current' : 'gallery'}
-          alt={img.images[i][1]}
+          alt={img.images[i][2]}
+          style={img.images[0][3]}
           onClick={(e) => imageClicked(e, i)}
         />
       );

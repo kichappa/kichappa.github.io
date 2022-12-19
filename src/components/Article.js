@@ -1,12 +1,22 @@
 import React from 'react';
 import Images from './Images';
+import shortid from 'shortid';
 export const makeLink = (text, link, text_classes = [], tooltip = null) => {
   let classes = '';
   for (let i in text_classes) {
     classes += text_classes[i] + ' ';
   }
   return (
-    <a href={link} className={classes + 'tooltip-text'} target="_blank">
+    <a
+      href={link}
+      className={classes + 'tooltip-text'}
+      target="_blank"
+      style={{
+        fontFamily: 'inherit',
+        fontSize: 'inherit',
+        fontWeight: 'inherit',
+      }}
+    >
       {text}
       <span className="tooltip">{tooltip ? tooltip : 'Go to website'}</span>
     </a>
@@ -56,7 +66,18 @@ const Article = ({
   if (!('head' in options)) {
     options.head = 2;
   }
-  let images = <Images img={img}></Images>;
+  let images = (
+    <Images
+      key={shortid.generate().substring(0, 6)}
+      img={{
+        ...img,
+        images: img.images.map((obj) => [
+          shortid.generate().substring(0, 6),
+          ...obj,
+        ]),
+      }}
+    ></Images>
+  );
 
   //   console.log({ heading, tagline, authors, options });
   //   console.log({ portrait });
@@ -143,7 +164,7 @@ const Article = ({
       }
       leftC.push(text);
     }
-    // console.log({ leftC, rightC });
+    console.log({ leftC, rightC });
 
     output = (
       <div className="flex article v-centre" id={id}>

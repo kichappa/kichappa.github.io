@@ -258,7 +258,7 @@ const Artworks = ({ mobile }) => {
         <>
           <img
             className="art"
-            style={isVisible ? {} : { visibility: 'hidden' }}
+            style={isVisible ? {} : { visibility: 'true' }}
             src={artworks[art].src}
             alt=""
             onLoad={(e) => imgOnLoad(e, art)}

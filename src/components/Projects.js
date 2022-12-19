@@ -28,9 +28,12 @@ import tri_10 from '../images/Triangles/tri-10.svg';
 import CS_1 from '../images/Spatial Modelling of Urban Growth/CS-1.png';
 import CS_2 from '../images/Spatial Modelling of Urban Growth/CS-2.png';
 import CS_3 from '../images/Spatial Modelling of Urban Growth/CS-3.gif';
+import GE_Glasses from '../images/GlassEye/GE-Glasses.png';
+import GE_Braille from '../images/GlassEye/GE-Braille.png';
 import Article from './Article';
 import { makeAuthors, makeLink } from './Article';
 import { documentOnClick } from './Artworks';
+import shortid from 'shortid';
 
 const Projects = ({ mobile, portrait, pathName }) => {
   //   console.log([pathName, (pathName.match(/#/g) || []).length]);
@@ -121,35 +124,8 @@ const Projects = ({ mobile, portrait, pathName }) => {
               </a>
             </p>
             <p>
-              Origami-based deployable surfaces that are developable as well as
-              rigidly foldable are of interest in various architectural and
-              engineering applications. Such structures have been researched in
-              recent years using inverse design techniques based on optimization
-              by formulating an under-constrained equation system that governs
-              the design solution. This work presents an alternative framework
-              that involves directly solving an over-constrained system of
-              equations that dictate the design of generalized Miura-ori
-              surfaces that conform to target surfaces of zero, positive, and
-              negative Gaussian curvatures. The constraint equations involve
-              imposing the developability of vertices, planarity of origami
-              panels, and local flat-foldability of vertices. This project
-              discusses the accuracy of design solutions both with and without
-              the imposition of flat-foldability, as it is critical for strain
-              free deformation of the origami system. The results highlight the
-              feasibility of obtaining practically usable target origami
-              surfaces that are developable and rigidly foldable, using a
-              least-squares-based solution of heavily over-constrained system of
-              equations.
             </p>
             <p>
-              Origami structures fold in a continuous and smooth motion between
-              configurations. Since Miura cells have a single degree of freedom,
-              any tessellations of it can controlled with just one actuator.
-              These are, hence, structures with tunable curvatures. The use of
-              this, as unconventional as it might appear, is significant. It may
-              be a modifiable army training landscape with controllable slopes
-              and valleys or a seabed for a wave simulation laboratory. It may
-              also be used for bettering the acoustics of a concert hall.
             </p>
             <p>
               This work was presented at the IASS Spatial Structures
@@ -178,34 +154,28 @@ const Projects = ({ mobile, portrait, pathName }) => {
         options={{ ltr: false }}
       ></Article> */}
       <Article
+        key={shortid.generate().substring(0, 6)}
         id={'computation-origami-IASS'}
         type={'2c'}
         portrait={portrait}
         options={{ ltr: true }}
-        img={
-          {
-            type: 'big-picture',
-            images: [
-              [
-                summary_m3,
-                'Results of Origami algorithm that are compliant mechanisms',
-              ],
-              [
-                summary_m5,
-                'Results of Origami algorithm that are rigidly foldable',
-              ],
-              [
-                summary_m6,
-                'Results of Origami algorithm that allow minor deviations from design forms at yellow vertices.',
-              ],
+        img={{
+          type: 'big-picture',
+          images: [
+            [
+              summary_m3,
+              'Results of Origami algorithm that are compliant mechanisms',
             ],
-          }
-          //   <img
-          //     src={origami}
-          //     className="big-picture"
-          //     alt="Results of Origami algorithm that we presented in the IASS International Conference on Spatial Structures 2020/21."
-          //   />
-        }
+            [
+              summary_m5,
+              'Results of Origami algorithm that are rigidly foldable',
+            ],
+            [
+              summary_m6,
+              'Results of Origami algorithm that allow minor deviations from design forms at yellow vertices.',
+            ],
+          ],
+        }}
         heading={'Computational Origami Design'}
         tagline={
           'Quad-Origami "Miura-like" Tesselations that Rigidly Fold into Arbitrary Design Forms'
@@ -262,7 +232,14 @@ const Projects = ({ mobile, portrait, pathName }) => {
             <p>{'$$x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}$$'}</p> */}
             <p>
               This work was presented at the IASS Spatial Structures
-              International Conference.
+              International Conference.{' '}
+              {makeLink(
+                'Watch it',
+                'https://www.youtube.com/watch?v=StFY0VKCdhs',
+                [],
+                'Open video link'
+              )}
+              .
             </p>
           </>
         }
@@ -277,33 +254,22 @@ const Projects = ({ mobile, portrait, pathName }) => {
         }}
       ></Article>
       <Article
+        key={shortid.generate().substring(0, 6)}
         id={'amp-relax'}
         type={'2c'}
         portrait={portrait}
         options={{ ltr: false }}
-        img={
-          {
-            type: 'big-picture',
-            images: [
-              [amp_plan1, 'Plan of ground floor'],
-              [amp_section, 'Sectional view of AMP'],
-              [amp_birdseye, "A Bird's Eye view of AMP (blue)"],
-              [amp_outside_r, 'View of AMP from its main entrance'],
-              [amp_ff_oat_r, 'Open Air Theatre in the core'],
-              //   [amp_designevolution, 'Evolution of design idea'],
-              //   [amp_plan2, 'Plan of first floor'],
-              //   [amp_plan3, 'Plan of second floor'],
-              //   [amp_ff_stairs_r, 'Stairs connecting first and second floor'],
-              [amp_gf_r1, 'Groind floor, view 1'],
-              //   [amp_gf_r2, 'Ground floor, view 2'],
-            ],
-          }
-          //   <img
-          //     src={origami}
-          //     className="big-picture"
-          //     alt="Results of Origami algorithm that we presented in the IASS International Conference on Spatial Structures 2020/21."
-          //   />
-        }
+        img={{
+          type: 'big-picture',
+          images: [
+            [amp_plan1, 'Plan of ground floor'],
+            [amp_section, 'Sectional view of AMP'],
+            [amp_birdseye, "A Bird's Eye view of AMP (blue)"],
+            [amp_outside_r, 'View of AMP from its main entrance'],
+            [amp_ff_oat_r, 'Open Air Theatre in the core'],
+            [amp_gf_r1, 'Groind floor, view 1'],
+          ],
+        }}
         heading={'AMP Relax!'}
         tagline={'Architectural Design of a Student Activity Centre'}
         text={
@@ -389,25 +355,18 @@ const Projects = ({ mobile, portrait, pathName }) => {
         }
       ></Article>
       <Article
+        key={shortid.generate().substring(0, 6)}
         id={'draggy'}
         type={'2c'}
         portrait={portrait}
         options={{ ltr: true }}
-        img={
-          {
-            type: 'big-picture',
-            images: [
-              [draggy_point1, 'Point peak halo'],
-              [draggy_point2, 'Green crescent'],
-              //   [amp_gf_r2, 'Ground floor, view 2'],
-            ],
-          }
-          //   <img
-          //     src={origami}
-          //     className="big-picture"
-          //     alt="Results of Origami algorithm that we presented in the IASS International Conference on Spatial Structures 2020/21."
-          //   />
-        }
+        img={{
+          type: 'big-picture',
+          images: [
+            [draggy_point1, 'Point peak halo'],
+            [draggy_point2, 'Green crescent'],
+          ],
+        }}
         heading={'Draggy!'}
         tagline={'Freeform Gradients'}
         text={
@@ -476,32 +435,20 @@ const Projects = ({ mobile, portrait, pathName }) => {
         }
       ></Article>
       <Article
+        key={shortid.generate().substring(0, 6)}
         id={'triangles'}
         type={'2c'}
         portrait={portrait}
         options={{ ltr: false }}
-        img={
-          {
-            type: 'big-picture',
-            images: [
-              // [tri_1, 'Triangles and Colours'],
-              // [tri_2, 'Triangles and Colours'],
-              // [tri_3, 'Triangles and Colours'],
-              [tri_10, 'Triangles and Colours'],
-              [tri_6, 'Triangles and Colours'],
-              // [tri_9, 'Triangles and Colours'],
-              [tri_4, 'Triangles and Colours'],
-              // [tri_5, 'Triangles and Colours'],
-              [tri_8, 'Triangles and Colours'],
-              // [tri_7, 'Triangles and Colours'],
-            ],
-          }
-          //   <img
-          //     src={origami}
-          //     className="big-picture"
-          //     alt="Results of Origami algorithm that we presented in the IASS International Conference on Spatial Structures 2020/21."
-          //   />
-        }
+        img={{
+          type: 'big-picture',
+          images: [
+            [tri_10, 'Triangles and Colours'],
+            [tri_6, 'Triangles and Colours'],
+            [tri_4, 'Triangles and Colours'],
+            [tri_8, 'Triangles and Colours'],
+          ],
+        }}
         heading={'Triangles!'}
         tagline={'Delanauy Colours'}
         text={
@@ -547,37 +494,31 @@ const Projects = ({ mobile, portrait, pathName }) => {
         }
       ></Article>
       <Article
+        key={shortid.generate().substring(0, 6)}
         id={'urban-growth-models'}
         type={'2c'}
         portrait={portrait}
         options={{ ltr: true }}
-        img={
-          {
-            type: 'big-picture',
-            images: [
-              [
-                CS_3,
-                'City Sandbox: Polarization of cities as tolerance decreases.',
-              ],
-              [
-                CS_1,
-                'City Sandbox: Overlaid images of 8 simulations with TolRad of 4.5units.',
-              ],
-              [
-                CS_2,
-                'City Sandbox: Simulation with TolRad of 5units. Notice how the city clusters are segregated rather than creating cities of similar use types adjacent to different a city of another type.',
-              ],
+        img={{
+          type: 'big-picture',
+          images: [
+            [
+              CS_3,
+              'City Sandbox: Polarization of cities as tolerance decreases.',
             ],
-          }
-          //   <img
-          //     src={origami}
-          //     className="big-picture"
-          //     alt="Results of Origami algorithm that we presented in the IASS International Conference on Spatial Structures 2020/21."
-          //   />
-        }
+            [
+              CS_1,
+              'City Sandbox: Overlaid images of 8 simulations with TolRad of 4.5units.',
+            ],
+            [
+              CS_2,
+              'City Sandbox: Simulation with TolRad of 5units. Notice how the city clusters are segregated rather than creating cities of similar use types adjacent to different a city of another type.',
+            ],
+          ],
+        }}
         heading={'Spatial Modelling of Urban Growth'}
         tagline={
-          'Agent Based modelling and simulation of Urban Growth from green-field cities.'
+          'Agent Based modelling and simulation of Urban Growth from green-field sites'
         }
         authors={[
           ['Kishore Shenoy'],
@@ -639,6 +580,89 @@ const Projects = ({ mobile, portrait, pathName }) => {
           </>
         }
       ></Article>
+      <Article
+        key={shortid.generate().substring(0, 6)}
+        id={'glasseye'}
+        type={'2c'}
+        portrait={portrait}
+        options={{ ltr: false }}
+        img={{
+          type: 'big-picture',
+          images: [
+            [
+              GE_Glasses,
+              'GlassEye: Image diagram of glasses, with ToF sensor on the centre and wide angle cameras at either corners.',
+            ],
+            [
+              GE_Braille,
+              'GlassEye: Dynami braille pixel made using spring loaded electromagnet arrays.',
+            ],
+          ],
+        }}
+        heading={'GlassEye'}
+        tagline={'Concept Design of an Assistive Technology for the blind'}
+        text={
+          <>
+            <p>
+              GlassEye is a design concept for a pair of glasses that aims to
+              help people who are visually impaired or blind overcome their
+              barriers to socialization and improve their quality of life. The
+              glasses use a combination of advanced technologies, including
+              facial recognition, time of flight sensors, and computer vision,
+              to provide the user with a comprehensive view of their
+              surroundings and detect potential hazards. In addition to these
+              features, GlassEye also includes braille panels and an earpiece
+              for communication, giving users multiple ways to receive
+              information and interact with their environment.
+            </p>
+            <p>
+              In addition to the facial recognition feature, GlassEye also uses
+              3D time-of-flight sensors and computer vision to detect obstacles
+              and potential hazards in the user's environment. They are located
+              at the glasses' centre and provide a 3D view of the area in front
+              of the user. This allows the user to be aware of any objects or
+              obstacles in their path, helping them to navigate their
+              environment more safely. The computer vision system can detect
+              potential hazards, such as cars approaching from the side, and
+              alert the user through the earpiece or braille panels.
+            </p>
+            <p>
+              The GlassEye gloves have a dynamic braille panel and can display
+              messages in braille using piezoelectric or magnetic "pixels".
+              These pixels can be activated in different combinations to
+              represent braille characters, allowing the user to understand
+              notifications through touch. The use of gloves enables users to
+              receive information through a medium that is familiar and
+              comfortable for them. The earpiece can also provide audio data to
+              the user, allowing them to choose the most appropriate
+              communication method based on the situation.
+            </p>
+            <p>
+              In conclusion, GlassEye is an assistive technology design concept
+              that has the potential to significantly improve the quality of
+              life for people who are visually impaired or blind. Its use of
+              technologies combined with the flexibility of braille panels and
+              an earpiece for communication makes it a unique and powerful tool
+              for overcoming the barriers to socialization and independence
+              faced by this population. While GlassEye is currently only a
+              concept, its development and implementation could have a
+              significant impact on the lives of people who are visually
+              impaired or blind, helping them to fully participate in society
+              and achieve their full potential.
+            </p>
+            <p>
+              The first image is drawn by{' '}
+              {makeLink(
+                'Sree Chandana',
+                'https://themadchan.github.io/Portfolio/',
+                [],
+                'Open website'
+              )}
+              .
+            </p>
+          </>
+        }
+      ></Article>
       {/* <Article
         id={'computation-origami-IASS2'}
         type={'2c'}
@@ -682,41 +706,6 @@ const Projects = ({ mobile, portrait, pathName }) => {
         ]}
         text={
           <>
-            <p>
-              Origami-based deployable surfaces that are developable as well as
-              rigidly foldable are of interest in various architectural and
-              engineering applications. Such structures have been researched in
-              recent years using inverse design techniques based on optimization
-              by formulating an under-constrained equation system that governs
-              the design solution. This work presents an alternative framework
-              that involves directly solving an over-constrained system of
-              equations that dictate the design of generalized Miura-ori
-              surfaces that conform to target surfaces of zero, positive, and
-              negative Gaussian curvatures. The constraint equations involve
-              imposing the developability of vertices, planarity of origami
-              panels, and local flat-foldability of vertices. This project
-              discusses the accuracy of design solutions both with and without
-              the imposition of flat-foldability, as it is critical for strain
-              free deformation of the origami system. The results highlight the
-              feasibility of obtaining practically usable target origami
-              surfaces that are developable and rigidly foldable, using a
-              least-squares-based solution of heavily over-constrained system of
-              equations.
-            </p>
-            <p>
-              Origami structures fold in a continuous and smooth motion between
-              configurations. Since Miura cells have a single degree of freedom,
-              any tessellations of it can controlled with just one actuator.
-              These are, hence, structures with tunable curvatures. The use of
-              this, as unconventional as it might appear, is significant. It may
-              be a modifiable army training landscape with controllable slopes
-              and valleys or a seabed for a wave simulation laboratory. It may
-              also be used for bettering the acoustics of a concert hall.
-            </p>
-            <p>
-              This work was presented at the IASS Spatial Structures
-              International Conference.
-            </p>
           </>
         }
         citation={{
@@ -772,36 +761,9 @@ const Projects = ({ mobile, portrait, pathName }) => {
         ]}
         text={
           <>
-            <p>
-              Origami-based deployable surfaces that are developable as well as
-              rigidly foldable are of interest in various architectural and
-              engineering applications. Such structures have been researched in
-              recent years using inverse design techniques based on optimization
-              by formulating an under-constrained equation system that governs
-              the design solution. This work presents an alternative framework
-              that involves directly solving an over-constrained system of
-              equations that dictate the design of generalized Miura-ori
-              surfaces that conform to target surfaces of zero, positive, and
-              negative Gaussian curvatures. The constraint equations involve
-              imposing the developability of vertices, planarity of origami
-              panels, and local flat-foldability of vertices. This project
-              discusses the accuracy of design solutions both with and without
-              the imposition of flat-foldability, as it is critical for strain
-              free deformation of the origami system. The results highlight the
-              feasibility of obtaining practically usable target origami
-              surfaces that are developable and rigidly foldable, using a
-              least-squares-based solution of heavily over-constrained system of
-              equations.
+            <p>              
             </p>
-            <p>
-              Origami structures fold in a continuous and smooth motion between
-              configurations. Since Miura cells have a single degree of freedom,
-              any tessellations of it can controlled with just one actuator.
-              These are, hence, structures with tunable curvatures. The use of
-              this, as unconventional as it might appear, is significant. It may
-              be a modifiable army training landscape with controllable slopes
-              and valleys or a seabed for a wave simulation laboratory. It may
-              also be used for bettering the acoustics of a concert hall.
+            <p>              
             </p>
             <p>
               This work was presented at the IASS Spatial Structures

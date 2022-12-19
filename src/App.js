@@ -72,12 +72,32 @@ function App() {
     document.documentElement.webkitRequestFullScreen ||
     document.documentElement.msRequestFullscreen;
 
+  const documentOnClick = (e, expanded) => {
+    console.log(expanded, document.getElementById('navbar'));
+    console.log(
+      e.target,
+      expanded,
+      !document.getElementById('navbar').contains(e.target),
+      expanded && !document.getElementById('navbar').contains(e.target)
+    );
+    if (expanded && !document.getElementById('navbar').contains(e.target)) {
+      setExpanded(false);
+    }
+  };
+
   useEffect(() => {
     setPathname(window.location.hash);
     if ((window.location.hash.match(/#(?!\/).+/g) || []).length > 0) {
       console.log(window.location.hash.match(/#(?!\/).+/g)[0].slice(1));
       scrollIntoView(window.location.hash);
     }
+
+    document.addEventListener('click', (e) => documentOnClick(e, expanded));
+    return () => {
+      document.removeEventListener('click', (e) =>
+        documentOnClick(e, expanded)
+      );
+    };
   }, []);
 
   return (
@@ -154,7 +174,7 @@ function App() {
                 }
               />
               <Route
-                path="/about"
+                path="/links"
                 element={
                   <About
                     mobile={mobile}

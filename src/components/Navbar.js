@@ -9,8 +9,12 @@ const Navbar = ({ portrait, mobile, expanded, setExpanded, pathName }) => {
   const menuExpandContainer = useRef(null);
   const menuContainer = useRef(null);
 
-  const expandMenu = ({ expand = expanded }) => {
-    if (!expand) {
+  useEffect(() => {
+    expandMenu();
+  }, [expanded]);
+
+  const expandMenu = (expand = expanded) => {
+    if (expand) {
       menuExpandContainer.current.className += ' expanded';
       menuContainer.current.className += ' expanded';
       document.documentElement.style.setProperty('--menu-expanded', 1);
@@ -25,7 +29,7 @@ const Navbar = ({ portrait, mobile, expanded, setExpanded, pathName }) => {
       );
       document.documentElement.style.setProperty('--menu-expanded', 0);
     }
-    setExpanded(!expand);
+    // setExpanded(!expand);
   };
   let appropriate_logo = logo;
   if (mobile) {
@@ -65,230 +69,122 @@ const Navbar = ({ portrait, mobile, expanded, setExpanded, pathName }) => {
           ) : (
             <Link to="/questions">Questions</Link>
           )}
-          {pathName.startsWith('#/about') ? (
-            <p className="current">About</p>
+          {pathName.startsWith('#/contact') ? (
+            <p className="current">Links+Contact</p>
           ) : (
-            <Link to="/about">About</Link>
+            <Link to="/links">Links+Contact</Link>
           )}
         </div>
       </>
     );
   } else if (mobile) {
-    if (!expanded) {
-      return (
-        <div id="navbar">
-          <div className="wrapper">
-            <img src={appropriate_logo} alt="My Logo" id="logo" />
-            <div className="menu-buttons-container" onClick={expandMenu}>
-              <div className="wrapper1">
-                <div className="wrapper2" ref={menuExpandContainer}>
+    return (
+      <div id="navbar">
+        <div className="wrapper">
+          <img src={appropriate_logo} alt="My Logo" id="logo" />
+          <div
+            className="menu-buttons-container"
+            onClick={() => setExpanded(!expanded)}
+          >
+            <div className="wrapper1">
+              <div className="wrapper2" ref={menuExpandContainer}>
+                <div className="menu-button-menu-wrapper" data="Menu">
                   <img
                     src={hamburger}
                     alt="hamburger menu"
                     className="menu-button"
                   />
-                  <img
-                    src={cross}
-                    alt="hamburger menu"
-                    className="menu-button"
-                  />
                 </div>
+                <img src={cross} alt="hamburger menu" className="menu-button" />
               </div>
             </div>
-            <div className="menu" ref={menuContainer}>
-              {pathName.startsWith('#/#') |
-              (pathName === '') |
-              (pathName === '#/') ? (
-                <div className="menu-item">
-                  <p className="current">Home</p>
-                </div>
-              ) : (
-                <Link
-                  className="menu-item"
-                  onClick={() => expandMenu(false)}
-                  to="/"
-                >
-                  <p className="link">Home</p>
-                </Link>
-              )}
-              {pathName.startsWith('#/projects') ||
-              pathName.startsWith('#/p#') ? (
-                <div className="menu-item">
-                  <p className="current">Projects</p>
-                </div>
-              ) : (
-                <Link
-                  className="menu-item"
-                  onClick={() => expandMenu(false)}
-                  to="/projects"
-                >
-                  <p className="link">Projects</p>
-                </Link>
-              )}
-              {pathName.startsWith('#/publications') ? (
-                <div className="menu-item">
-                  <p className="current">Publications</p>
-                </div>
-              ) : (
-                <Link
-                  className="menu-item"
-                  onClick={() => expandMenu(false)}
-                  to="/publications"
-                >
-                  <p className="link">Publications</p>
-                </Link>
-              )}
-              {pathName.startsWith('#/artworks') ? (
-                <div className="menu-item">
-                  <p className="current">Artworks</p>
-                </div>
-              ) : (
-                <Link
-                  className="menu-item"
-                  onClick={() => expandMenu(false)}
-                  to="/artworks"
-                >
-                  <p className="link">Artworks</p>
-                </Link>
-              )}
-              {pathName.startsWith('#/questions') ? (
-                <div className="menu-item">
-                  <p className="current">Questions</p>
-                </div>
-              ) : (
-                <Link
-                  className="menu-item"
-                  onClick={() => expandMenu(false)}
-                  to="/questions"
-                >
-                  <p className="link">Questions</p>
-                </Link>
-              )}
-              {pathName.startsWith('#/about') ? (
-                <div className="menu-item">
-                  <p className="current">About</p>
-                </div>
-              ) : (
-                <Link
-                  className="menu-item"
-                  onClick={() => expandMenu(false)}
-                  to="/about"
-                >
-                  <p className="link">About</p>
-                </Link>
-              )}
-            </div>
           </div>
-        </div>
-      );
-    } else {
-      return (
-        <div id="navbar">
-          <div className="wrapper">
-            <img src={appropriate_logo} alt="My Logo" id="logo" />
-            <div className="menu-buttons-container" onClick={expandMenu}>
-              <div className="wrapper1">
-                <div className="wrapper2" ref={menuExpandContainer}>
-                  <img
-                    src={hamburger}
-                    alt="hamburger menu"
-                    className="menu-button"
-                  />
-                  <img
-                    src={cross}
-                    alt="hamburger menu"
-                    className="menu-button"
-                  />
-                </div>
+          <div className="menu" ref={menuContainer}>
+            {pathName.startsWith('#/#') |
+            (pathName === '') |
+            (pathName === '#/') ? (
+              <div className="menu-item">
+                <p className="current">Home</p>
               </div>
-            </div>
-            <div className="menu" ref={menuContainer}>
-              {pathName.startsWith('#/#') |
-              (pathName === '') |
-              (pathName === '#/') ? (
-                <div className="menu-item">
-                  <p className="current">Home</p>
-                </div>
-              ) : (
-                <Link
-                  className="menu-item"
-                  onClick={() => expandMenu(false)}
-                  to="/"
-                >
-                  <p className="link">Home</p>
-                </Link>
-              )}
-              {pathName.startsWith('#/projects') ||
-              pathName.startsWith('#/p#') ? (
-                <div className="menu-item">
-                  <p className="current">Projects</p>
-                </div>
-              ) : (
-                <Link
-                  className="menu-item"
-                  onClick={() => expandMenu(false)}
-                  to="/projects"
-                >
-                  <p className="link">Projects</p>
-                </Link>
-              )}
-              {pathName.startsWith('#/publications') ? (
-                <div className="menu-item">
-                  <p className="current">Publications</p>
-                </div>
-              ) : (
-                <Link
-                  className="menu-item"
-                  onClick={() => expandMenu(false)}
-                  to="/publications"
-                >
-                  <p className="link">Publications</p>
-                </Link>
-              )}
-              {pathName.startsWith('#/artworks') ? (
-                <div className="menu-item">
-                  <p className="current">Artworks</p>
-                </div>
-              ) : (
-                <Link
-                  className="menu-item"
-                  onClick={() => expandMenu(false)}
-                  to="/artworks"
-                >
-                  <p className="link">Artworks</p>
-                </Link>
-              )}
-              {pathName.startsWith('#/questions') ? (
-                <div className="menu-item">
-                  <p className="current">Questions</p>
-                </div>
-              ) : (
-                <Link
-                  className="menu-item"
-                  onClick={() => expandMenu(false)}
-                  to="/questions"
-                >
-                  <p className="link">Questions</p>
-                </Link>
-              )}
-              {pathName.startsWith('#/about') ? (
-                <div className="menu-item">
-                  <p className="current">About</p>
-                </div>
-              ) : (
-                <Link
-                  className="menu-item"
-                  onClick={() => expandMenu(false)}
-                  to="/about"
-                >
-                  <p className="link">About</p>
-                </Link>
-              )}
-            </div>
+            ) : (
+              <Link
+                className="menu-item"
+                onClick={() => setExpanded(false)}
+                to="/"
+              >
+                <p className="link">Home</p>
+              </Link>
+            )}
+            {pathName.startsWith('#/projects') ||
+            pathName.startsWith('#/p#') ? (
+              <div className="menu-item">
+                <p className="current">Projects</p>
+              </div>
+            ) : (
+              <Link
+                className="menu-item"
+                onClick={() => setExpanded(false)}
+                to="/projects"
+              >
+                <p className="link">Projects</p>
+              </Link>
+            )}
+            {pathName.startsWith('#/publications') ? (
+              <div className="menu-item">
+                <p className="current">Publications</p>
+              </div>
+            ) : (
+              <Link
+                className="menu-item"
+                onClick={() => setExpanded(false)}
+                to="/publications"
+              >
+                <p className="link">Publications</p>
+              </Link>
+            )}
+            {pathName.startsWith('#/artworks') ? (
+              <div className="menu-item">
+                <p className="current">Artworks</p>
+              </div>
+            ) : (
+              <Link
+                className="menu-item"
+                onClick={() => setExpanded(false)}
+                to="/artworks"
+              >
+                <p className="link">Artworks</p>
+              </Link>
+            )}
+            {pathName.startsWith('#/questions') ? (
+              <div className="menu-item">
+                <p className="current">Questions</p>
+              </div>
+            ) : (
+              <Link
+                className="menu-item"
+                onClick={() => setExpanded(false)}
+                to="/questions"
+              >
+                <p className="link">Questions</p>
+              </Link>
+            )}
+            {pathName.startsWith('#/contact') ? (
+              <div className="menu-item">
+                <p className="current">Links+Contact</p>
+              </div>
+            ) : (
+              <Link
+                className="menu-item"
+                onClick={() => setExpanded(false)}
+                to="/links"
+              >
+                <p className="link">Links+Contact</p>
+              </Link>
+            )}
           </div>
         </div>
-      );
-    }
+      </div>
+    );
   }
 };
 
