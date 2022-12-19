@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.47a4e603.css",
-    "main.js": "/static/js/main.6aff8169.js",
+    "main.css": "/static/css/main.0712b5d5.css",
+    "main.js": "/static/js/main.c5e0b8e5.js",
     "static/js/787.52294c95.chunk.js": "/static/js/787.52294c95.chunk.js",
     "static/media/CS-3.gif": "/static/media/CS-3.d414b4a332f26771f4fe.gif",
     "static/media/AMP-birdseye.png": "/static/media/AMP-birdseye.8a4f0828d368643c9075.png",
@@ -22,6 +22,7 @@
     "static/media/Ellipticapsicum copy.png": "/static/media/Ellipticapsicum copy.2961a3d9f5d0095be4ef.png",
     "static/media/draggy-point1.png": "/static/media/draggy-point1.54d8ab73fe8b5bdae5cc.png",
     "static/media/Warped Flowers copy.png": "/static/media/Warped Flowers copy.b8777246c1a528315714.png",
+    "static/media/GE-Braille.png": "/static/media/GE-Braille.0e32d4d0420261056665.png",
     "static/media/My hand copy.png": "/static/media/My hand copy.90325daa5b1f9d6b5537.png",
     "static/media/Japanese Art copy.png": "/static/media/Japanese Art copy.009cb730ed03b1455da4.png",
     "static/media/NOKIA small copy.png": "/static/media/NOKIA small copy.61ace54fb7a9a6138a1c.png",
@@ -38,6 +39,7 @@
     "static/media/My Room copy.png": "/static/media/My Room copy.893035abff03bde99923.png",
     "static/media/The Symmetric Vase copy.png": "/static/media/The Symmetric Vase copy.b5dba46bb60ff6509c80.png",
     "static/media/The Unsymmetric Vase copy.png": "/static/media/The Unsymmetric Vase copy.7eff32c2c55e0e853ea8.png",
+    "static/media/GE-Glasses.png": "/static/media/GE-Glasses.b929206a8588a5e9090d.png",
     "static/media/CS-2.png": "/static/media/CS-2.a022d0b1c6ac78f167db.png",
     "static/media/AMP-Plan3.png": "/static/media/AMP-Plan3.9247f8b8eb0fce2f45fc.png",
     "static/media/Caricature copy.png": "/static/media/Caricature copy.2467d0795e3e9c8ad579.png",
@@ -99,12 +101,12 @@
     "index.html": "/index.html",
     "static/media/Cross.svg": "/static/media/Cross.7291d8b3fa4498a59ca8b2f02debd75a.svg",
     "static/media/Hamburger.svg": "/static/media/Hamburger.8d2e2f829922b0866fd92d904bd80008.svg",
-    "main.47a4e603.css.map": "/static/css/main.47a4e603.css.map",
-    "main.6aff8169.js.map": "/static/js/main.6aff8169.js.map",
+    "main.0712b5d5.css.map": "/static/css/main.0712b5d5.css.map",
+    "main.c5e0b8e5.js.map": "/static/js/main.c5e0b8e5.js.map",
     "787.52294c95.chunk.js.map": "/static/js/787.52294c95.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.47a4e603.css",
-    "static/js/main.6aff8169.js"
+    "static/css/main.0712b5d5.css",
+    "static/js/main.c5e0b8e5.js"
   ]
 }
