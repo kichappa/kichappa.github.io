@@ -755,6 +755,7 @@ textarea {
   transition: var(--std-transition), width 0s, height 0s;
   font-family: var(--content-font);
   font-size: var(--content-size);
+  resize: vertical;
 }
 
 #fs-frm input:not([type='submit']),
