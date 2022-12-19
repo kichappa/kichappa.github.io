@@ -14,20 +14,22 @@ const Navbar = ({ portrait, mobile, expanded, setExpanded, pathName }) => {
   }, [expanded]);
 
   const expandMenu = (expand = expanded) => {
-    if (expand) {
-      menuExpandContainer.current.className += ' expanded';
-      menuContainer.current.className += ' expanded';
-      document.documentElement.style.setProperty('--menu-expanded', 1);
-    } else {
-      menuExpandContainer.current.className = menuExpandContainer.current.className.replace(
-        ' expanded',
-        ''
-      );
-      menuContainer.current.className = menuContainer.current.className.replace(
-        ' expanded',
-        ''
-      );
-      document.documentElement.style.setProperty('--menu-expanded', 0);
+    if (mobile) {
+      if (expand) {
+        menuExpandContainer.current.className += ' expanded';
+        menuContainer.current.className += ' expanded';
+        document.documentElement.style.setProperty('--menu-expanded', 1);
+      } else {
+        menuExpandContainer.current.className = menuExpandContainer.current.className.replace(
+          ' expanded',
+          ''
+        );
+        menuContainer.current.className = menuContainer.current.className.replace(
+          ' expanded',
+          ''
+        );
+        document.documentElement.style.setProperty('--menu-expanded', 0);
+      }
     }
     // setExpanded(!expand);
   };
