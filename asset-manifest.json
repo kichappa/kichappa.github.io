@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.0712b5d5.css",
-    "main.js": "/static/js/main.c5e0b8e5.js",
+    "main.css": "/static/css/main.33788aea.css",
+    "main.js": "/static/js/main.42db5727.js",
     "static/js/787.52294c95.chunk.js": "/static/js/787.52294c95.chunk.js",
     "static/media/CS-3.gif": "/static/media/CS-3.d414b4a332f26771f4fe.gif",
     "static/media/AMP-birdseye.png": "/static/media/AMP-birdseye.8a4f0828d368643c9075.png",
@@ -101,12 +101,14 @@
     "index.html": "/index.html",
     "static/media/Cross.svg": "/static/media/Cross.7291d8b3fa4498a59ca8b2f02debd75a.svg",
     "static/media/Hamburger.svg": "/static/media/Hamburger.8d2e2f829922b0866fd92d904bd80008.svg",
-    "main.0712b5d5.css.map": "/static/css/main.0712b5d5.css.map",
-    "main.c5e0b8e5.js.map": "/static/js/main.c5e0b8e5.js.map",
+    "static/media/github.svg": "/static/media/github.9c272cfb6e7959458cd0e7750b6fe33e.svg",
+    "static/media/linkedin.svg": "/static/media/linkedin.5b1c2f26a293363ada26fcfed2b25752.svg",
+    "main.33788aea.css.map": "/static/css/main.33788aea.css.map",
+    "main.42db5727.js.map": "/static/js/main.42db5727.js.map",
     "787.52294c95.chunk.js.map": "/static/js/787.52294c95.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.0712b5d5.css",
-    "static/js/main.c5e0b8e5.js"
+    "static/css/main.33788aea.css",
+    "static/js/main.42db5727.js"
   ]
 }
