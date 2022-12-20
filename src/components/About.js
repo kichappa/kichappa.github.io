@@ -166,7 +166,7 @@ const About = () => {
                       name="entry.57080146"
                       id="name"
                       placeholder="Bruton Gaster"
-                      required=""
+                      required=".+"
                       pattern=".+"
                     />
                     <label htmlFor="email">Email Address</label>
@@ -175,7 +175,9 @@ const About = () => {
                       name="entry.560788154"
                       id="email"
                       placeholder="bud@thecosby.show"
-                      required=""
+                      onInvalid="setCustomValidity('Please enter at least 5 characters')"
+                      title="[name]@[domain].[tld]"
+                      required="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$"
                       pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$"
                     />
                     <label htmlFor="message">Message</label>
@@ -186,6 +188,7 @@ const About = () => {
                       id="message"
                       placeholder="My father was called Mary, his father before him was called Mary and his father before him was called Craig."
                       required=".+"
+                      pattern=".+"
                     ></textarea>
                   </fieldset>
                   <input type="submit" value="Submit" />

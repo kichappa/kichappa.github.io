@@ -650,16 +650,6 @@ const Projects = ({ mobile, portrait, pathName }) => {
               impaired or blind, helping them to fully participate in society
               and achieve their full potential.
             </p>
-            <p>
-              The first image is drawn by{' '}
-              {makeLink(
-                'Sree Chandana',
-                'https://themadchan.github.io/Portfolio/',
-                [],
-                'Open website'
-              )}
-              .
-            </p>
           </>
         }
       ></Article>
