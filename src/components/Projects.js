@@ -164,11 +164,11 @@ const Projects = ({ mobile, portrait, pathName }) => {
           images: [
             [
               summary_m3,
-              'Results of Origami algorithm that are compliant mechanisms',
+              'Results of Origami algorithm that are compliant mechanisms.',
             ],
             [
               summary_m5,
-              'Results of Origami algorithm that are rigidly foldable',
+              'Results of Origami algorithm that are rigidly foldable.',
             ],
             [
               summary_m6,
@@ -262,12 +262,12 @@ const Projects = ({ mobile, portrait, pathName }) => {
         img={{
           type: 'big-picture',
           images: [
-            [amp_plan1, 'Plan of ground floor'],
-            [amp_section, 'Sectional view of AMP'],
-            [amp_birdseye, "A Bird's Eye view of AMP (blue)"],
-            [amp_outside_r, 'View of AMP from its main entrance'],
-            [amp_ff_oat_r, 'Open Air Theatre in the core'],
-            [amp_gf_r1, 'Groind floor, view 1'],
+            [amp_plan1, 'Plan of ground floor of AMP.'],
+            [amp_section, 'Sectional view of AMP.'],
+            [amp_birdseye, "A Bird's Eye view of AMP (blue)."],
+            [amp_outside_r, 'View of AMP from its main entrance.'],
+            [amp_ff_oat_r, 'Rendering of Amphitheatre in the core.'],
+            [amp_gf_r1, 'Rendering of groind floor.'],
           ],
         }}
         heading={'AMP Relax!'}
@@ -363,8 +363,8 @@ const Projects = ({ mobile, portrait, pathName }) => {
         img={{
           type: 'big-picture',
           images: [
-            [draggy_point1, 'Point peak halo'],
-            [draggy_point2, 'Green crescent'],
+            [draggy_point1, 'Point Peak Halo.'],
+            [draggy_point2, 'A Green Crescent.'],
           ],
         }}
         heading={'Draggy!'}
@@ -443,10 +443,10 @@ const Projects = ({ mobile, portrait, pathName }) => {
         img={{
           type: 'big-picture',
           images: [
-            [tri_10, 'Triangles and Colours'],
-            [tri_6, 'Triangles and Colours'],
-            [tri_4, 'Triangles and Colours'],
-            [tri_8, 'Triangles and Colours'],
+            [tri_10, 'Maroon, Blue and Yellow'],
+            [tri_6, 'Earth and sky'],
+            [tri_4, 'Crystal cave'],
+            [tri_8, 'Avada Kedavra'],
           ],
         }}
         heading={'Triangles!'}
@@ -591,11 +591,11 @@ const Projects = ({ mobile, portrait, pathName }) => {
           images: [
             [
               GE_Glasses,
-              'GlassEye: Image diagram of glasses, with ToF sensor on the centre and wide angle cameras at either corners.',
+              'Diagram of glasses, with ToF sensor at the centre and wide angle cameras at either corners.',
             ],
             [
               GE_Braille,
-              'GlassEye: Dynami braille pixel made using spring loaded electromagnet arrays.',
+              'Dynamic braille pixel made using spring loaded electromagnet arrays.',
             ],
           ],
         }}

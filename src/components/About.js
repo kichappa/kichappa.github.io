@@ -155,11 +155,7 @@ const About = () => {
                   onSubmit={handleSubmit}
                 >
                   <fieldset id="fs-frm-inputs">
-                    <p>
-                      I know that having a form is discouraging, but I promise
-                      you I will check your message and reply back! It's just
-                      that I don't want to expose my email on a public domain.
-                    </p>
+                    <p>I promise I will check your message and reply back!</p>
                     <label htmlFor="name">Name</label>
                     <input
                       type="text"

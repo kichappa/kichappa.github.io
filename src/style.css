@@ -593,9 +593,16 @@ a {
   font-family: var(--head-font);
   font-weight: 600;
 }
+.big-picture-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 10px;
+}
 .big-picture {
   width: var(--article-item-width);
   scroll-snap-align: center;
+  cursor: pointer;
 }
 .gallery-wrapper0 {
   margin-top: min(5vh, 50px);
@@ -620,6 +627,7 @@ a {
   margin: 5px;
   padding: 5px;
   box-shadow: 0 0 0 0 var(--accent-color);
+  cursor: pointer;
 }
 .gallery.current {
   opacity: 100%;

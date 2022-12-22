@@ -5,6 +5,31 @@ const Images = ({ img }) => {
   const [currentImg, setCurrentImg] = useState(0);
   const [imagesLoaded, setImagesLoaded] = useState(0);
 
+  const getImageDom = (img, type, options = {}) => {
+    options = {
+      ...{
+        className: false,
+        onClick: () => {},
+        onLoad: () => {},
+      },
+      ...options,
+    };
+    // console.log(img, type, options.className, options.onLoad, options.onClick);
+    return (
+      <>
+        <img
+          key={img[0]}
+          src={img[1]}
+          className={options.className ? options.className : type}
+          alt={img[2]}
+          style={img[3]}
+          onClick={options.onClick}
+          onLoad={options.onLoad}
+        />
+      </>
+    );
+  };
+
   const imageLoaded = () => {
     mainImgRef.current.parentNode.scroll(0, 0);
 
@@ -16,7 +41,7 @@ const Images = ({ img }) => {
   };
   useEffect(() => {
     mainImgRef.current.parentNode.scroll(
-      currentImg * mainImgRef.current.childNodes[0].width,
+      currentImg * mainImgRef.current.childNodes[0].offsetWidth,
       0
     );
   }, [currentImg]);
@@ -32,43 +57,29 @@ const Images = ({ img }) => {
   }
 
   let images = [],
-    gallery = [];
-  if (img.images.length === 1) {
-    images.push(
-      <img
-        key={img.images[0][0]}
-        src={img.images[0][1]}
-        className={img.type}
-        alt={img.images[0][2]}
-        style={img.images[0][3]}
-        onLoad={imageLoaded}
-      />
+    gallery = [],
+    bigImages = [],
+    gImages = [];
+
+  for (let i in img.images) {
+    bigImages.push(
+      <div className="big-picture-wrapper">
+        {getImageDom(img.images[i], img.type, { onLoad: imageLoaded })}
+        <p style={{ marginLeft: '5px', marginRight: '5px' }}>
+          {img.images[i][2]}
+        </p>
+      </div>
     );
+    gImages.push(
+      getImageDom(img.images[i], img.type, {
+        className: i == currentImg ? 'gallery current' : 'gallery',
+        onClick: (e) => imageClicked(e, i),
+      })
+    );
+  }
+  if (img.images.length === 1) {
+    images = bigImages;
   } else {
-    let bigImages = [],
-      gImages = [];
-    for (let i in img.images) {
-      bigImages.push(
-        <img
-          key={img.images[i][0]}
-          src={img.images[i][1]}
-          className={img.type}
-          alt={img.images[i][2]}
-          style={img.images[0][3]}
-          onLoad={imageLoaded}
-        />
-      );
-      gImages.push(
-        <img
-          key={img.images[i][0]}
-          src={img.images[i][1]}
-          className={i == currentImg ? 'gallery current' : 'gallery'}
-          alt={img.images[i][2]}
-          style={img.images[0][3]}
-          onClick={(e) => imageClicked(e, i)}
-        />
-      );
-    }
     images.push(
       <>
         <div className="images-wrapper0">

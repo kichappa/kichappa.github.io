@@ -1,7 +1,13 @@
 import React from 'react';
 import Images from './Images';
 import shortid from 'shortid';
-export const makeLink = (text, link, text_classes = [], tooltip = null) => {
+export const makeLink = (
+  text,
+  link,
+  text_classes = [],
+  tooltip = null,
+  inherit = true
+) => {
   let classes = '';
   for (let i in text_classes) {
     classes += text_classes[i] + ' ';
@@ -11,11 +17,15 @@ export const makeLink = (text, link, text_classes = [], tooltip = null) => {
       href={link}
       className={classes + 'tooltip-text'}
       target="_blank"
-      style={{
-        fontFamily: 'inherit',
-        fontSize: 'inherit',
-        fontWeight: 'inherit',
-      }}
+      style={
+        inherit
+          ? {
+              fontFamily: 'inherit',
+              fontSize: 'inherit',
+              fontWeight: 'inherit',
+            }
+          : {}
+      }
     >
       {text}
       <span className="tooltip">{tooltip ? tooltip : 'Go to website'}</span>
@@ -122,7 +132,7 @@ const Article = ({
       if (citation) {
         rightC.push(
           <p key={key++} className="citation">
-            {makeLink(citation.title, citation.link, ['title'])}
+            {makeLink(citation.title, citation.link, ['title'], null, false)}
             <br />
             <span className="authors">{citation.authors}</span>
             <br />
@@ -164,7 +174,7 @@ const Article = ({
       }
       leftC.push(text);
     }
-    console.log({ leftC, rightC });
+    // console.log({ leftC, rightC });
 
     output = (
       <div className="flex article v-centre" id={id}>

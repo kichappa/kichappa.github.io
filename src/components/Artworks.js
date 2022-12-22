@@ -26,11 +26,11 @@ import art_23 from '../images/Art/Warped Flowers copy.png';
 
 export const documentOnClick = (e, setIsClicked, className = 'art') => {
   if (e.target.className === className) {
-    console.log('Image clicked', e);
+    // console.log('Image clicked', e);
     setIsClicked(true);
     document.getElementById('expanded-img').src = e.target.src;
   } else {
-    console.log('Other than image clicked', e);
+    // console.log('Other than image clicked', e);
     setIsClicked(false);
   }
 };
