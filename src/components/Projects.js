@@ -382,11 +382,16 @@ const Projects = ({ mobile, portrait, pathName }) => {
             <p>
               But what makes Draggy truly unique is its ability to create
               spatial gradients with fewer than four points. Unlike other design
-              tools that rely on interpolation or triangulation, Draggy uses
-              Laurent polynomials to calculate the weight of each color point in
-              the final gradient. This allows for smooth, efficient gradients
-              that are free of the color banding and unsaturated hues that
-              plague other tools.
+              tools that rely on interpolation or triangulation, Draggy uses the
+              following Laurent polynomial to calculate the weight of each color
+              point in the final gradient. This allows for smooth, efficient
+              gradients that are free of the color banding and unsaturated hues
+              that plague other tools.
+            </p>
+            <p>
+              {
+                '\\[j \\in \\left[ r, g, b, h, s, v\\right] = \\dfrac{\\sum_{i\\in \\textbf{CP}}\\left(\\frac{1+i_R/10}{d_i}\\right)^3\\times j_i}{\\sum_{i\\in \\textbf{CP}}\\left(\\frac{1+i_R/10}{d_i}\\right)^3}\\]'
+              }
             </p>
             <p>
               To achieve the best possible color quality in the final gradient,
