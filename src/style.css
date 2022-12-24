@@ -605,7 +605,7 @@ a {
   cursor: pointer;
 }
 .gallery-wrapper0 {
-  margin-top: min(5vh, 50px);
+  margin-top: min(2vh, 15px);
   width: 100%;
   display: flex;
   justify-content: center;
