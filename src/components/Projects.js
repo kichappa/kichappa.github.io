@@ -34,6 +34,7 @@ import Article from './Article';
 import { makeAuthors, makeLink } from './Article';
 import { documentOnClick } from './Artworks';
 import shortid from 'shortid';
+import { MathJax } from 'better-react-mathjax';
 
 const Projects = ({ mobile, portrait, pathName }) => {
   //   console.log([pathName, (pathName.match(/#/g) || []).length]);
@@ -228,8 +229,11 @@ const Projects = ({ mobile, portrait, pathName }) => {
               a variety of fields including architecture and engineering.
             </p>
             {/* MathJax Example:
-            
-            <p>{'$$x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}$$'}</p> */}
+            <p>
+              <MathJax>
+                {'$$x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}$$'}
+              </MathJax>
+            </p> */}
             <p>
               This work was presented at the IASS Spatial Structures
               International Conference.{' '}
@@ -389,12 +393,17 @@ const Projects = ({ mobile, portrait, pathName }) => {
               unsaturated hues that plague other tools.
             </p>
             <p>
-              {
-                '\\[j \\in \\left[R,G,B,H,S,V\\right] = \\dfrac{\\sum_{i\\in \\textbf{CP}}\\left(\\frac{1+i_R/10}{d_i}\\right)^3\\times j_i}{\\sum_{i\\in \\textbf{CP}}\\left(\\frac{1+i_R/10}{d_i}\\right)^3}\\]'
-              }
-              Here, {'\\(i_R\\)'} is the radius of influence of color point{' '}
-              {'\\(i\\)'} and {'\\(d_i\\)'} is the distance of current pixel to
-              the same color point.
+              <MathJax>
+                {
+                  '\\[j \\in \\left[R,G,B,H,S,V\\right] = \\dfrac{\\sum_{i\\in \\textbf{CP}}\\left(\\frac{1+i_R/10}{d_i}\\right)^3\\times j_i}{\\sum_{i\\in \\textbf{CP}}\\left(\\frac{1+i_R/10}{d_i}\\right)^3}\\]'
+                }
+              </MathJax>
+
+              <MathJax>
+                Here, {'\\(i_R\\)'} is the radius of influence of color point{' '}
+                {'\\(i\\)'} and {'\\(d_i\\)'} is the distance of current pixel
+                to the same color point.
+              </MathJax>
             </p>
 
             <p>
