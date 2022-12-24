@@ -395,7 +395,7 @@ const Projects = ({ mobile, portrait, pathName }) => {
             <p>
               <MathJax>
                 {
-                  '\\[j _{\\in \\left[rgb,hsv\\right]} = \\dfrac{\\sum_{i\\in \\textbf{CP}}\\left(\\frac{1+i_R/10}{d_i}\\right)^3\\times j_i}{\\sum_{i\\in \\textbf{CP}}\\left(\\frac{1+i_R/10}{d_i}\\right)^3}\\]'
+                  '\\[j _{\\in \\left[rgb,hsv\\right]} = \\dfrac{\\displaystyle\\sum_{i\\in \\textbf{CP}}\\left(\\frac{1+i_R/10}{d_i}\\right)^3\\times j_i}{\\displaystyle\\sum_{i\\in \\textbf{CP}}\\left(\\frac{1+i_R/10}{d_i}\\right)^3}\\]'
                 }
               </MathJax>
 
