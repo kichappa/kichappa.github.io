@@ -392,7 +392,11 @@ const Projects = ({ mobile, portrait, pathName }) => {
               {
                 '\\[j \\in \\left[R,G,B,H,S,V\\right] = \\dfrac{\\sum_{i\\in \\textbf{CP}}\\left(\\frac{1+i_R/10}{d_i}\\right)^3\\times j_i}{\\sum_{i\\in \\textbf{CP}}\\left(\\frac{1+i_R/10}{d_i}\\right)^3}\\]'
               }
+              Here, {'\\(i_R\\)'} is the radius of influence of color point{' '}
+              {'\\(i\\)'} and {'\\(d_i\\)'} is the distance of current pixel to
+              the same color point.
             </p>
+
             <p>
               To achieve the best possible color quality in the final gradient,
               Draggy uses a clever mix of RGB and HSV color values. Pure HSV can
