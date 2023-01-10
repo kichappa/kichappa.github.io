@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Images from './Images';
 import shortid from 'shortid';
 export const makeLink = (
@@ -61,6 +61,7 @@ export const makeAuthors = (authors, text_classes) => {
 const Article = ({
   type,
   img,
+  currentImgState,
   text,
   heading = null,
   tagline = null,
@@ -76,6 +77,7 @@ const Article = ({
   if (!('head' in options)) {
     options.head = 2;
   }
+  // console.log({ ...currentImgState, id: id });
   let images = (
     <Images
       key={shortid.generate().substring(0, 6)}
@@ -86,6 +88,7 @@ const Article = ({
           ...obj,
         ]),
       }}
+      currentImgState={{ ...currentImgState, id: id }}
     ></Images>
   );
 
@@ -95,6 +98,9 @@ const Article = ({
     leftC = [],
     rightC = [],
     key = 0;
+  useEffect(() => {
+    currentImgState.modifier(id, 0, true);
+  }, []);
   if (type === '2c') {
     if (options.ltr | portrait) {
       //   console.log('here');

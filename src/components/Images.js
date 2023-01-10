@@ -1,8 +1,12 @@
 import React, { useRef, useState, useEffect } from 'react';
 
-const Images = ({ img }) => {
+const Images = ({ img, currentImgState }) => {
   const mainImgRef = useRef(null);
-  const [currentImg, setCurrentImg] = useState(0);
+  const [currentImg, setCurrentImg] = useState(
+    currentImgState.state.hasOwnProperty(currentImgState.id)
+      ? currentImgState.id
+      : 0
+  );
   const [imagesLoaded, setImagesLoaded] = useState(0);
 
   const getImageDom = (img, type, options = {}) => {
@@ -37,6 +41,8 @@ const Images = ({ img }) => {
   };
 
   const imageClicked = (e = null, i = currentImg) => {
+    // currentImgState.modifier(currentImgState.id, i);
+    // currentImgState.setter()
     setCurrentImg(i);
   };
   useEffect(() => {
@@ -73,7 +79,7 @@ const Images = ({ img }) => {
     gImages.push(
       getImageDom(img.images[i], img.type, {
         className: i == currentImg ? 'gallery current' : 'gallery',
-        onClick: (e) => imageClicked(e, i),
+        onClick: (e) => imageClicked(e, parseInt(i)),
       })
     );
   }

@@ -42,6 +42,15 @@ const Projects = ({ mobile, portrait, pathName }) => {
 
   // This variable keeps track whether an image is clicked.
   const [isClicked, setIsClicked] = useState(false);
+  const [currentImage, setCurrentImage] = useState({});
+
+  const modifyCurrentImage = (key, value, push = false) => {
+    let appendingObj = {};
+    appendingObj[key] = value;
+    if (push && !currentImage.hasOwnProperty(key)) {
+      setCurrentImage({ ...currentImage, ...appendingObj });
+    } else setCurrentImage({ ...currentImage, ...appendingObj });
+  };
 
   useEffect(() => {
     document.title = 'Projects by Me';
@@ -157,6 +166,11 @@ const Projects = ({ mobile, portrait, pathName }) => {
       <Article
         key={shortid.generate().substring(0, 6)}
         id={'computation-origami-IASS'}
+        currentImgState={{
+          state: currentImage,
+          setter: setCurrentImage,
+          modifier: modifyCurrentImage,
+        }}
         type={'2c'}
         portrait={portrait}
         options={{ ltr: true }}
@@ -260,6 +274,11 @@ const Projects = ({ mobile, portrait, pathName }) => {
       <Article
         key={shortid.generate().substring(0, 6)}
         id={'amp-relax'}
+        currentImgState={{
+          state: currentImage,
+          setter: setCurrentImage,
+          modifier: modifyCurrentImage,
+        }}
         type={'2c'}
         portrait={portrait}
         options={{ ltr: false }}
@@ -361,6 +380,11 @@ const Projects = ({ mobile, portrait, pathName }) => {
       <Article
         key={shortid.generate().substring(0, 6)}
         id={'draggy'}
+        currentImgState={{
+          state: currentImage,
+          setter: setCurrentImage,
+          modifier: modifyCurrentImage,
+        }}
         type={'2c'}
         portrait={portrait}
         options={{ ltr: true }}
@@ -455,6 +479,11 @@ const Projects = ({ mobile, portrait, pathName }) => {
       <Article
         key={shortid.generate().substring(0, 6)}
         id={'triangles'}
+        currentImgState={{
+          state: currentImage,
+          setter: setCurrentImage,
+          modifier: modifyCurrentImage,
+        }}
         type={'2c'}
         portrait={portrait}
         options={{ ltr: false }}
@@ -514,6 +543,11 @@ const Projects = ({ mobile, portrait, pathName }) => {
       <Article
         key={shortid.generate().substring(0, 6)}
         id={'urban-growth-models'}
+        currentImgState={{
+          state: currentImage,
+          setter: setCurrentImage,
+          modifier: modifyCurrentImage,
+        }}
         type={'2c'}
         portrait={portrait}
         options={{ ltr: true }}
@@ -601,6 +635,11 @@ const Projects = ({ mobile, portrait, pathName }) => {
       <Article
         key={shortid.generate().substring(0, 6)}
         id={'glasseye'}
+        currentImgState={{
+          state: currentImage,
+          setter: setCurrentImage,
+          modifier: modifyCurrentImage,
+        }}
         type={'2c'}
         portrait={portrait}
         options={{ ltr: false }}
