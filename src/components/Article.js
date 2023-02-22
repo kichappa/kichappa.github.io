@@ -68,6 +68,7 @@ const Article = ({
   citation = null,
   id = '',
   options = {},
+  tags = [],
   portrait,
 }) => {
   if (!('ltr' in options)) {
@@ -94,85 +95,74 @@ const Article = ({
   let output = [],
     leftC = [],
     rightC = [],
+    imageC = [],
+    contentC = [],
     key = 0;
   if (type === '2c') {
+    // images column
+    imageC.push(images);
+
+    // content column
+    if (heading) {
+      if (options.head === 1) {
+        contentC.push(
+          <h1 key={key++} className="v-centre">
+            {heading}
+          </h1>
+        );
+      } else if (options.head === 2) {
+        contentC.push(
+          <h2 key={key++} className="v-centre">
+            {heading}
+          </h2>
+        );
+      }
+    }
+    if (tagline) {
+      contentC.push(
+        <p key={key++} className="italics tagline">
+          {tagline}
+        </p>
+      );
+    }
+
+    if (authors) {
+      contentC.push(
+        <p key={key++} className="authors">
+          {makeAuthors(authors)}
+        </p>
+      );
+    }
+    if (tags) {
+      tags.sort();
+      let pTags = [];
+      for (let i in tags) {
+        pTags.push(
+          <span key={key++} className="tag">
+            {tags[i]}
+          </span>
+        );
+      }
+      contentC.push(<p className="tagContainer">{pTags}</p>);
+    }
+    contentC.push(text);
+    if (citation) {
+      contentC.push(
+        <p key={key++} className="citation">
+          {makeLink(citation.title, citation.link, ['title'], null, false)}
+          <br />
+          <span className="authors">{citation.authors}</span>
+          <br />
+          {citation.journal}
+        </p>
+      );
+    }
     if (options.ltr | portrait) {
-      //   console.log('here');
-      leftC.push(images);
-      if (heading) {
-        if (options.head === 1) {
-          rightC.push(
-            <h1 key={key++} className="v-centre">
-              {heading}
-            </h1>
-          );
-        } else if (options.head === 2) {
-          rightC.push(
-            <h2 key={key++} className="v-centre">
-              {heading}
-            </h2>
-          );
-        }
-      }
-      if (tagline) {
-        rightC.push(
-          <p key={key++} className="italics tagline">
-            {tagline}
-          </p>
-        );
-      }
-      if (authors) {
-        rightC.push(
-          <p key={key++} className="authors">
-            {makeAuthors(authors)}
-          </p>
-        );
-      }
-      rightC.push(text);
-      if (citation) {
-        rightC.push(
-          <p key={key++} className="citation">
-            {makeLink(citation.title, citation.link, ['title'], null, false)}
-            <br />
-            <span className="authors">{citation.authors}</span>
-            <br />
-            {citation.journal}
-          </p>
-        );
-      }
+      leftC = imageC;
+      rightC = contentC;
     } else {
-      //   console.log('there');
-      rightC.push(images);
-      if (heading) {
-        if (options.head === 1) {
-          leftC.push(
-            <h1 key={key++} className="v-centre">
-              {heading}
-            </h1>
-          );
-        } else if (options.head === 2) {
-          leftC.push(
-            <h2 key={key++} className="v-centre">
-              {heading}
-            </h2>
-          );
-        }
-      }
-      if (tagline) {
-        leftC.push(
-          <p key={key++} className="italics tagline">
-            {tagline}
-          </p>
-        );
-      }
-      if (authors) {
-        leftC.push(
-          <p key={key++} className="authors">
-            {authors}
-          </p>
-        );
-      }
-      leftC.push(text);
+      leftC = contentC;
+      rightC = imageC;
     }
     // console.log({ leftC, rightC });
 

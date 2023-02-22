@@ -35,8 +35,8 @@ function App() {
   useEffect(() => {
     // console.log(window.location);
     setPathname(window.location.hash);
-    if ((window.location.hash.match(/#(?!\/).+/g) || []).length > 0) {
-      console.log(window.location.hash.match(/#(?!\/).+/g)[0].slice(1));
+    if ((window.location.hash.match(/#([^/?=]+)/g) || []).length > 0) {
+      console.log(window.location.hash.match(/#([^/?=]+)/g)[0].slice(1));
       scrollIntoView(window.location.hash);
     }
   }, [location]);
@@ -57,11 +57,14 @@ function App() {
 
   const scrollIntoView = (hash) => {
     try {
+      console.log(hash);
+      console.log(hash.match(/#([^/?=]+)/g)[0]);
+      console.log(hash.match(/#([^/?=]+)/g)[0].slice(1));
       console.log(
-        document.getElementById(hash.match(/#(?!\/).+/g)[0].slice(1))
+        document.getElementById(hash.match(/#([^/?=]+)/g)[0].slice(1))
       );
       document
-        .getElementById(hash.match(/#(?!\/).+/g)[0].slice(1))
+        .getElementById(hash.match(/#([^/?=]+)/g)[0].slice(1))
         .scrollIntoView({ behavior: 'auto', alignToTop: true });
     } catch {}
   };
@@ -87,8 +90,8 @@ function App() {
 
   useEffect(() => {
     setPathname(window.location.hash);
-    if ((window.location.hash.match(/#(?!\/).+/g) || []).length > 0) {
-      console.log(window.location.hash.match(/#(?!\/).+/g)[0].slice(1));
+    if ((window.location.hash.match(/#([^/?=]+)/g) || []).length > 0) {
+      console.log(window.location.hash.match(/#([^/?=]+)/g)[0].slice(1));
       scrollIntoView(window.location.hash);
     }
 

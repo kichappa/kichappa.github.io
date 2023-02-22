@@ -296,10 +296,7 @@ const Artworks = ({ mobile }) => {
           style={isClicked ? { visibility: 'visible', opacity: 1 } : {}}
         />
       </div>
-      <div className="flex art-gallery">
-        {output}
-        <li></li>
-      </div>
+      <div className="flex art-gallery">{output}</div>
     </>
   );
 };
