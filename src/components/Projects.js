@@ -814,13 +814,26 @@ const Projects = ({ mobile, portrait, pathName }) => {
       // IndexofShowProjects.sort();
       console.log(IndexofShowProjects);
     }
-    let newShowProjects = projects.filter(function (value, index) {
-      return IndexofShowProjects.includes(index);
+    // let newShowProjects = projects.filter(function (value, index) {
+    //   return IndexofShowProjects.includes(index);
+    // });
+    // for (let i in newShowProjects) {
+    //   if (i % 2) newShowProjects[i].props.options.ltr = false;
+    //   else newShowProjects[i].props.options.ltr = true;
+    // }
+    let i = 0;
+    let newShowProjects = projects.map(function (value, index) {
+      if (IndexofShowProjects.includes(index)) {
+        value.props.options.show = true;
+        if (i % 2) value.props.options.ltr = false;
+        else value.props.options.ltr = true;
+        i++;
+      } else {
+        value.props.options.show = false;
+      }
+      return value;
     });
-    for (let i in newShowProjects) {
-      if (i % 2) newShowProjects[i].props.options.ltr = false;
-      else newShowProjects[i].props.options.ltr = true;
-    }
+    console.log(newShowProjects);
     setShowProjects(newShowProjects);
     // console.log(
     //   projects.filter(function (value, index) {

@@ -71,6 +71,11 @@ const Article = ({
   tags = [],
   portrait,
 }) => {
+  if (!('show' in options)) {
+    options.show = true;
+  } else if (options.show === false) {
+    return <></>;
+  }
   if (!('ltr' in options)) {
     options.ltr = true;
   }
