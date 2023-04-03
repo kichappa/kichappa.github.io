@@ -266,6 +266,11 @@ body {
   /* overflow: auto; */
 }
 
+.MJX_LiveRegion,
+.MJX_HoverRegion {
+  background-color: #ffffff00;
+}
+
 p,
 a,
 h1,
