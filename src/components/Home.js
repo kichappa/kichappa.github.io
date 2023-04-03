@@ -58,11 +58,10 @@ const Home = ({ portrait }) => {
             coding projects as of now. I am currently ideating on a fourth one.
           </p>
           <p>
-            I am currently applying for graduate school in computational science
-            and engineering programs in the Fall '23 admission cycle. Hopefully,
-            I will get into my dream school. Let me leave you with some
-            afterthoughts as you finish this very discontinuous brief about
-            myself.
+            I will be moving to Atlanta, GA to persue my doctoral degree in
+            computational science and engineering at Georgia Tech in the fall of
+            2023. I am excited! Let me leave you with some afterthoughts as you
+            finish this very discontinuous brief about myself.
           </p>
           <p className="last">
             How do shapes affect the function of buildings? What are our limits
