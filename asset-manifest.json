@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.1f2b593d.css",
-    "main.js": "/static/js/main.55039065.js",
+    "main.js": "/static/js/main.0ec3ac1d.js",
     "static/js/787.52294c95.chunk.js": "/static/js/787.52294c95.chunk.js",
     "static/media/CS-3.gif": "/static/media/CS-3.d414b4a332f26771f4fe.gif",
     "static/media/AMP-birdseye.png": "/static/media/AMP-birdseye.8a4f0828d368643c9075.png",
@@ -10,20 +10,25 @@
     "static/media/Egg of the Noon copy.png": "/static/media/Egg of the Noon copy.eea9fb536193b95b57c8.png",
     "static/media/The Pretentious Denis copy.png": "/static/media/The Pretentious Denis copy.f5fba8c0f97f5e86bbc0.png",
     "static/media/Geometry Books copy.png": "/static/media/Geometry Books copy.3c75a1259e37acf38c86.png",
+    "static/media/Cute Elephant.png": "/static/media/Cute Elephant.57c13d7cd7084541b6e5.png",
     "static/media/AMP-FF_Stairs_R.png": "/static/media/AMP-FF_Stairs_R.d6a5a2b5e81fc373c2ec.png",
     "static/media/AMP-GF_R1.png": "/static/media/AMP-GF_R1.c1a14ae7ab3e38e8c5ac.png",
     "static/media/AMP-GF_R2.png": "/static/media/AMP-GF_R2.a25f95131e13fd3b885a.png",
     "static/media/The Pretentious Denis - Inverted copy.png": "/static/media/The Pretentious Denis - Inverted copy.8f74e7f08f021b654d12.png",
+    "static/media/Cute Rat.png": "/static/media/Cute Rat.0e181ea00543726ba903.png",
     "static/media/AMP-FF_OAT_R.png": "/static/media/AMP-FF_OAT_R.527c74fcc5b99749fd5a.png",
     "static/media/Me -mc copy.png": "/static/media/Me -mc copy.8126bdf016783383abe5.png",
     "static/media/AMP-Outside_R.png": "/static/media/AMP-Outside_R.a667e8a6f333046e16bb.png",
     "static/media/Sporty copy.png": "/static/media/Sporty copy.9f49e3ab4ada05f65f38.png",
     "static/media/AMP-Section.png": "/static/media/AMP-Section.a4ebbb534a84b708e2f8.png",
+    "static/media/Rainy Day.png": "/static/media/Rainy Day.d976ac44f9fc982653b0.png",
     "static/media/Ellipticapsicum copy.png": "/static/media/Ellipticapsicum copy.2961a3d9f5d0095be4ef.png",
     "static/media/draggy-point1.png": "/static/media/draggy-point1.54d8ab73fe8b5bdae5cc.png",
+    "static/media/Messy Dream.png": "/static/media/Messy Dream.393854be9696977a8923.png",
     "static/media/Warped Flowers copy.png": "/static/media/Warped Flowers copy.b8777246c1a528315714.png",
     "static/media/GE-Braille.png": "/static/media/GE-Braille.0e32d4d0420261056665.png",
     "static/media/My hand copy.png": "/static/media/My hand copy.90325daa5b1f9d6b5537.png",
+    "static/media/Cute Robot.png": "/static/media/Cute Robot.c8861a54777199204b29.png",
     "static/media/Japanese Art copy.png": "/static/media/Japanese Art copy.009cb730ed03b1455da4.png",
     "static/media/NOKIA small copy.png": "/static/media/NOKIA small copy.61ace54fb7a9a6138a1c.png",
     "static/media/IASS M3.png": "/static/media/IASS M3.9b8c38798910ff86989c.png",
@@ -104,11 +109,11 @@
     "static/media/github.svg": "/static/media/github.9c272cfb6e7959458cd0e7750b6fe33e.svg",
     "static/media/linkedin.svg": "/static/media/linkedin.5b1c2f26a293363ada26fcfed2b25752.svg",
     "main.1f2b593d.css.map": "/static/css/main.1f2b593d.css.map",
-    "main.55039065.js.map": "/static/js/main.55039065.js.map",
+    "main.0ec3ac1d.js.map": "/static/js/main.0ec3ac1d.js.map",
     "787.52294c95.chunk.js.map": "/static/js/787.52294c95.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.1f2b593d.css",
-    "static/js/main.55039065.js"
+    "static/js/main.0ec3ac1d.js"
   ]
 }
