@@ -147,7 +147,7 @@ const Projects = ({ mobile, portrait, pathName }) => {
       }
       authors={[
         ['Kishore Shenoy'],
-        ['Sree Chandana Madabhushi', 'https://themadchan.github.io/Portfolio/'],
+        ['Sree Chandana Madabhushi', 'https://www.linkedin.com/in/themadchan/'],
         ['Dr. Phanisri Pradeep Pratapa', 'https://www.pppratapa.com/'],
       ]}
       text={
