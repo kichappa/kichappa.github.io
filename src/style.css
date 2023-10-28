@@ -1139,6 +1139,7 @@ textarea:focus {
     margin: 3vh 0;
     border-bottom: 5px solid #ffffff10;
     padding-bottom: calc(3vh - 1em);
+    padding-top: calc(3vh - 1em);
   }
 
   #caricature {
