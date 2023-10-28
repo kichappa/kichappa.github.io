@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import caricature from '../images/Caricature.svg';
 import Article from './Article';
+import { makeLink } from './Article';
 
 const Home = ({ portrait }) => {
   useEffect(() => {
@@ -13,10 +14,10 @@ const Home = ({ portrait }) => {
         <img src={caricature} id="caricature" alt="logo" />
         <div className="home-article">
           <h1 className="centre">Hello World!</h1>
-          <p className="italics tagline">I am Kishore Shenoy.</p>
+          <p className="italics tagline">I am Kishore Shenoy</p>
           <p>Howdy, visitor. Let me tell you a bit about myself.</p>{' '}
           <p>
-            I love math, coding, and design. I am a{' '}
+            I love math, coding, design and art. I am a{' '}
             {/* <span className="tooltip-text">
               civil engineer
               <span
@@ -25,10 +26,13 @@ const Home = ({ portrait }) => {
               ></span>
             </span>{' '} */}
             <span className="tooltip-text">
-              civil engineer
-              <span className="tooltip">Bachelor of Technology</span>
+              CSE
+              <span className="tooltip">
+                Computational Science and Engineering
+              </span>
             </span>{' '}
-            by training and an alumnus of{' '}
+            doctoral student at Georgia Tech, previously a civil engineer, and
+            an alumnus of{' '}
             <span className="tooltip-text">
               IIT Madras
               <span className="tooltip">
@@ -42,25 +46,37 @@ const Home = ({ portrait }) => {
             </span>{' '}
             and{' '}
             <span className="tooltip-text">
-              anterior to
+              into
               <span className="tooltip">participative</span>
             </span>{' '}
             the fourth wall. In the former, I love watching detective TV shows
-            and The Office. My favourite TV show is Psych. I spend my free time
-            thinking of coding silly and creative design problems as part of the
-            latter.
+            and The Office. My favourite TV show is Psych (please watch it). I
+            spend my free time thinking of coding silly and creative design
+            problems as part of the latter.
           </p>
           <p>
-            I primarily code using Python. I have a love-hate relationship with
-            the scipy library. ReactJS is my go-to library for web development;
-            I hate jQuery. Although I don't have much experience, I thoroughly
-            enjoy WebGL and Shaders programming. I have worked on three creative
-            coding projects as of now. I am currently ideating on a fourth one.
+            I primarily code using Python (hey kishore, learn Julia when?). I'm
+            learning Julia now, happy? I have a love-hate relationship with the
+            scipy library. ReactJS is my go-to library for web development; I
+            hate jQuery, we are not friends if you don't. And, let's not forget
+            my thorough joy with WebGL and shaders. I have worked on three
+            creative coding projects to date and am currently ideating on a{' '}
+            <span className="tooltip-text">
+              fourth one
+              <span className="tooltip">(yes, still)</span>
+            </span>{' '}
+            .
           </p>
           <p>
-            I will be moving to Atlanta, GA to persue my doctoral degree in
-            computational science and engineering at Georgia Tech in the fall of
-            2023. I am excited! Let me leave you with some afterthoughts as you
+            My research focuses on a combination of biomimicry, manufacturing
+            and computation, and is advised by{' '}
+            {makeLink(
+              'Dr. Emily Sanders',
+              'https://www.me.gatech.edu/faculty/sanders',
+              [],
+              'Go to her website'
+            )}
+            . I am excited! Let me leave you with some afterthoughts as you
             finish this very discontinuous brief about myself.
           </p>
           <p className="last">
