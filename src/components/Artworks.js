@@ -22,7 +22,11 @@ import art_19 from '../images/Art/The Pretentious Denis - Inverted copy.png';
 import art_20 from '../images/Art/The Pretentious Denis copy.png';
 import art_21 from '../images/Art/The Symmetric Vase copy.png';
 import art_22 from '../images/Art/The Unsymmetric Vase copy.png';
-import art_23 from '../images/Art/Warped Flowers copy.png';
+import art_23 from '../images/Art/Cute Elephant.png';
+import art_24 from '../images/Art/Cute Rat.png';
+import art_25 from '../images/Art/Cute Robot.png';
+import art_26 from '../images/Art/Messy Dream.png';
+import art_27 from '../images/Art/Rainy Day.png';
 
 export const documentOnClick = (e, setIsClicked, className = 'art') => {
   if (e.target.className === className) {
@@ -57,12 +61,17 @@ const Artworks = ({ mobile }) => {
     { src: art_4, widthRatio: 1 },
     { src: art_9, widthRatio: 1 },
     { src: art_5, widthRatio: 1 },
+    { src: art_27, widthRatio: 1 },
     { src: art_7, widthRatio: 1 },
     { src: art_13, widthRatio: 1 },
     { src: art_17, widthRatio: 1 },
     { src: art_20, widthRatio: 1 },
     { src: art_19, widthRatio: 1 },
     { src: art_11, widthRatio: 1 },
+    { src: art_23, widthRatio: 1 },
+    { src: art_24, widthRatio: 1 },
+    { src: art_25, widthRatio: 1 },
+    { src: art_26, widthRatio: 1 },
     { src: art_18, widthRatio: 1 },
     { src: art_15, widthRatio: 1 },
     { src: art_1, widthRatio: 1 },
@@ -74,7 +83,6 @@ const Artworks = ({ mobile }) => {
     // {src:art_16, widthRatio:1},
     { src: art_21, widthRatio: 1 },
     { src: art_22, widthRatio: 1 },
-    { src: art_23, widthRatio: 1 },
   ]);
 
   // This useEffect is added to handle first time render, add resize listener, set ouptut and other (obv) stuff?
