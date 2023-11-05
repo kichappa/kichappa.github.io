@@ -282,7 +282,9 @@ const Artworks = ({ mobile }) => {
       <div className="flex">
         <div style={{ display: 'block', marginLeft: '-50px' }}>
           <h2>These are my artworks</h2>
-          <p>All are digital sketches.</p>
+          <p>
+            Most are digital sketches. The elephant, robot and rat are pen-and-paper sketches.
+          </p>
         </div>
       </div>
       <div
