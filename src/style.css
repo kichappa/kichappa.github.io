@@ -230,7 +230,7 @@
   --menu-margin: min(1vmax, 15px);
   --menu-padding: calc(var(--menu-margin) / 2);
   --menu-height: calc(var(--content-size) * 1.1875);
-  --menu-items: 6;
+  --menu-items: 5;
   --menu-expanded: 0;
   --menu-current-px: 2px;
   --logo-size: min(30px, 3vmax);

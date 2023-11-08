@@ -32,6 +32,56 @@ function App() {
 
   let location = useLocation();
   const [pathname, setPathname] = useState(window.location.hash);
+
+  const amIAtHome = (pathName) => {
+    return pathName.startsWith('#/#') || pathName === '' || pathName === '#/';
+  };
+
+  const amIAtProjects = (pathName) => {
+    return pathName.startsWith('#/projects') || pathName.startsWith('#/p#');
+  };
+
+  // Also change --menu-items in style.css inside root at line 233
+  const [items, setItems] = useState([
+    {
+      name: 'Home',
+      isLinkAFunction: true,
+      link: '/',
+      linkFunction: amIAtHome,
+    },
+    {
+      name: 'Projects',
+      isLinkAFunction: true,
+      link: '/projects',
+      linkCheck: '#/projects',
+      linkFunction: amIAtProjects,
+    },
+    {
+      name: 'Publications',
+      isLinkAFunction: false,
+      link: '/publications',
+      linkCheck: '#/publications',
+    },
+    {
+      name: 'Artworks',
+      isLinkAFunction: false,
+      link: '/artworks',
+      linkCheck: '#/artworks',
+    },
+    // {
+    //   name: 'Questions',
+    //   isLinkAFunction: false,
+    //   link: '/questions',
+    //   linkCheck: '#/questions',
+    // },
+    {
+      name: 'Links',
+      isLinkAFunction: false,
+      link: '/links',
+      linkCheck: '#/links',
+    },
+  ]);
+
   useEffect(() => {
     // console.log(window.location);
     setPathname(window.location.hash);
@@ -113,6 +163,7 @@ function App() {
             expanded={expanded}
             setExpanded={setExpanded}
             pathName={pathname}
+            items={items}
           />
           <div className="content">
             <Routes>
