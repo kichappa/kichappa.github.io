@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.0ba3336e.css",
-    "main.js": "/static/js/main.5989f5bf.js",
+    "main.css": "/static/css/main.c041eca1.css",
+    "main.js": "/static/js/main.ab8a8ca3.js",
     "static/js/787.52294c95.chunk.js": "/static/js/787.52294c95.chunk.js",
     "static/media/CS-3.gif": "/static/media/CS-3.d414b4a332f26771f4fe.gif",
     "static/media/AMP-birdseye.png": "/static/media/AMP-birdseye.8a4f0828d368643c9075.png",
@@ -41,15 +41,21 @@
     "static/media/Palm Contour copy.png": "/static/media/Palm Contour copy.2eb5fd29c9fdabfc748d.png",
     "static/media/CS-1.png": "/static/media/CS-1.cf76213a5e9da6b6c3de.png",
     "static/media/My Room copy.png": "/static/media/My Room copy.893035abff03bde99923.png",
+    "static/media/slopes.png": "/static/media/slopes.1b4fdf688d462b8fc5ba.png",
     "static/media/The Symmetric Vase copy.png": "/static/media/The Symmetric Vase copy.b5dba46bb60ff6509c80.png",
     "static/media/The Unsymmetric Vase copy.png": "/static/media/The Unsymmetric Vase copy.7eff32c2c55e0e853ea8.png",
+    "static/media/bushes-topo.png": "/static/media/bushes-topo.cfd3a2ab4be2b4bff524.png",
     "static/media/GE-Glasses.png": "/static/media/GE-Glasses.b929206a8588a5e9090d.png",
     "static/media/CS-2.png": "/static/media/CS-2.a022d0b1c6ac78f167db.png",
     "static/media/AMP-Plan3.png": "/static/media/AMP-Plan3.9247f8b8eb0fce2f45fc.png",
     "static/media/Caricature copy.png": "/static/media/Caricature copy.2467d0795e3e9c8ad579.png",
     "static/media/Caricature.png": "/static/media/Caricature.9626bbb6b5b1b05e53a9.png",
     "static/media/Hand holding object copy.png": "/static/media/Hand holding object copy.f6733aea761f92baff13.png",
+    "static/media/topo-contour.png": "/static/media/topo-contour.e682a64805ecfa124f36.png",
     "static/media/Minus Chakra  copy.png": "/static/media/Minus Chakra  copy.463d2dc3efe3c8473019.png",
+    "static/media/agents-enemies-bushes-topo-uc.png": "/static/media/agents-enemies-bushes-topo-uc.1e39c88274aa0430e144.png",
+    "static/media/agents-enemies-bushes-topo-173-uc.png": "/static/media/agents-enemies-bushes-topo-173-uc.b4cac1aea10a5e03a326.png",
+    "static/media/enemies-bushes-topo.png": "/static/media/enemies-bushes-topo.416bf06ef9dda229dd4d.png",
     "static/media/AcuminPro-UltraBlackItalic.otf": "/static/media/AcuminPro-UltraBlackItalic.faa5ae482899b0d58e71.otf",
     "static/media/AcuminPro-BlackItalic.otf": "/static/media/AcuminPro-BlackItalic.cb7df7060f967bcd3824.otf",
     "static/media/AcuminPro-Black.otf": "/static/media/AcuminPro-Black.57cd4e6886726a6c975a.otf",
@@ -107,12 +113,12 @@
     "static/media/Hamburger.svg": "/static/media/Hamburger.8d2e2f829922b0866fd92d904bd80008.svg",
     "static/media/github.svg": "/static/media/github.78898f25204fbcf135419b9f3f055d1f.svg",
     "static/media/linkedin.svg": "/static/media/linkedin.5b1c2f26a293363ada26fcfed2b25752.svg",
-    "main.0ba3336e.css.map": "/static/css/main.0ba3336e.css.map",
-    "main.5989f5bf.js.map": "/static/js/main.5989f5bf.js.map",
+    "main.c041eca1.css.map": "/static/css/main.c041eca1.css.map",
+    "main.ab8a8ca3.js.map": "/static/js/main.ab8a8ca3.js.map",
     "787.52294c95.chunk.js.map": "/static/js/787.52294c95.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.0ba3336e.css",
-    "static/js/main.5989f5bf.js"
+    "static/css/main.c041eca1.css",
+    "static/js/main.ab8a8ca3.js"
   ]
 }
