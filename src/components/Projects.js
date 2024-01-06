@@ -128,7 +128,7 @@ const Projects = ({ mobile, portrait, pathName }) => {
       id={'spy-sim'}
       type={'2c'}
       portrait={portrait}
-      options={{ ltr: true }}
+      options={{ ltr: false }}
       tags={[
         'computation',
         'simulation',
