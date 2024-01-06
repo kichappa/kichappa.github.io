@@ -184,19 +184,19 @@ const Projects = ({ mobile, portrait, pathName }) => {
             achieved through a finite-difference approach with a radius-2
             neighborhood approach. What's the math behind this, you ask?
             Combine:
-            <MathJax>
+            <MathJax className='math'>
               {
                 "$$C(h)=\\frac{f(x+h)-f(x-h)}{2 h} = f'(x)+\\frac{1}{6} h^2 f^{(3)}(x)+O\\left(h^4\\right)$$"
               }
             </MathJax>
             with:
-            <MathJax>
+            <MathJax className='math'>
               {
                 "$$D(h)=\\frac{f(x+2h)-f(x-2 h)}{4 h}=f'(x)+\\frac{2}{3} h^2 f^{(3)}(x)+O\\left(h^4\\right)$$"
               }
             </MathJax>
             like so:
-            <MathJax>
+            <MathJax className='math'>
               {
                 "$$\\frac{1}{3} \\displaystyle\\left[4\\cdot C(h)-D(h)\\right]=f'(x)-\\frac{1}{30} h^4 f^{(5)}(x)+O\\left(h^5\\right),$$"
               }
@@ -329,7 +329,7 @@ const Projects = ({ mobile, portrait, pathName }) => {
           </p>
           {/* MathJax Example:
             <p>
-              <MathJax>
+              <MathJax className='math'>
                 {'$$x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}$$'}
               </MathJax>
             </p> */}
@@ -492,13 +492,13 @@ const Projects = ({ mobile, portrait, pathName }) => {
             that plague other tools.
           </p>
           <p>
-            <MathJax>
+            <MathJax className='math'>
               {
                 '\\[j _{\\in \\left[rgb,hsv\\right]} = \\dfrac{\\displaystyle\\sum_{i\\in \\textbf{CP}} j_i\\times\\left(\\frac{1+i_R/10}{d_i}\\right)^3}{\\displaystyle\\sum_{i\\in \\textbf{CP}}\\left(\\frac{1+i_R/10}{d_i}\\right)^3}\\]'
               }
             </MathJax>
 
-            <MathJax>
+            <MathJax className='math'>
               Here, {'\\(i_R\\)'} is the radius of influence of color point{' '}
               {'\\(i\\)'} and {'\\(d_i\\)'} is the distance of current pixel to
               the same color point.

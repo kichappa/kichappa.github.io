@@ -1410,3 +1410,10 @@ textarea:focus {
 .CtxtMenu_MenuDisabled {
   color: #ffffff10;
 }
+
+mjx-container {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  padding-bottom: 2vh;
+  scroll-snap-type: x none;
+}
