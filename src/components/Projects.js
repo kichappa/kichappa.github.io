@@ -1,4 +1,10 @@
 import React, { useEffect, useState } from 'react';
+import aebt from '../images/Spying Simulator/agents-enemies-bushes-topo-uc.png';
+import aebt173 from '../images/Spying Simulator/agents-enemies-bushes-topo-173-uc.png';
+import ebt from '../images/Spying Simulator/enemies-bushes-topo.png';
+import slopes_vectorflow from '../images/Spying Simulator/slopes.png';
+import topo_contour from '../images/Spying Simulator/topo-contour.png';
+import bt from '../images/Spying Simulator/bushes-topo.png';
 import summary_m3 from '../images/IASS2021/IASS M3.png';
 import summary_m5 from '../images/IASS2021/IASS M5.png';
 import summary_m6 from '../images/IASS2021/IASS M6.png';
@@ -117,6 +123,138 @@ const Projects = ({ mobile, portrait, pathName }) => {
       ></Article> */
   }
   let projects = [
+    <Article
+      key={shortid.generate().substring(0, 6)}
+      id={'spy-sim'}
+      type={'2c'}
+      portrait={portrait}
+      options={{ ltr: true }}
+      tags={[
+        'computation',
+        'simulation',
+        'math',
+        'modeling',
+        'code',
+        'spatial-modeling',
+        'gpu',
+        'cuda',
+      ]}
+      img={{
+        type: 'big-picture',
+        images: [
+          [bt, 'Generated Topographical Environment with Bushes (green)'],
+          [aebt, 'Environment with Agents (black) and Enemies (white)'],
+          [aebt173, 'Scenario at time = 173 steps'],
+          [ebt, 'Topographical Environment with Bushes and Enemies'],
+          [slopes_vectorflow, 'Vector Flow of Slopes at Each Point'],
+          [topo_contour, 'Contour Plot of Topography'],
+        ],
+      }}
+      authors={[
+        ['Kishore Shenoy'],
+        [
+          'Atharva Bhalerao',
+          'https://www.linkedin.com/in/atharva-mangesh-bhalerao-103a701a9/',
+        ],
+        ['Michele Orlandi', 'https://www.linkedin.com/in/michele-orlandi/'],
+        ['Lukas  Ott', 'https://www.linkedin.com/in/lukas-ott-zh/'],
+        [
+          'Chaitra Sathe',
+          'https://www.linkedin.com/in/chaitra-sathe-a3b355280/',
+        ],
+      ]}
+      heading={'Spying Simulator'}
+      tagline={'Combat Stealth Search'}
+      text={
+        <>
+          <p>
+            Delve into the intricate strategies of spies and enemies navigating
+            the virtual landscape of the "Spying Simulator." The core of this
+            project lies in developing a small combat-spying simulator driven by
+            an agent-based probabilistic model. Tasked with uncovering hidden
+            enemies in a topographical environment, a series of agents embark on
+            a meticulously crafted recognizance military mission. The simulation
+            is implemented using Python and Julia, seamlessly integrating
+            mathematical intricacies and fulfilling visualization requirements.
+          </p>
+          <p>
+            The code initiates with a point-based landscape generated using the
+            function described in Draggy and randomly placed bushes on top to
+            simulate a natural terrain. Precision in slope determination is
+            achieved through a finite-difference approach with a radius-2
+            neighborhood approach. What's the math behind this, you ask?
+            Combine:
+            <MathJax>
+              {
+                "$$C(h)=\\frac{f(x+h)-f(x-h)}{2 h} = f'(x)+\\frac{1}{6} h^2 f^{(3)}(x)+O\\left(h^4\\right)$$"
+              }
+            </MathJax>
+            with:
+            <MathJax>
+              {
+                "$$D(h)=\\frac{f(x+2h)-f(x-2 h)}{4 h}=f'(x)+\\frac{2}{3} h^2 f^{(3)}(x)+O\\left(h^4\\right)$$"
+              }
+            </MathJax>
+            like so:
+            <MathJax>
+              {
+                "$$\\frac{1}{3} \\displaystyle\\left[4\\cdot C(h)-D(h)\\right]=f'(x)-\\frac{1}{30} h^4 f^{(5)}(x)+O\\left(h^5\\right),$$"
+              }
+            </MathJax>
+            and you get a slope that is accurate to the fourth order. The usage
+            of GPU for the creation of the environment is a key feature of this
+            project. CUDA is used to create a 3D environment with a high level
+            of detail, and to render the environment in real time. This allows
+            for a more immersive experience, and helps to create a more
+            realistic and engaging simulation.
+          </p>
+          <p>
+            Let's begin with enemies: Enemies navigate with a blend of simulated
+            annealing and randomized algorithms. Their objective: ascend
+            strategically to gain altitude since it is a gain in tactical
+            advantage. A team-centric algorithm ensures that two enemy allies do
+            not approach each other since this increases the risk of being found
+            by agents. Essentially, the enemies perform a global maximization in
+            the topography "domain."
+          </p>
+          <p>
+            Meanwhile, a dual strategy unfolds based on enemy visibility on the
+            agent's front. Without enemies in view, agents engage in a random
+            walk, meandering through the landscape devoid of immediate threats.
+            However, a tactical ballet takes center stage when enemies appear
+            within the view distance. Agents position themselves within bushes
+            to avoid being seen and execute a hopping strategy. They hop to
+            gauge the enemy's size and proximity in sight.
+          </p>
+          <p>
+            Crucially, the project employs a nuanced probabilistic approach to
+            discovery, injecting a dose of realism into the simulations. The
+            incorporation of detailed topological features elevates the
+            complexity of the virtual battlefield. Experimental results
+            illuminate not just the speed but also the efficiency of the search
+            models, particularly in navigating complex environments. Beyond its
+            military application, the project holds promise for
+            search-and-rescue missions, where the swift and effective discovery
+            of unknown targets takes precedence.
+          </p>
+          <p>
+            My contribution to this project was the development of the
+            environment, the slope determination algorithm, enemy navigation
+            algorithm, and the implementation of the GPU. I also helped with
+            integration of python-based agent code with the Julia-based
+            environment.
+          </p>
+          <p>
+            {makeLink(
+              "Where's the code?",
+              'https://github.com/lameche99/artificial-life-simulator',
+              [],
+              'Open in GitHub'
+            )}
+          </p>
+        </>
+      }
+    ></Article>,
     <Article
       key={shortid.generate().substring(0, 6)}
       id={'computation-origami-IASS'}
@@ -477,7 +615,7 @@ const Projects = ({ mobile, portrait, pathName }) => {
       type={'2c'}
       portrait={portrait}
       options={{ ltr: true }}
-      tags={['computation', 'spatial-modelling', 'code']}
+      tags={['computation', 'spatial-modeling', 'code']}
       img={{
         type: 'big-picture',
         images: [
@@ -765,32 +903,32 @@ const Projects = ({ mobile, portrait, pathName }) => {
       );
     }
     // console.log(e.target.checked);
-    console.log(tag);
+    // console.log(tag);
   };
   useEffect(() => {
-    console.log(filterByTags);
+    // console.log(filterByTags);
     let IndexofShowProjects = [];
     pLoop: for (let i in projects) {
-      console.log('\t Does', i, projects[i].props.id);
+      // console.log('\t Does', i, projects[i].props.id);
       i = Number(i);
       for (let j in filterByTags) {
-        console.log('\t\t have', filterByTags[j]);
+        // console.log('\t\t have', filterByTags[j]);
         if (!projects[i].props.tags.includes(filterByTags[j])) {
-          console.log('\t\t\t No');
+          // console.log('\t\t\t No');
           continue pLoop;
         } else {
-          console.log('\t\t\t Yes');
+          // console.log('\t\t\t Yes');
         }
       }
-      console.log('\t Before:', IndexofShowProjects);
+      // console.log('\t Before:', IndexofShowProjects);
       IndexofShowProjects.push(i);
-      console.log('\t After:', IndexofShowProjects);
+      // console.log('\t After:', IndexofShowProjects);
     }
-    console.log(IndexofShowProjects);
-    console.log('Empty?', IndexofShowProjects.length);
+    // console.log(IndexofShowProjects);
+    // console.log('Empty?', IndexofShowProjects.length);
     if (!IndexofShowProjects.length) {
       tLoop: for (let i in filterByTags) {
-        console.log('\tWho has', filterByTags[i]);
+        // console.log('\tWho has', filterByTags[i]);
         for (let j in projects) {
           j = Number(j);
           // console.log(
@@ -806,13 +944,13 @@ const Projects = ({ mobile, portrait, pathName }) => {
             projects[j].props.tags.includes(filterByTags[i]) &&
             !IndexofShowProjects.includes(j)
           ) {
-            console.log('\t\t', j, projects[j].props.id, 'does');
+            // console.log('\t\t', j, projects[j].props.id, 'does');
             IndexofShowProjects.push(j);
           }
         }
       }
       // IndexofShowProjects.sort();
-      console.log(IndexofShowProjects);
+      // console.log(IndexofShowProjects);
     }
     // let newShowProjects = projects.filter(function (value, index) {
     //   return IndexofShowProjects.includes(index);
@@ -833,7 +971,7 @@ const Projects = ({ mobile, portrait, pathName }) => {
       }
       return value;
     });
-    console.log(newShowProjects);
+    // console.log(newShowProjects);
     setShowProjects(newShowProjects);
     // console.log(
     //   projects.filter(function (value, index) {

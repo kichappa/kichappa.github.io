@@ -1200,7 +1200,8 @@ textarea:focus {
   }
 }
 
-@media (max-aspect-ratio: 6/10) and (hover: none) {
+/* @media (max-aspect-ratio: 6/10) and (hover: none) { */
+@media (max-aspect-ratio: 6/10) {
   .menu {
     background-color: var(--bg-color);
     width: 100vw;

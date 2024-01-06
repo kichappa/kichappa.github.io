@@ -107,7 +107,7 @@ const Artworks = ({ mobile }) => {
 
   // This useEffect rerenders the DOM once new order is calculated.
   useEffect(() => {
-    console.log('Order or isVisible state is changed');
+    // console.log('Order or isVisible state is changed');
     setOutput([...getOutput(order)]);
   }, [order, isVisible]);
 
@@ -209,7 +209,7 @@ const Artworks = ({ mobile }) => {
   };
 
   const nextFitAlgo = (set, sum, sort = false) => {
-    console.log('Next-Fit Algorithm is being called.');
+    // console.log('Next-Fit Algorithm is being called.');
     let done = [];
 
     // sorted nextFitAlgo?
@@ -248,17 +248,17 @@ const Artworks = ({ mobile }) => {
   // This function accepts order of images and returns the img html on that order.
   // If order is omitted, it will not reorder but use the order from artworks' definition.
   const getOutput = (order = false) => {
-    console.log('getOutput is being called');
+    // console.log('getOutput is being called');
 
     let output = [],
       list;
     if (order == false) {
       // If no order is specified, order it as 1, 2, 3, 4, 5...
       list = Array.from({ length: artworks.length }, (_, i) => i);
-      console.log('No order');
+      // console.log('No order');
     } else {
       list = order;
-      console.log('Order exists');
+      // console.log('Order exists');
     }
     for (let art in list) {
       art = list[art];
@@ -279,8 +279,9 @@ const Artworks = ({ mobile }) => {
 
   return (
     <>
-      <div className="flex">
-        <div style={{ display: 'block', marginLeft: '-50px' }}>
+      <div className="flex article">
+        <div className="home-article" style={{ display: 'block' }}>
+        {/* <div style={{ display: 'block', marginLeft: '-50px' }}> */}
           <h2>These are my artworks</h2>
           <p>
             Most are digital sketches. The elephant, robot and rat are pen-and-paper sketches.

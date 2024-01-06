@@ -11,13 +11,19 @@ import { Routes, Route, useLocation } from 'react-router-dom';
 import { useState, useEffect, useLayoutEffect } from 'react';
 import { MathJaxContext } from 'better-react-mathjax';
 
+function isMobileDevice() {
+  return (
+    /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+      navigator.userAgent
+    ) || window.matchMedia('(hover:none)').matches
+  );
+}
+
 function App() {
   const [portrait, setPortrait] = useState(
     window.matchMedia('(max-aspect-ratio: 6/10)').matches
   );
-  const [mobile, setMobile] = useState(
-    window.matchMedia('(max-aspect-ratio: 6/10) and (hover:none)').matches
-  );
+  const [mobile, setMobile] = useState(isMobileDevice());
   const [expanded, setExpanded] = useState(false);
 
   const [size, setSize] = useState([0, 0]);
@@ -99,9 +105,7 @@ function App() {
       mobile !==
       window.matchMedia('(max-aspect-ratio: 6/10) and (hover:none)').matches
     ) {
-      setMobile(
-        window.matchMedia('(max-aspect-ratio: 6/10) and (hover:none)').matches
-      );
+      setMobile(isMobileDevice());
     }
   }, [size]);
 

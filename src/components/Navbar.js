@@ -61,20 +61,30 @@ const Navbar = ({
     //   }
     // });
 
-    for (let i = 0; i < items.length; i++) {
-      console.log(items[i].name);
-      console.log('Is a function?', items[i].isLinkAFunction);
-      console.log(items[i].link);
-      console.log('pathname=', pathName);
-      if (items[i].isLinkAFunction) {
-        console.log(items[i].linkFunction);
-        console.log(items[i].linkFunction(pathName));
-      } else {
-        console.log(pathName.startsWith(items[i].linkCheck));
-      }
-    }
+    // for (let i = 0; i < items.length; i++) {
+    //   console.log(items[i].name);
+    //   console.log('Is a function?', items[i].isLinkAFunction);
+    //   console.log(items[i].link);
+    //   console.log('pathname=', pathName);
+    //   if (items[i].isLinkAFunction) {
+    //     console.log(items[i].linkFunction);
+    //     console.log(items[i].linkFunction(pathName));
+    //   } else {
+    //     console.log(pathName.startsWith(items[i].linkCheck));
+    //   }
+    // }
 
-    if (!mobile) {
+    // function isMobileDevice() {
+    //   return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+    //     navigator.userAgent
+    //   );
+    // }
+    // console.log('is mobile?', mobile);
+    // console.log('is portrait?', portrait);
+    // console.log(window.matchMedia('(hover:none)').matches);
+    // console.log(isMobileDevice());
+
+    if (!portrait) {
       return (
         <>
           <div className="menu">
@@ -86,20 +96,17 @@ const Navbar = ({
               ) {
                 return <p className="current">{item.name}</p>;
               } else {
-                return (
-                  <Link className="menu-item" to={item.link}>
-                    {item.name}
-                  </Link>
-                );
+                return <Link to={item.link}>{item.name}</Link>;
               }
             })}
           </div>
         </>
       );
-    } else if (mobile) {
+    } else {
       return (
-        <div id="navbar">
+        <div id="navbar" class="nav-mob">
           <div className="wrapper">
+            <img src={appropriate_logo} alt="My Logo" id="logo" />
             <div
               className="menu-buttons-container"
               onClick={() => setExpanded(!expanded)}
@@ -155,7 +162,7 @@ const Navbar = ({
   if (mobile) {
     appropriate_logo = logoBlack;
   }
-  console.log(pathName);
+  // console.log(pathName);
 
   return getNavBar(mobile, portrait, setExpanded, expanded, items, pathName);
 
@@ -218,7 +225,10 @@ const Navbar = ({
   //                   className="menu-button"
   //                 />
   //               </div>
-  //               <img src={cross} alt="hamburger menu" className="menu-button" />
+  //               <img
+  //                  src = {cross}
+  //                  alt = "hamburger menu"
+  //                  className = "menu-button" />
   //             </div>
   //           </div>
   //         </div>
