@@ -31,8 +31,7 @@ const Home = ({ portrait }) => {
                 Computational Science and Engineering
               </span>
             </span>{' '}
-            doctoral student at Georgia Tech, previously a civil engineer, and
-            an alumnus of{' '}
+            doctoral student at Georgia Tech and an alumnus of{' '}
             <span className="tooltip-text">
               IIT Madras
               <span className="tooltip">
@@ -41,26 +40,27 @@ const Home = ({ portrait }) => {
             </span>
             . I believe there are two types of hobbies:{' '}
             <span className="tooltip-text">
-              beyond
-              <span className="tooltip">perceptive</span>
+              within
+              <span className="tooltip">participative</span>
             </span>{' '}
             and{' '}
             <span className="tooltip-text">
-              into
-              <span className="tooltip">participative</span>
+              beyond
+              <span className="tooltip">perceptive</span>
             </span>{' '}
-            the fourth wall. In the former, I love watching detective TV shows
-            and The Office. My favourite TV show is Psych (please watch it). I
-            spend my free time thinking of coding silly and creative design
-            problems as part of the latter.
+            the fourth wall. I spend my free time thinking of coding silly yet
+            creative design problems as part of the former and love watching
+            detective TV shows and The Office as a pert of the latter. My
+            favorite TV show is Psych (please watch it).
           </p>
           <p>
-            I primarily code using Python (hey kishore, learn Julia when?). I'm
-            learning Julia now, happy? I have a love-hate relationship with the
-            scipy library. ReactJS is my go-to library for web development; I
-            hate jQuery, we are not friends if you don't. And, let's not forget
-            my thorough joy with WebGL and shaders. I have worked on three
-            creative coding projects to date and am currently ideating on a{' '}
+            I primarily code using Julia (yes, my new bestie). I used to love
+            python but not anymore. ReactJS is my go-to library for web
+            development; I hate jQuery, we are not friends if you don't too.
+            And, let's not forget my thorough joy with WebGL and shaders. You
+            will see me try and force use the GPU for every single thing. I have
+            worked on three creative coding projects to date and am currently
+            ideating on a{' '}
             <span className="tooltip-text">
               fourth one
               <span className="tooltip">(yes, still)</span>
@@ -68,16 +68,17 @@ const Home = ({ portrait }) => {
             .
           </p>
           <p>
-            My research focuses on a combination of biomimicry, manufacturing
-            and computation, and is advised by{' '}
+            My research focuses on using a combination of biomimicry,
+            manufacturing and computation, and is advised by{' '}
             {makeLink(
               'Dr. Emily Sanders',
               'https://www.me.gatech.edu/faculty/sanders',
               [],
               'Go to her website'
-            )}
-            . I am excited! Let me leave you with some afterthoughts as you
-            finish this very discontinuous brief about myself.
+            )}{' '}
+            homed in the Woodruff School of Mechanical Engineering. I am excited!
+            Let me leave you with some afterthoughts as you finish this very
+            discontinuous brief about myself.
           </p>
           <p className="last">
             How do shapes affect the function of buildings? What are our limits

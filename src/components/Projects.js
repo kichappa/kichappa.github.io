@@ -51,77 +51,6 @@ const Projects = ({ mobile, portrait, pathName }) => {
   const [isClicked, setIsClicked] = useState(false);
   const [filterByTags, setFilterByTags] = useState([]);
 
-  {
-    /* <Article
-        type={'2c'}
-        portrait={portrait}
-        img={
-          <img
-            src={origami}
-            className="big-picture"
-            alt="Results of Origami algorithm that we presented in the IASS International Conference on Spatial Structures 2020/21."
-          />
-        }
-        text={
-          <>
-            <h2 className="centre">Computational Origami Design</h2>
-            <p className="italics tagline">
-              Quad-Origami "Miura-like" Tesselations that Rigidly Fold into
-              Arbitrary Design Forms.
-            </p>
-            <p className="authors">
-              by
-              <br />
-              Kishore Shenoy,{' '}
-              <a
-                href="https://themadchan.github.io/Portfolio/"
-                className="tooltip-text"
-                target="_blank"
-              >
-                Sree Chandana Madabhushi
-                <span className="tooltip">Go to website</span>
-              </a>
-              ,{' '}
-              <a
-                href="https://www.pppratapa.com/"
-                className="tooltip-text"
-                target="_blank"
-              >
-                Phanisri Pradeep Pratapa
-                <span className="tooltip">Go to website</span>
-              </a>
-            </p>
-            <p>
-            </p>
-            <p>
-            </p>
-            <p>
-              This work was presented at the IASS Spatial Structures
-              International Conference.
-            </p>
-            <p className="citation">
-              <a
-                href="https://www.ingentaconnect.com/contentone/iass/piass/2020/00002020/00000023/art00008"
-                target="_blank"
-                className="title tooltip-text"
-              >
-                Generating developable and rigidly foldable origami surfaces
-                with arbitrary Gaussian curvatures.
-                <span className="tooltip">Go to website</span>
-              </a>
-              <br />
-              <span className="authors">
-                Madabhushi, S. C., Shenoy, K. S., Pratapa, P. P.
-              </span>
-              <br />
-              Proceedings of the International Conference on Spatial Structures
-              2020/21 (IASS2020/21-Surrey7), UK.
-            </p>
-          </>
-        }
-        options={{ ltr: false }}
-      ></Article> */
-  }
   let projects = [
     <Article
       key={shortid.generate().substring(0, 6)}
@@ -184,19 +113,19 @@ const Projects = ({ mobile, portrait, pathName }) => {
             achieved through a finite-difference approach with a radius-2
             neighborhood approach. What's the math behind this, you ask?
             Combine:
-            <MathJax className='math'>
+            <MathJax className="math">
               {
                 "$$C(h)=\\frac{f(x+h)-f(x-h)}{2 h} = f'(x)+\\frac{1}{6} h^2 f^{(3)}(x)+O\\left(h^4\\right)$$"
               }
             </MathJax>
             with:
-            <MathJax className='math'>
+            <MathJax className="math">
               {
                 "$$D(h)=\\frac{f(x+2h)-f(x-2 h)}{4 h}=f'(x)+\\frac{2}{3} h^2 f^{(3)}(x)+O\\left(h^4\\right)$$"
               }
             </MathJax>
             like so:
-            <MathJax className='math'>
+            <MathJax className="math">
               {
                 "$$\\frac{1}{3} \\displaystyle\\left[4\\cdot C(h)-D(h)\\right]=f'(x)-\\frac{1}{30} h^4 f^{(5)}(x)+O\\left(h^5\\right),$$"
               }
@@ -492,13 +421,13 @@ const Projects = ({ mobile, portrait, pathName }) => {
             that plague other tools.
           </p>
           <p>
-            <MathJax className='math'>
+            <MathJax className="math">
               {
                 '\\[j _{\\in \\left[rgb,hsv\\right]} = \\dfrac{\\displaystyle\\sum_{i\\in \\textbf{CP}} j_i\\times\\left(\\frac{1+i_R/10}{d_i}\\right)^3}{\\displaystyle\\sum_{i\\in \\textbf{CP}}\\left(\\frac{1+i_R/10}{d_i}\\right)^3}\\]'
               }
             </MathJax>
 
-            <MathJax className='math'>
+            <MathJax className="math">
               Here, {'\\(i_R\\)'} is the radius of influence of color point{' '}
               {'\\(i\\)'} and {'\\(d_i\\)'} is the distance of current pixel to
               the same color point.
@@ -769,126 +698,12 @@ const Projects = ({ mobile, portrait, pathName }) => {
       }
     ></Article>,
   ];
-  {
-    /* <Article
-        id={'computation-origami-IASS2'}
-        type={'2c'}
-        portrait={portrait}
-        options={{ ltr: true }}
-        img={
-          {
-            type: 'big-picture',
-            images: [
-              [
-                summary_m3,
-                'Results of Origami algorithm that are compliant mechanisms',
-              ],
-              [
-                summary_m5,
-                'Results of Origami algorithm that are rigidly foldable',
-              ],
-              [
-                summary_m6,
-                'Results of Origami algorithm that allow minor deviations from design forms at yellow vertices.',
-              ],
-            ],
-          }
-          //   <img
-          //     src={origami}
-          //     className="big-picture"
-          //     alt="Results of Origami algorithm that we presented in the IASS International Conference on Spatial Structures 2020/21."
-          //   />
-        }
-        heading={'Computational Origami Design'}
-        tagline={
-          'Quad-Origami "Miura-like" Tesselations that Rigidly Fold into Arbitrary Design Forms.'
-        }
-        authors={[
-          ['Kishore Shenoy'],
-          [
-            'Sree Chandana Madabhushi',
-            'https://themadchan.github.io/Portfolio/',
-          ],
-          ['Phanisri Pradeep Pratapa', 'https://www.pppratapa.com/'],
-        ]}
-        text={
-          <>
-          </>
-        }
-        citation={{
-          link:
-            'https://www.ingentaconnect.com/contentone/iass/piass/2020/00002020/00000023/art00008',
-          title:
-            'Generating developable and rigidly foldable origami surfaces with arbitrary Gaussian curvatures.',
-          authors: 'Madabhushi, S. C., Shenoy, K. S., Pratapa, P. P.',
-          journal:
-            'Proceedings of the International Conference on Spatial Structures 2020/21 (IASS2020/21-Surrey7), UK.',
-        }}
-      ></Article>
-      <Article
-        id={'computation-origami-IASS3'}
-        type={'2c'}
-        portrait={portrait}
-        options={{ ltr: true }}
-        img={
-          {
-            type: 'big-picture',
-            images: [
-              [
-                summary_m3,
-                'Results of Origami algorithm that are compliant mechanisms',
-              ],
-              [
-                summary_m5,
-                'Results of Origami algorithm that are rigidly foldable',
-              ],
-              [
-                summary_m6,
-                'Results of Origami algorithm that allow minor deviations from design forms at yellow vertices.',
-              ],
-            ],
-          }
-          //   <img
-          //     src={origami}
-          //     className="big-picture"
-          //     alt="Results of Origami algorithm that we presented in the IASS International Conference on Spatial Structures 2020/21."
-          //   />
-        }
-        heading={'Computational Origami Design'}
-        tagline={
-          'Quad-Origami "Miura-like" Tesselations that Rigidly Fold into Arbitrary Design Forms.'
-        }
-        authors={[
-          ['Kishore Shenoy'],
-          [
-            'Sree Chandana Madabhushi',
-            'https://themadchan.github.io/Portfolio/',
-          ],
-          ['Phanisri Pradeep Pratapa', 'https://www.pppratapa.com/'],
-        ]}
-        text={
-          <>
-            <p>              
-            </p>
-            <p>              
-            </p>
-            <p>
-              This work was presented at the IASS Spatial Structures
-              International Conference.
-            </p>
-          </>
-        }
-        citation={{
-          link:
-            'https://www.ingentaconnect.com/contentone/iass/piass/2020/00002020/00000023/art00008',
-          title:
-            'Generating developable and rigidly foldable origami surfaces with arbitrary Gaussian curvatures.',
-          authors: 'Madabhushi, S. C., Shenoy, K. S., Pratapa, P. P.',
-          journal:
-            'Proceedings of the International Conference on Spatial Structures 2020/21 (IASS2020/21-Surrey7), UK.',
-        }}
-      ></Article> */
+
+  for (let i in projects) {
+    if (Number(i) % 2) projects[i].props.options.ltr = false;
+    else projects[i].props.options.ltr = true;
   }
+
   const [showProjects, setShowProjects] = useState(projects);
   const tagFilter = (e, tag) => {
     if (!filterByTags.includes(tag)) {
@@ -984,6 +799,15 @@ const Projects = ({ mobile, portrait, pathName }) => {
   useEffect(() => {
     document.title = 'Projects by Me';
 
+    let newShowProjects = projects.map(function (value, index) {
+      if (index % 2) value.props.options.ltr = false;
+      else value.props.options.ltr = true;
+      return value;
+    });
+    setShowProjects(newShowProjects);
+    showProjects.map(function (value, index) {
+      console.log(value.props.options.ltr);
+    });
     document.addEventListener('click', (e) =>
       documentOnClick(e, setIsClicked, 'big-picture')
     );

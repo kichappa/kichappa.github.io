@@ -1124,6 +1124,13 @@ textarea:focus {
     /* padding: 5px; */
     box-shadow: 0 0 0 4px var(--accent-color);
   }
+
+  .tag-checkbox {
+    margin-bottom: calc(var(--content-size) * 7 / 16);
+  }
+  p.tag-checkbox {
+    margin-bottom: calc(var(--content-size) * 11 / 16);
+  }
 }
 @media (max-aspect-ratio: 6/10) {
   :root {
@@ -1200,6 +1207,7 @@ textarea:focus {
   }
 }
 
+/* was previously here to target mobile devices however hover:none doesn't work due to some bug */
 /* @media (max-aspect-ratio: 6/10) and (hover: none) { */
 @media (max-aspect-ratio: 6/10) {
   .menu {
