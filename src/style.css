@@ -1420,7 +1420,7 @@ textarea:focus {
 }
 
 mjx-container {
-  overflow-x: scroll;
+  overflow-x: auto;
   overflow-y: hidden;
   padding-bottom: 2vh;
   scroll-snap-type: x none;
