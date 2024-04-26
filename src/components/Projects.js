@@ -176,7 +176,7 @@ const Projects = ({ mobile, portrait, pathName }) => {
           <p>
             {makeLink(
               "Where's the code?",
-              'https://github.com/lameche99/artificial-life-simulator',
+              'https://github.com/kichappa/spy-sim',
               [],
               'Open in GitHub'
             )}
