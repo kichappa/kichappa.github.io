@@ -4,7 +4,8 @@
     * GPU Algorithms,
     * Computer Vision,
     * Reinforcement Learning,
-    * Mechanics of Growth.
+    * Mechanics of Growth,
+    * General overall engineering experience, Material Strength and Mechanics, 3D printing, Mechatronics, CAD.
 3. I am familiar with these languages:
     * Julia,
     * C++,
