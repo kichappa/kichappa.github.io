@@ -10,7 +10,8 @@
     * C++,
     * Python,
     * Visual Basic,
-    * Javascript.
+    * Javascript,
+    * Compute Clusters and Slurm.
 4. I have experience in CUDA, WebGL and MPI.
 
 # `terrain-ops`
