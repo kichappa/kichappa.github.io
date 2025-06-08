@@ -50,7 +50,7 @@ const Home = ({ portrait }) => {
             </span>{' '}
             the fourth wall. I spend my free time thinking of coding silly yet
             creative design problems as part of the former and love watching
-            detective TV shows and The Office as a pert of the latter. My
+            detective TV shows and The Office as a part of the latter. My
             favorite TV show is Psych (please watch it).
           </p>
           <p>
