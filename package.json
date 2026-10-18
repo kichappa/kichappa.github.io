@@ -4,31 +4,19 @@
   "homepage": "https://kichappa.github.io/#",
   "private": true,
   "dependencies": {
-    "@testing-library/jest-dom": "^5.16.5",
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^13.5.0",
     "better-react-mathjax": "^2.0.2",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-pdf": "^6.2.0",
-    "react-router-dom": "^6.4.4",
-    "react-scripts": "5.0.1",
+    "next": "^16.4.2",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
     "shortid": "^2.2.16",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+    "deploy": "gh-pages -d out -t",
+    "start": "next dev --webpack",
+    "build": "next build --webpack",
+    "postbuild": "node -e \"require('fs').renameSync('out/_next', 'out/~/_next')\""
   },
   "browserslist": {
     "production": [
@@ -43,6 +31,7 @@
     ]
   },
   "devDependencies": {
+    "@svgr/webpack": "^5.5.0",
     "gh-pages": "^4.0.0"
   }
 }
