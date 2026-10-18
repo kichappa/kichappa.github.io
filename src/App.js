@@ -6,9 +6,10 @@ import './style.css';
 import Navbar from './components/Navbar.js';
 // usePathname from next/navigation replaces useLocation from react-router-dom in the Next version.
 import { usePathname } from 'next/navigation';
-// createContext is new in the Next version, for AppContext below.
-import { useState, useEffect, useLayoutEffect, createContext } from 'react';
+import { useState, useEffect, useLayoutEffect } from 'react';
 import { MathJaxContext } from 'better-react-mathjax';
+// AppContext is new in the Next version (see src/AppContext.js).
+import AppContext from './AppContext.js';
 
 function isMobileDevice() {
   return (
@@ -17,9 +18,6 @@ function isMobileDevice() {
     ) || window.matchMedia('(hover:none)').matches
   );
 }
-
-// This context is new in the Next version. In the React version App passed mobile, portrait and pathName to each page through <Routes>. Next gives App the page as children instead, so the same values reach the page through this context (see src/Route.js).
-export const AppContext = createContext({});
 
 function App({ children }) {
   // In the Next version these two states read window only in the browser, because the server has no window. The browser still starts with the real values, so the handlers made on the first render see them as before. Anything drawn from them waits for hydration (see src/useHydrated.js).

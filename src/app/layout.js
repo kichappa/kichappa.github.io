@@ -1,6 +1,5 @@
 // This file is new in the Next version. It holds what public/index.html held in the React version, and renders src/index.js inside <div id="root"> the way index.html and index.js did together.
 import Index from '../index.js';
-import '../before-hydration.css';
 
 // This metadata replaces the <title> tag of public/index.html. Pages override it with their own titles.
 export const metadata = {

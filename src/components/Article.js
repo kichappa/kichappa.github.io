@@ -183,8 +183,19 @@ const Article = ({
         id={id}
         data-before-hydration={hydrated || options.ltr ? undefined : 'rtl'}
       >
-        <div className="article-item">{leftC}</div>
-        <div className="article-item">{rightC}</div>
+        {/* In the Next version the two columns have keys. When hydration turns a portrait article images-first, React then moves the columns instead of rebuilding them; rebuilding would restart MathJax and its first typeset would fail on the removed nodes. */}
+        <div
+          className="article-item"
+          key={leftC === imageC ? 'images' : 'content'}
+        >
+          {leftC}
+        </div>
+        <div
+          className="article-item"
+          key={rightC === imageC ? 'images' : 'content'}
+        >
+          {rightC}
+        </div>
       </div>
     );
   }

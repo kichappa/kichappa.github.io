@@ -4,6 +4,8 @@ import React from 'react';
 // react-dom/client is not imported in the Next version, because Next creates the React root itself.
 import './index.css';
 import App from './App';
+// This stylesheet is new in the Next version (see before-hydration.css). It is imported after App so it comes after style.css.
+import './before-hydration.css';
 import reportWebVitals from './reportWebVitals';
 // react-router-dom is not imported in the Next version. Next routes by the real path, like /~/projects/, so App is not wrapped in a HashRouter.
 

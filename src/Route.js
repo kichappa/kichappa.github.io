@@ -7,7 +7,7 @@ import Publications from './components/Publications.js';
 import Questions from './components/Questions.js';
 import About from './components/About.js';
 import Artworks from './components/Artworks.js';
-import { AppContext } from './App.js';
+import AppContext from './AppContext.js';
 
 const Route = ({ path }) => {
   const { mobile, portrait, pathName } = useContext(AppContext);
