@@ -1,9 +1,12 @@
 import React, { useState, useEffect, useLayoutEffect, useRef } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+// next/link replaces react-router-dom's Link in the Next version.
+import Link from 'next/link';
 import logo from '../images/Logo.svg';
 import logoBlack from '../images/LogoBlack.svg';
 import hamburger from '../images/Hamburger.svg';
 import cross from '../images/Cross.svg';
+// useHydrated is new in the Next version (see src/useHydrated.js).
+import useHydrated from '../useHydrated.js';
 
 const Navbar = ({
   portrait,
@@ -15,6 +18,8 @@ const Navbar = ({
 }) => {
   const menuExpandContainer = useRef(null);
   const menuContainer = useRef(null);
+  // This is new in the Next version. It is false until React has hydrated the server HTML.
+  const hydrated = useHydrated();
 
   useEffect(() => {
     expandMenu();
@@ -87,8 +92,13 @@ const Navbar = ({
     if (!portrait) {
       return (
         <>
-          <div className="menu">
-            <img src={appropriate_logo} alt="My Logo" id="logo" />
+          {/* In the Next version the mark below lets before-hydration.css hide this menu in portrait windows until hydration. */}
+          <div
+            className="menu"
+            data-before-hydration={hydrated ? undefined : 'landscape'}
+          >
+            {/* In the Next version the logo comes from getLogo() below. */}
+            {getLogo()}
             {items.map((item) => {
               if (
                 (item.isLinkAFunction && item.linkFunction(pathName)) ||
@@ -96,7 +106,12 @@ const Navbar = ({
               ) {
                 return <p className="current">{item.name}</p>;
               } else {
-                return <Link to={item.link}>{item.name}</Link>;
+                // next/link takes href instead of to. scroll={false} keeps the scroll position of .content when the page changes, as react-router did; Next would otherwise scroll the new page into view.
+                return (
+                  <Link href={item.link} scroll={false}>
+                    {item.name}
+                  </Link>
+                );
               }
             })}
           </div>
@@ -104,9 +119,15 @@ const Navbar = ({
       );
     } else {
       return (
-        <div id="navbar" class="nav-mob">
+        // In the Next version the mark below lets before-hydration.css hide this navbar in other windows until hydration.
+        <div
+          id="navbar"
+          class="nav-mob"
+          data-before-hydration={hydrated ? undefined : 'portrait'}
+        >
           <div className="wrapper">
-            <img src={appropriate_logo} alt="My Logo" id="logo" />
+            {/* In the Next version the logo comes from getLogo() below. */}
+            {getLogo()}
             <div
               className="menu-buttons-container"
               onClick={() => setExpanded(!expanded)}
@@ -114,14 +135,15 @@ const Navbar = ({
               <div className="wrapper1">
                 <div className="wrapper2" ref={menuExpandContainer}>
                   <div className="menu-button-menu-wrapper" data="Menu">
+                    {/* Next imports images as objects, so the URL is in .src in the Next version. */}
                     <img
-                      src={hamburger}
+                      src={hamburger.src}
                       alt="hamburger menu"
                       className="menu-button"
                     />
                   </div>
                   <img
-                    src={cross}
+                    src={cross.src}
                     alt="hamburger menu"
                     className="menu-button"
                   />
@@ -141,10 +163,12 @@ const Navbar = ({
                   );
                 } else {
                   return (
+                    // next/link takes href instead of to, and scroll={false} keeps the scroll position, as in the top menu above.
                     <Link
                       className="menu-item"
                       onClick={() => setExpanded(false)}
-                      to={item.link}
+                      href={item.link}
+                      scroll={false}
                     >
                       <p className="link">{item.name}</p>
                     </Link>
@@ -164,7 +188,52 @@ const Navbar = ({
   }
   // console.log(pathName);
 
-  return getNavBar(mobile, portrait, setExpanded, expanded, items, pathName);
+  // This function is new in the Next version and draws the logo for getNavBar. Next imports images as objects, so the URL is in .src. Before hydration the server cannot know if this is a phone, so both logos are drawn and before-hydration.css keeps the one appropriate_logo would be. The keys let React keep that same <img> when the other one is removed after hydration.
+  const getLogo = () => {
+    if (!hydrated) {
+      return [
+        <img
+          key="logo"
+          src={logo.src}
+          alt="My Logo"
+          id="logo"
+          data-before-hydration="logo"
+        />,
+        <img
+          key="logoBlack"
+          src={logoBlack.src}
+          alt="My Logo"
+          id="logo"
+          data-before-hydration="logo-black"
+        />,
+      ];
+    }
+    return [
+      <img
+        key={mobile ? 'logoBlack' : 'logo'}
+        src={appropriate_logo.src}
+        alt="My Logo"
+        id="logo"
+      />,
+    ];
+  };
+
+  // In the Next version the navbar is returned through the code below. Before hydration the server cannot know the shape of the window, so both navbars are drawn and before-hydration.css shows the one that matches (max-aspect-ratio: 6/10), the query App.js uses for portrait. After hydration only getNavBar's own pick is drawn, as in the React version. The keys let React keep the visible navbar when the other one is removed.
+  if (!hydrated) {
+    return [
+      <React.Fragment key="landscape">
+        {getNavBar(mobile, false, setExpanded, expanded, items, pathName)}
+      </React.Fragment>,
+      <React.Fragment key="portrait">
+        {getNavBar(mobile, true, setExpanded, expanded, items, pathName)}
+      </React.Fragment>,
+    ];
+  }
+  return [
+    <React.Fragment key={portrait ? 'portrait' : 'landscape'}>
+      {getNavBar(mobile, portrait, setExpanded, expanded, items, pathName)}
+    </React.Fragment>,
+  ];
 
   // console.log(portrait);
   // if (!portrait) {

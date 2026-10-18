@@ -1,0 +1,30 @@
+/* This file is new in the Next version. The server cannot know the shape of the window or whether the visitor is on a phone, so until React has hydrated the page, the components draw the parts for every case and mark them with data-before-hydration. These rules show only the parts the React version would have drawn. After hydration the marks are gone and these rules match nothing. */
+
+/* This is the media query App.js uses for its portrait state. */
+@media (max-aspect-ratio: 6/10) {
+  /* Navbar.js draws both navbars; portrait windows show only the bottom bar. */
+  [data-before-hydration='landscape'] {
+    display: none !important;
+  }
+  /* Article.js draws the text first for right-to-left articles; in portrait the images come first. */
+  [data-before-hydration='rtl'] > .article-item:first-child {
+    order: 1;
+  }
+}
+@media not all and (max-aspect-ratio: 6/10) {
+  /* Other windows show only the top menu. */
+  [data-before-hydration='portrait'] {
+    display: none !important;
+  }
+}
+
+/* The script in src/app/layout.js sets data-mobile on <html> when isMobileDevice() in App.js would be true. Navbar.js draws both logos and these rules keep the one it would have picked. */
+html:not([data-mobile]) [data-before-hydration='logo-black'],
+html[data-mobile] [data-before-hydration='logo'] {
+  display: none !important;
+}
+
+/* Projects.js wraps the tag filters in .tag-filters only on mobile. Before hydration the wrapper is always there, and display: contents makes it act as if it were not. */
+html:not([data-mobile]) [data-before-hydration='tag-filters'] {
+  display: contents;
+}

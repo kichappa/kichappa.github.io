@@ -42,6 +42,8 @@ import { documentOnClick } from './Artworks';
 import shortid from 'shortid';
 import { MathJax } from 'better-react-mathjax';
 import { ReactComponent as CrossIcon } from '../images/Cross.svg';
+// useHydrated is new in the Next version (see src/useHydrated.js).
+import useHydrated from '../useHydrated.js';
 
 const Projects = ({ mobile, portrait, pathName }) => {
   //   console.log([pathName, (pathName.match(/#/g) || []).length]);
@@ -50,6 +52,8 @@ const Projects = ({ mobile, portrait, pathName }) => {
   // This variable keeps track whether an image is clicked.
   const [isClicked, setIsClicked] = useState(false);
   const [filterByTags, setFilterByTags] = useState([]);
+  // This is new in the Next version. It is false until React has hydrated the server HTML.
+  const hydrated = useHydrated();
 
   let projects = [
     <Article
@@ -850,6 +854,8 @@ const Projects = ({ mobile, portrait, pathName }) => {
       </div>
     );
   }
+  // In the Next version window is only read after hydration, because the server has no window. Until then the lightbox is hidden and its height comes from style.css.
+  const windowHeight = hydrated ? `${window.innerHeight}px` : undefined;
   return (
     <>
       <div
@@ -860,9 +866,9 @@ const Projects = ({ mobile, portrait, pathName }) => {
             ? {
                 visibility: 'visible',
                 opacity: 1,
-                height: `${window.innerHeight}px`,
+                height: windowHeight,
               }
-            : { height: `${window.innerHeight}px` }
+            : { height: windowHeight }
         }
       >
         <img
@@ -885,7 +891,12 @@ const Projects = ({ mobile, portrait, pathName }) => {
           <br />
         </p>
 
-        {mobile ? (
+        {/* In the Next version, before hydration the server cannot know if this is a phone, so the .tag-filters wrapper is always drawn and before-hydration.css flattens it when the data-mobile mark is missing. */}
+        {!hydrated ? (
+          <div className="tag-filters" data-before-hydration="tag-filters">
+            {tagsElement}
+          </div>
+        ) : mobile ? (
           <div className="tag-filters">{tagsElement}</div>
         ) : (
           tagsElement

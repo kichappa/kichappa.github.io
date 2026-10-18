@@ -1,6 +1,8 @@
 import React from 'react';
 import Images from './Images';
 import shortid from 'shortid';
+// useHydrated is new in the Next version (see src/useHydrated.js).
+import useHydrated from '../useHydrated.js';
 export const makeLink = (
   text,
   link,
@@ -71,6 +73,8 @@ const Article = ({
   tags = [],
   portrait,
 }) => {
+  // This is new in the Next version. It is false until React has hydrated the server HTML. It is read before the early return below because hooks must always run.
+  const hydrated = useHydrated();
   if (!('show' in options)) {
     options.show = true;
   } else if (options.show === false) {
@@ -162,7 +166,8 @@ const Article = ({
         </p>
       );
     }
-    if (options.ltr | portrait) {
+    // In the Next version portrait is only used after hydration, because the server cannot know the shape of the window. Until then the article is drawn in its landscape order, and before-hydration.css moves the images first in portrait windows.
+    if (options.ltr | (hydrated && portrait)) {
       leftC = imageC;
       rightC = contentC;
     } else {
@@ -171,8 +176,13 @@ const Article = ({
     }
     // console.log({ leftC, rightC });
 
+    // In the Next version the data-before-hydration mark tells before-hydration.css which articles have their text first.
     output = (
-      <div className="flex article v-centre" id={id}>
+      <div
+        className="flex article v-centre"
+        id={id}
+        data-before-hydration={hydrated || options.ltr ? undefined : 'rtl'}
+      >
         <div className="article-item">{leftC}</div>
         <div className="article-item">{rightC}</div>
       </div>
