@@ -11,7 +11,8 @@ const Home = ({ portrait }) => {
   return (
     <>
       <div className="flex article">
-        <img src={caricature} id="caricature" alt="logo" />
+        {/* Next imports images as objects, so the URL is in .src in the Next version. */}
+        <img src={caricature.src} id="caricature" alt="logo" />
         <div className="home-article">
           <h1 className="centre">Hello World!</h1>
           <p className="italics tagline">I am Kishore Shenoy</p>

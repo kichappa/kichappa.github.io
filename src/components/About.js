@@ -45,7 +45,8 @@ const About = () => {
           <h2 style={{ width: '100%', marginBottom: '10px' }}>
             Links are here...
           </h2>
-          <img src={caricature} id="thisisme" alt="logo" />
+          {/* Next imports images as objects, so the URL is in .src in the Next version. */}
+          <img src={caricature.src} id="thisisme" alt="logo" />
           <p style={{ marginBottom: '30px' }}>This is me!</p>
           <div>
             <h3>
@@ -68,7 +69,8 @@ const About = () => {
               target="_blank"
             >
               <svg className="icon">
-                <use href={linkedin + '#img'}></use>
+                {/* Next imports images as objects, so the URL is in .src in the Next version. */}
+                <use href={linkedin.src + '#img'}></use>
               </svg>
             </a>
             <a
@@ -77,7 +79,8 @@ const About = () => {
               target="_blank"
             >
               <svg className="icon">
-                <use href={github + '#img'}></use>
+                {/* Next imports images as objects, so the URL is in .src in the Next version. */}
+                <use href={github.src + '#img'}></use>
               </svg>
             </a>
           </div>

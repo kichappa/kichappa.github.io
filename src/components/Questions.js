@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+// next/link replaces react-router-dom's Link in the Next version.
+import Link from 'next/link';
 import { makeLink } from './Article';
 
 const Questions = () => {
@@ -10,7 +11,8 @@ const Questions = () => {
   return (
     <p>
       Shh! You were not supposed to see this. This page is under construction.{' '}<span className="tooltip-text">
-      <Link to="/">Let me show you your way out.</Link></span>
+      {/* next/link takes href instead of to, and scroll={false} keeps the scroll position, as react-router did. */}
+      <Link href="/" scroll={false}>Let me show you your way out.</Link></span>
     </p>
   );
 };

@@ -27,6 +27,8 @@ import art_24 from '../images/Art/Cute Rat.png';
 import art_25 from '../images/Art/Cute Robot.png';
 import art_26 from '../images/Art/Messy Dream.png';
 import art_27 from '../images/Art/Rainy Day.png';
+// useHydrated is new in the Next version (see src/useHydrated.js).
+import useHydrated from '../useHydrated.js';
 
 export const documentOnClick = (e, setIsClicked, className = 'art') => {
   if (e.target.className === className) {
@@ -51,6 +53,8 @@ const Artworks = ({ mobile }) => {
   const [output, setOutput] = useState(<></>);
   // This variable keeps track whether an image is clicked.
   const [isClicked, setIsClicked] = useState(false);
+  // This is new in the Next version. It is false until React has hydrated the server HTML.
+  const hydrated = useHydrated();
   // This state variable is the html DOM that stores the images.
   // The widthRatio is the ratio of image width to total screen width / divisions.
   // Divisions are total width/(300/3), 300 is the "unit width" for an image, 3 is the resolution of calculation.
@@ -267,7 +271,8 @@ const Artworks = ({ mobile }) => {
           <img
             className="art"
             style={isVisible ? {} : { visibility: 'true' }}
-            src={artworks[art].src}
+            // Next imports images as objects, so the URL is in .src in the Next version.
+            src={artworks[art].src.src}
             alt=""
             onLoad={(e) => imgOnLoad(e, art)}
           />
@@ -277,6 +282,20 @@ const Artworks = ({ mobile }) => {
     return output;
   };
 
+  // This function is new in the Next version. It draws the images in their first order for the server HTML, because `output` stays empty until the effects run in the browser. The images match what getOutput() draws but have no onLoad, and their keys differ from the ones getOutput() gets, so React replaces them with fresh images once `output` is filled. The fresh images fire onLoad, which the row packing waits for.
+  const getFirstOutput = () =>
+    artworks.map((artwork, i) => (
+      <img
+        key={'first-output-' + i}
+        className="art"
+        style={{ visibility: 'true' }}
+        src={artwork.src.src}
+        alt=""
+      />
+    ));
+
+  // In the Next version window is only read after hydration, because the server has no window. Until then the lightbox is hidden and its height comes from style.css.
+  const windowHeight = hydrated ? `${window.innerHeight}px` : undefined;
   return (
     <>
       <div className="flex article">
@@ -296,9 +315,9 @@ const Artworks = ({ mobile }) => {
             ? {
                 visibility: 'visible',
                 opacity: 1,
-                height: `${window.innerHeight}px`,
+                height: windowHeight,
               }
-            : { height: `${window.innerHeight}px` }
+            : { height: windowHeight }
         }
       >
         <img
@@ -307,7 +326,10 @@ const Artworks = ({ mobile }) => {
           style={isClicked ? { visibility: 'visible', opacity: 1 } : {}}
         />
       </div>
-      <div className="flex art-gallery">{output}</div>
+      {/* In the Next version getFirstOutput() fills the gallery until `output` has been filled by the effect above (it starts as an empty fragment, not an array). */}
+      <div className="flex art-gallery">
+        {Array.isArray(output) ? output : getFirstOutput()}
+      </div>
     </>
   );
 };

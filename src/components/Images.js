@@ -17,9 +17,10 @@ const Images = ({ img }) => {
     // console.log(img, type, options.className, options.onLoad, options.onClick);
     return (
       <>
+        {/* Next imports images as objects, so the URL is in .src in the Next version. */}
         <img
           key={img[0]}
-          src={img[1]}
+          src={img[1].src}
           className={options.className ? options.className : type}
           alt={img[2]}
           style={img[3]}
