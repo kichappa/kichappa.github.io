@@ -10,6 +10,8 @@ const nextConfig = (phase) => ({
   reactStrictMode: false,
   // Next shows a badge in the bottom left corner while developing. It covers the mobile logo, so it is turned off.
   devIndicators: false,
+  // next dev would otherwise write an AGENTS.md file into the repo.
+  agentRules: false,
   // Next's own files are served from /~/_next/ instead of /_next/, so a repo named _next can never take that path on GitHub Pages. The postbuild script in package.json moves the folder to match.
   assetPrefix: phase === PHASE_PRODUCTION_BUILD ? '/~' : undefined,
   webpack(config) {

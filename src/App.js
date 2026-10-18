@@ -1,14 +1,13 @@
+'use client';
+// 'use client' is new in the Next version. App keeps state and listens to the window, so it has to run in the browser.
 import logo from './logo.svg';
 import './style.css';
-import Home from './components/Home.js';
-import Projects from './components/Projects.js';
-import Publications from './components/Publications.js';
-import Questions from './components/Questions.js';
-import About from './components/About.js';
+// The page components (Home, Projects, Publications, Questions, About and Artworks) are imported in src/Route.js in the Next version, next to the list of routes that uses them.
 import Navbar from './components/Navbar.js';
-import Artworks from './components/Artworks.js';
-import { Routes, Route, useLocation } from 'react-router-dom';
-import { useState, useEffect, useLayoutEffect } from 'react';
+// usePathname from next/navigation replaces useLocation from react-router-dom in the Next version.
+import { usePathname } from 'next/navigation';
+// createContext is new in the Next version, for AppContext below.
+import { useState, useEffect, useLayoutEffect, createContext } from 'react';
 import { MathJaxContext } from 'better-react-mathjax';
 
 function isMobileDevice() {
@@ -19,11 +18,18 @@ function isMobileDevice() {
   );
 }
 
-function App() {
+// This context is new in the Next version. In the React version App passed mobile, portrait and pathName to each page through <Routes>. Next gives App the page as children instead, so the same values reach the page through this context (see src/Route.js).
+export const AppContext = createContext({});
+
+function App({ children }) {
+  // In the Next version these two states read window only in the browser, because the server has no window. The browser still starts with the real values, so the handlers made on the first render see them as before. Anything drawn from them waits for hydration (see src/useHydrated.js).
   const [portrait, setPortrait] = useState(
-    window.matchMedia('(max-aspect-ratio: 6/10)').matches
+    typeof window !== 'undefined' &&
+      window.matchMedia('(max-aspect-ratio: 6/10)').matches
   );
-  const [mobile, setMobile] = useState(isMobileDevice());
+  const [mobile, setMobile] = useState(
+    typeof window !== 'undefined' && isMobileDevice()
+  );
   const [expanded, setExpanded] = useState(false);
 
   const [size, setSize] = useState([0, 0]);
@@ -36,8 +42,15 @@ function App() {
     return () => window.removeEventListener('resize', updateSize);
   }, []);
 
-  let location = useLocation();
-  const [pathname, setPathname] = useState(window.location.hash);
+  // In the Next version location is the real path, like '/~/projects/', instead of react-router's location object.
+  let location = usePathname();
+  // This function is new in the Next version. The React version kept the whole route in window.location.hash, like '#/projects' or '#/p#spy-sim'. This function builds that same string from the real path (without the /~ prefix) and the hash, so the checks below and in Navbar.js work unchanged.
+  const getHashPath = (hash) =>
+    '#' +
+    (location.replace(/^\/~(?=\/)/, '').replace(/\/$/, '') || '/') +
+    hash;
+  // In the Next version this starts without the hash, because the server cannot see it. The effects below add the hash after hydration.
+  const [pathname, setPathname] = useState(getHashPath(''));
 
   const amIAtHome = (pathName) => {
     return pathName.startsWith('#/#') || pathName === '' || pathName === '#/';
@@ -48,6 +61,7 @@ function App() {
   };
 
   // Also change --menu-items in style.css inside root at line 233
+  // In the Next version the links start with /~/, the folder that holds every page except home.
   const [items, setItems] = useState([
     {
       name: 'Home',
@@ -58,20 +72,20 @@ function App() {
     {
       name: 'Projects',
       isLinkAFunction: true,
-      link: '/projects',
+      link: '/~/projects',
       linkCheck: '#/projects',
       linkFunction: amIAtProjects,
     },
     {
       name: 'Publications',
       isLinkAFunction: false,
-      link: '/publications',
+      link: '/~/publications',
       linkCheck: '#/publications',
     },
     {
       name: 'Artworks',
       isLinkAFunction: false,
-      link: '/artworks',
+      link: '/~/artworks',
       linkCheck: '#/artworks',
     },
     // {
@@ -83,14 +97,15 @@ function App() {
     {
       name: 'Links',
       isLinkAFunction: false,
-      link: '/links',
+      link: '/~/links',
       linkCheck: '#/links',
     },
   ]);
 
   useEffect(() => {
     // console.log(window.location);
-    setPathname(window.location.hash);
+    // In the Next version the hash form of the path comes from getHashPath.
+    setPathname(getHashPath(window.location.hash));
     if ((window.location.hash.match(/#([^/?=]+)/g) || []).length > 0) {
       console.log(window.location.hash.match(/#([^/?=]+)/g)[0].slice(1));
       scrollIntoView(window.location.hash);
@@ -123,11 +138,13 @@ function App() {
     } catch {}
   };
 
+  // In the Next version this lookup only runs in the browser, because the server has no document.
   var rFS =
-    document.documentElement.requestFullscreen ||
-    document.documentElement.mozRequestFullScreen ||
-    document.documentElement.webkitRequestFullScreen ||
-    document.documentElement.msRequestFullscreen;
+    typeof document !== 'undefined' &&
+    (document.documentElement.requestFullscreen ||
+      document.documentElement.mozRequestFullScreen ||
+      document.documentElement.webkitRequestFullScreen ||
+      document.documentElement.msRequestFullscreen);
 
   const documentOnClick = (e, expanded) => {
     // console.log(expanded, document.getElementById('navbar'));
@@ -143,7 +160,8 @@ function App() {
   };
 
   useEffect(() => {
-    setPathname(window.location.hash);
+    // In the Next version the hash form of the path comes from getHashPath.
+    setPathname(getHashPath(window.location.hash));
     if ((window.location.hash.match(/#([^/?=]+)/g) || []).length > 0) {
       console.log(window.location.hash.match(/#([^/?=]+)/g)[0].slice(1));
       scrollIntoView(window.location.hash);
@@ -159,7 +177,8 @@ function App() {
 
   return (
     <>
-      <MathJaxContext>
+      {/* In the Next version MathJax is told not to typeset the whole page as soon as it loads. The server HTML already holds the TeX text, and MathJax could rewrite it while React is still hydrating, which makes hydration fail. Each <MathJax> still typesets its own text after hydration, as before. */}
+      <MathJaxContext config={{ startup: { typeset: false } }}>
         <div className="App">
           <Navbar
             portrait={portrait}
@@ -170,78 +189,12 @@ function App() {
             items={items}
           />
           <div className="content">
-            <Routes>
-              <Route
-                path="/"
-                element={
-                  <Home
-                    mobile={mobile}
-                    portrait={portrait}
-                    pathName={pathname}
-                  />
-                }
-              />
-              <Route
-                path="/projects"
-                element={
-                  <Projects
-                    mobile={mobile}
-                    portrait={portrait}
-                    pathName={pathname}
-                  />
-                }
-              />
-              <Route
-                path="/p"
-                element={
-                  <Projects
-                    mobile={mobile}
-                    portrait={portrait}
-                    pathName={pathname}
-                  />
-                }
-              />
-              <Route
-                path="/publications"
-                element={
-                  <Publications
-                    mobile={mobile}
-                    portrait={portrait}
-                    pathName={pathname}
-                  />
-                }
-              />
-              <Route
-                path="/artworks"
-                element={
-                  <Artworks
-                    mobile={mobile}
-                    portrait={portrait}
-                    pathName={pathname}
-                  />
-                }
-              />
-              <Route
-                path="/questions"
-                element={
-                  <Questions
-                    mobile={mobile}
-                    portrait={portrait}
-                    pathName={pathname}
-                  />
-                }
-              />
-              <Route
-                path="/links"
-                element={
-                  <About
-                    mobile={mobile}
-                    portrait={portrait}
-                    pathName={pathname}
-                  />
-                }
-              />
-            </Routes>
+            {/* In the Next version the <Routes> list moved to src/Route.js. Next renders the page for the current path as children, and the page reads mobile, portrait and pathName from this context. */}
+            <AppContext.Provider
+              value={{ mobile: mobile, portrait: portrait, pathName: pathname }}
+            >
+              {children}
+            </AppContext.Provider>
           </div>
         </div>
       </MathJaxContext>
