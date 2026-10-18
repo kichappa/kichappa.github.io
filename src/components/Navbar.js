@@ -113,8 +113,21 @@ const Navbar = ({
                 return <p className="current">{item.name}</p>;
               } else {
                 // next/link takes href instead of to. scroll={false} keeps the scroll position of .content when the page changes, as react-router did; Next would otherwise scroll the new page into view.
+                // In the Next version the server cannot see the hash, and on /~/p/ the hash decides whether Projects is current. The mark below lets before-hydration.css underline this link like .current when the page has a hash, until hydration draws the real current item.
                 return (
-                  <Link href={item.link} scroll={false}>
+                  <Link
+                    href={item.link}
+                    scroll={false}
+                    data-before-hydration={
+                      !hydrated &&
+                      ((item.isLinkAFunction &&
+                        item.linkFunction(pathName + '#x')) ||
+                        (!item.isLinkAFunction &&
+                          (pathName + '#x').startsWith(item.linkCheck)))
+                        ? 'current-with-hash'
+                        : undefined
+                    }
+                  >
                     {item.name}
                   </Link>
                 );

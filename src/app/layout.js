@@ -15,6 +15,7 @@ export const viewport = {
 // This script is new in the Next version. It sits in <head>, so it runs before any of the page is drawn.
 // First, the React version kept the route in the hash, like /#/projects or /#/p#spy-sim. GitHub Pages cannot redirect on the server, so old links are sent on to the new pages here, like /~/projects/ or /~/p/#spy-sim. When that loads a different page, this one stays hidden while the browser moves on.
 // Second, it marks <html> with data-mobile when isMobileDevice() in App.js would be true. The server cannot know this, so before-hydration.css uses the mark to show the phone version of the logo and tag filters until React takes over.
+// Third, it marks <html> with data-hash when the URL has a hash, which the server cannot see either. before-hydration.css uses it to underline Projects on /~/p/#... links.
 const beforePaint = `
 if (window.location.hash.indexOf('#/') === 0) {
   var url = new URL(window.location.hash.slice(1), window.location.origin);
@@ -32,6 +33,9 @@ if (
   ) || window.matchMedia('(hover:none)').matches
 ) {
   document.documentElement.setAttribute('data-mobile', '');
+}
+if (window.location.hash) {
+  document.documentElement.setAttribute('data-hash', '');
 }
 `;
 

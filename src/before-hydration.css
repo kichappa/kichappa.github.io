@@ -24,6 +24,11 @@ html[data-mobile] [data-before-hydration='logo'] {
   display: none !important;
 }
 
+/* The script in src/app/layout.js sets data-hash on <html> when the URL has a hash. On /~/p/ that makes Projects the current item, so this rule gives its link the underline that .menu .current has in style.css. */
+html[data-hash] [data-before-hydration='current-with-hash'] {
+  border-bottom: var(--menu-current-px) solid var(--accent-color);
+}
+
 /* Projects.js wraps the tag filters in .tag-filters only on mobile. Before hydration the wrapper is always there, and display: contents makes it act as if it were not. */
 html:not([data-mobile]) [data-before-hydration='tag-filters'] {
   display: contents;
