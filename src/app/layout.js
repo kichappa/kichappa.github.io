@@ -13,15 +13,18 @@ export const viewport = {
 };
 
 // This script is new in the Next version. It sits in <head>, so it runs before any of the page is drawn.
-// First, the React version kept the route in the hash, like /#/projects or /#/p#spy-sim. GitHub Pages cannot redirect on the server, so old links are sent on to the new pages here, like /~/projects/ or /~/p/#spy-sim. The page stays hidden while the browser moves on.
+// First, the React version kept the route in the hash, like /#/projects or /#/p#spy-sim. GitHub Pages cannot redirect on the server, so old links are sent on to the new pages here, like /~/projects/ or /~/p/#spy-sim. When that loads a different page, this one stays hidden while the browser moves on.
 // Second, it marks <html> with data-mobile when isMobileDevice() in App.js would be true. The server cannot know this, so before-hydration.css uses the mark to show the phone version of the logo and tag filters until React takes over.
 const beforePaint = `
 if (window.location.hash.indexOf('#/') === 0) {
   var url = new URL(window.location.hash.slice(1), window.location.origin);
   var path = url.pathname;
   if (path.slice(-1) === '/') path = path.slice(0, -1);
-  document.documentElement.style.visibility = 'hidden';
-  window.location.replace((path ? '/~' + path + '/' : '/') + url.search + url.hash);
+  var page = (path ? '/~' + path + '/' : '/') + url.search;
+  if (page !== window.location.pathname + window.location.search) {
+    document.documentElement.style.visibility = 'hidden';
+  }
+  window.location.replace(page + url.hash);
 }
 if (
   /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
