@@ -12,7 +12,7 @@ const nextConfig = (phase) => ({
   devIndicators: false,
   // next dev would otherwise write an AGENTS.md file into the repo.
   agentRules: false,
-  // Next's own files are served from /~/_next/ instead of /_next/, so a repo named _next can never take that path on GitHub Pages. The postbuild script in package.json moves the folder to match.
+  // Next's own files are served from /~/_next/ instead of /_next/, so a repo named _next can never take that path on GitHub Pages. postbuild.js moves the folder to match.
   assetPrefix: phase === PHASE_PRODUCTION_BUILD ? '/~' : undefined,
   webpack(config) {
     // This is Next's rule that turns an imported image into an object like { src, width, height }.

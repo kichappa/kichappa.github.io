@@ -16,7 +16,7 @@
     "deploy": "gh-pages -d out -t",
     "start": "next dev --webpack",
     "build": "next build --webpack",
-    "postbuild": "node -e \"require('fs').renameSync('out/_next', 'out/~/_next')\""
+    "postbuild": "node postbuild.js"
   },
   "browserslist": {
     "production": [
