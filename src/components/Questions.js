@@ -3,7 +3,9 @@ import React, { useEffect } from 'react';
 import Link from 'next/link';
 import { makeLink } from './Article';
 
+// This component is the unfinished questions page, with a link back home.
 const Questions = () => {
+  // This useEffect sets the tab title when the page opens.
   useEffect(() => {
     document.title = 'Kishore Shenoy';
   }, []);

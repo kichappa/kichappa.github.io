@@ -4,8 +4,11 @@ import caricature from '../images/Me -mc copy.png';
 import linkedin from '../images/icons/linkedin.svg';
 import github from '../images/icons/github.svg';
 
+// This component is the links page: a photo, the resume and portfolio links, social icons and a contact form.
 const About = () => {
+  // This state stores whether the contact form has been sent.
   const [formSubmitted, setFormSubmitted] = useState(false);
+  // This function runs when the form is sent. It marks the form as sent and slides the thank-you note into view. The form still posts to Google Forms, into the hidden iframe.
   const handleSubmit = (e) => {
     console.log(e);
     // e.preventDefault();
@@ -13,6 +16,7 @@ const About = () => {
     console.log(e.target.parentNode.parentNode, e.target.offsetWidth);
     e.target.parentNode.parentNode.scroll(e.target.offsetWidth + 20, 0);
   };
+  // This function runs when the hidden iframe loads, and is meant to show Google's CAPTCHA if the form needs one. It calls document.getElementsById, which does not exist, so after a submit it throws before doing anything.
   const onLoad = () => {
     // Check for the presence of the CAPTCHA element
     if (formSubmitted) {
@@ -31,6 +35,7 @@ const About = () => {
     }
   };
 
+  // This useEffect sets the tab title when the page opens.
   useEffect(() => {
     document.title = 'Kishore Shenoy';
   }, []);
@@ -62,6 +67,7 @@ const About = () => {
               )}
             </h3>
           </div>
+          {/* This block holds the LinkedIn and GitHub icons, drawn from the #img symbol inside each SVG file. */}
           <div className="icons-wrapper">
             <a
               href="https://www.linkedin.com/in/kishoreshenoy/"
@@ -88,6 +94,7 @@ const About = () => {
         <div className="article-item">
           <h2>Contact me here...</h2>
 
+          {/* This block is a two-panel strip: the form, then the thank-you note that slides in after sending. */}
           <>
             <div className="images-wrapper0 form-wrapper0">
               <div

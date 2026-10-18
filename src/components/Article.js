@@ -3,6 +3,7 @@ import Images from './Images';
 import shortid from 'shortid';
 // useHydrated is new in the Next version (see src/useHydrated.js).
 import useHydrated from '../useHydrated.js';
+// This function returns a link that opens in a new tab and shows a tooltip on hover. By default the link takes its font from the text around it.
 export const makeLink = (
   text,
   link,
@@ -10,6 +11,7 @@ export const makeLink = (
   tooltip = null,
   inherit = true
 ) => {
+  // This loop joins the extra classes into one string.
   let classes = '';
   for (let i in text_classes) {
     classes += text_classes[i] + ' ';
@@ -35,6 +37,7 @@ export const makeLink = (
   );
 };
 
+// This function returns the 'by' line of an article. Each author is [name] or [name, link], and authors with a link become links.
 export const makeAuthors = (authors, text_classes) => {
   let output = [];
   output.push(
@@ -44,6 +47,7 @@ export const makeAuthors = (authors, text_classes) => {
     </>
   );
 
+  // This loop adds each author, then a comma, or a full stop after the last one.
   for (let i in authors) {
     if (authors[i].length === 1) {
       output.push(<>{authors[i][0]}</>);
@@ -60,6 +64,7 @@ export const makeAuthors = (authors, text_classes) => {
   return output;
 };
 
+// This component draws one project article: an image gallery in one column and the heading, tags, text and citation in the other. options can hide the article (show), put the images on the right (ltr) and pick the heading size (head).
 const Article = ({
   type,
   img,
@@ -75,6 +80,7 @@ const Article = ({
 }) => {
   // This is new in the Next version. It is false until React has hydrated the server HTML. It is read before the early return below because hooks must always run.
   const hydrated = useHydrated();
+  // These checks fill in the default options, and draw nothing when the article is hidden.
   if (!('show' in options)) {
     options.show = true;
   } else if (options.show === false) {
@@ -86,6 +92,7 @@ const Article = ({
   if (!('head' in options)) {
     options.head = 2;
   }
+  // This variable holds the gallery. Each image gets a short random id in front, which Images uses as its key.
   let images = (
     <Images
       key={shortid.generate().substring(0, 6)}
@@ -101,6 +108,7 @@ const Article = ({
 
   //   console.log({ heading, tagline, authors, options });
   //   console.log({ portrait });
+  // These variables hold the result, the left and right columns, and the image and content columns before they are placed. key numbers the content elements.
   let output = [],
     leftC = [],
     rightC = [],
@@ -142,6 +150,7 @@ const Article = ({
         </p>
       );
     }
+    // This block adds the article's tags in alphabetical order.
     if (tags) {
       tags.sort();
       let pTags = [];
@@ -155,6 +164,7 @@ const Article = ({
       contentC.push(<p className="tagContainer">{pTags}</p>);
     }
     contentC.push(text);
+    // This block adds the citation, with the title as a link.
     if (citation) {
       contentC.push(
         <p key={key++} className="citation">
@@ -166,6 +176,7 @@ const Article = ({
         </p>
       );
     }
+    // This check puts the images on the left when the article is left-to-right or the window is portrait, and on the right otherwise.
     // In the Next version portrait is only used after hydration, because the server cannot know the shape of the window. Until then the article is drawn in its landscape order, and before-hydration.css moves the images first in portrait windows.
     if (options.ltr | (hydrated && portrait)) {
       leftC = imageC;

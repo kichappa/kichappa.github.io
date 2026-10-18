@@ -3,7 +3,9 @@ import caricature from '../images/Caricature.svg';
 import Article from './Article';
 import { makeLink } from './Article';
 
+// This component is the home page: the caricature and a short introduction.
 const Home = ({ portrait }) => {
+  // This useEffect sets the tab title when the page opens.
   useEffect(() => {
     document.title = 'Kishore Shenoy';
   }, []);

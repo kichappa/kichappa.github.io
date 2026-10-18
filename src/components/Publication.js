@@ -1,5 +1,6 @@
 import React from 'react';
 import Images from './Images';
+// This function returns a link that opens in a new tab, with the given classes and a 'Go to website' tooltip.
 const makeLink = (text, link, text_classes = []) => {
   let classes = '';
   for (let i in text_classes) {
@@ -13,6 +14,7 @@ const makeLink = (text, link, text_classes = []) => {
   );
 };
 
+// This component draws one citation: year, linked title, type, authors and journal.
 const Publication = ({
   type,
   year,

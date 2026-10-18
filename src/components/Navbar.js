@@ -8,6 +8,7 @@ import cross from '../images/Cross.svg';
 // useHydrated is new in the Next version (see src/useHydrated.js).
 import useHydrated from '../useHydrated.js';
 
+// This component draws the navbar: a top menu in landscape windows, and a bottom bar with a sliding menu in portrait windows.
 const Navbar = ({
   portrait,
   mobile,
@@ -16,15 +17,19 @@ const Navbar = ({
   pathName,
   items,
 }) => {
+  // This ref points to the box that slides the hamburger and cross icons.
   const menuExpandContainer = useRef(null);
+  // This ref points to the portrait menu that slides up when opened.
   const menuContainer = useRef(null);
   // This is new in the Next version. It is false until React has hydrated the server HTML.
   const hydrated = useHydrated();
 
+  // This useEffect opens or closes the portrait menu whenever expanded changes.
   useEffect(() => {
     expandMenu();
   }, [expanded]);
 
+  // This function opens or closes the portrait menu on phones by adding or removing the 'expanded' class and setting --menu-expanded, which style.css uses to slide the menu.
   const expandMenu = (expand = expanded) => {
     if (mobile) {
       if (expand) {
@@ -46,6 +51,7 @@ const Navbar = ({
     // setExpanded(!expand);
   };
 
+  // This function returns the navbar for the given shape: the top menu when not portrait, the bottom bar otherwise. The current page is shown as plain text and the others as links.
   const getNavBar = (
     mobile,
     portrait,
@@ -182,6 +188,7 @@ const Navbar = ({
     }
   };
 
+  // This variable holds the logo to show: the black-background version on phones.
   let appropriate_logo = logo;
   if (mobile) {
     appropriate_logo = logoBlack;

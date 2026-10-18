@@ -1,7 +1,9 @@
 import React, { useEffect } from 'react';
 import Publication from './Publication';
 
+// This component is the publications page, a column of citations.
 const Publications = () => {
+  // This useEffect sets the tab title when the page opens.
   useEffect(() => {
     document.title = 'My Publications';
   }, []);

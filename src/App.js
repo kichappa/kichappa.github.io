@@ -11,6 +11,7 @@ import { MathJaxContext } from 'better-react-mathjax';
 // AppContext is new in the Next version (see src/AppContext.js).
 import AppContext from './AppContext.js';
 
+// This function tells whether the visitor is on a phone or tablet, from the browser name or from a screen that cannot hover.
 function isMobileDevice() {
   return (
     /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
@@ -19,19 +20,26 @@ function isMobileDevice() {
   );
 }
 
+// This component is the whole app: the navbar, the content area and the state they share.
 function App({ children }) {
   // In the Next version these two states read window only in the browser, because the server has no window. The browser still starts with the real values, so the handlers made on the first render see them as before. Anything drawn from them waits for hydration (see src/useHydrated.js).
+  // This state stores whether the window is narrower than 6:10, which switches the site to its portrait layout.
   const [portrait, setPortrait] = useState(
     typeof window !== 'undefined' &&
       window.matchMedia('(max-aspect-ratio: 6/10)').matches
   );
+  // This state stores whether the visitor is on a phone or tablet (see isMobileDevice).
   const [mobile, setMobile] = useState(
     typeof window !== 'undefined' && isMobileDevice()
   );
+  // This state stores whether the portrait menu is open.
   const [expanded, setExpanded] = useState(false);
 
+  // This state stores the window's width and height, so the effects below can react to a resize.
   const [size, setSize] = useState([0, 0]);
+  // This useLayoutEffect keeps size up to date by listening to resize events.
   useLayoutEffect(() => {
+    // This function copies the window's current size into the size state.
     function updateSize() {
       setSize([window.innerWidth, window.innerHeight]);
     }
@@ -48,18 +56,22 @@ function App({ children }) {
     (location.replace(/^\/~(?=\/)/, '').replace(/\/$/, '') || '/') +
     hash;
   // In the Next version this starts without the hash, because the server cannot see it. The effects below add the hash after hydration.
+  // This state stores the current route in the '#/projects' form that the navbar uses to mark the current page.
   const [pathname, setPathname] = useState(getHashPath(''));
 
+  // This function tells whether pathName is the home page.
   const amIAtHome = (pathName) => {
     return pathName.startsWith('#/#') || pathName === '' || pathName === '#/';
   };
 
+  // This function tells whether pathName is the projects page, under either of its two paths.
   const amIAtProjects = (pathName) => {
     return pathName.startsWith('#/projects') || pathName.startsWith('#/p#');
   };
 
   // Also change --menu-items in style.css inside root at line 233
   // In the Next version the links start with /~/, the folder that holds every page except home.
+  // This state stores the navbar's items. Each item is marked current either by its linkFunction or by pathname starting with its linkCheck.
   const [items, setItems] = useState([
     {
       name: 'Home',
@@ -100,6 +112,7 @@ function App({ children }) {
     },
   ]);
 
+  // This useEffect runs after every page change. It updates pathname and scrolls to the article named in the hash, if there is one.
   useEffect(() => {
     // console.log(window.location);
     // In the Next version the hash form of the path comes from getHashPath.
@@ -110,6 +123,7 @@ function App({ children }) {
     }
   }, [location]);
 
+  // This useEffect runs after every resize and updates portrait and mobile when they no longer match the window.
   useEffect(() => {
     if (portrait !== window.matchMedia('(max-aspect-ratio: 6/10)').matches) {
       setPortrait(window.matchMedia('(max-aspect-ratio: 6/10)').matches);
@@ -122,6 +136,7 @@ function App({ children }) {
     }
   }, [size]);
 
+  // This function scrolls to the element named by the first '#' in the hash that is not followed by '/', like spy-sim in '#/p#spy-sim'. Any error, like a missing element, is ignored.
   const scrollIntoView = (hash) => {
     try {
       console.log(hash);
@@ -136,6 +151,7 @@ function App({ children }) {
     } catch {}
   };
 
+  // This variable holds the browser's function for going fullscreen. Nothing uses it yet.
   // In the Next version this lookup only runs in the browser, because the server has no document.
   var rFS =
     typeof document !== 'undefined' &&
@@ -144,6 +160,7 @@ function App({ children }) {
       document.documentElement.webkitRequestFullScreen ||
       document.documentElement.msRequestFullscreen);
 
+  // This function closes the portrait menu on phones when a click lands outside the navbar.
   const documentOnClick = (e, expanded) => {
     // console.log(expanded, document.getElementById('navbar'));
     // console.log(
@@ -157,6 +174,7 @@ function App({ children }) {
     }
   };
 
+  // This useEffect runs once when App first appears. It sets pathname, scrolls to the linked article, and listens for clicks outside the navbar.
   useEffect(() => {
     // In the Next version the hash form of the path comes from getHashPath.
     setPathname(getHashPath(window.location.hash));

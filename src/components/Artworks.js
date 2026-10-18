@@ -30,6 +30,7 @@ import art_27 from '../images/Art/Rainy Day.png';
 // useHydrated is new in the Next version (see src/useHydrated.js).
 import useHydrated from '../useHydrated.js';
 
+// This function opens the lightbox with the clicked image when the click lands on an image with the given class, and closes it on any other click. Projects.js uses it too.
 export const documentOnClick = (e, setIsClicked, className = 'art') => {
   if (e.target.className === className) {
     // console.log('Image clicked', e);
@@ -41,6 +42,7 @@ export const documentOnClick = (e, setIsClicked, className = 'art') => {
   }
 };
 
+// This component is the artworks page: a short note and a gallery packed into as few rows as possible.
 const Artworks = ({ mobile }) => {
   // This variable keeps track of how many images are loaded to client.
   // It is not a state variable since each time the component loads, the images might reload.
@@ -95,6 +97,7 @@ const Artworks = ({ mobile }) => {
     // This is made just to ensure that the images become visible.
     // setOutput([...getOutput(order)]);
 
+    // This function recalculates the divisions and the order of the images after a resize.
     function handleResize() {
       setDivision(getDivision());
       setOrder(rearrangeImgs());
@@ -140,6 +143,7 @@ const Artworks = ({ mobile }) => {
     }
   };
 
+  // This state stores the current number of divisions across the gallery.
   const [division, setDivision] = useState(getDivision());
 
   // This functions hides all the images until the images are all loaded.
@@ -212,6 +216,7 @@ const Artworks = ({ mobile }) => {
     return sumIndices.reverse();
   };
 
+  // This function splits the widths in `set` into rows. Each row is the largest subset that fits in `sum` divisions, found by subsetSum, and the result is the image indices row by row.
   const nextFitAlgo = (set, sum, sort = false) => {
     // console.log('Next-Fit Algorithm is being called.');
     let done = [];
@@ -298,6 +303,7 @@ const Artworks = ({ mobile }) => {
   const windowHeight = hydrated ? `${window.innerHeight}px` : undefined;
   return (
     <>
+      {/* This block is the note at the top of the page. */}
       <div className="flex article">
         <div className="home-article" style={{ display: 'block' }}>
         {/* <div style={{ display: 'block', marginLeft: '-50px' }}> */}
@@ -307,6 +313,7 @@ const Artworks = ({ mobile }) => {
           </p>
         </div>
       </div>
+      {/* This is the lightbox: a dark cover with the clicked image in the middle, shown while isClicked is true. */}
       <div
         id="expanded-wrapper1"
         onClick={null}

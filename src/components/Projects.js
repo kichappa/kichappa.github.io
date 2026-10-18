@@ -45,16 +45,19 @@ import { ReactComponent as CrossIcon } from '../images/Cross.svg';
 // useHydrated is new in the Next version (see src/useHydrated.js).
 import useHydrated from '../useHydrated.js';
 
+// This component is the projects page: the tag filters, the image lightbox and one Article per project.
 const Projects = ({ mobile, portrait, pathName }) => {
   //   console.log([pathName, (pathName.match(/#/g) || []).length]);
   //   useEffect(() => {}, []);
 
   // This variable keeps track whether an image is clicked.
   const [isClicked, setIsClicked] = useState(false);
+  // This state stores the tags picked in the filter, in alphabetical order.
   const [filterByTags, setFilterByTags] = useState([]);
   // This is new in the Next version. It is false until React has hydrated the server HTML.
   const hydrated = useHydrated();
 
+  // This variable holds every project as an Article, in the order they are shown.
   let projects = [
     <Article
       key={shortid.generate().substring(0, 6)}
@@ -703,12 +706,15 @@ const Projects = ({ mobile, portrait, pathName }) => {
     ></Article>,
   ];
 
+  // This loop alternates the projects between images-left and images-right.
   for (let i in projects) {
     if (Number(i) % 2) projects[i].props.options.ltr = false;
     else projects[i].props.options.ltr = true;
   }
 
+  // This state stores the Articles to draw, with their show and ltr options set by the filter.
   const [showProjects, setShowProjects] = useState(projects);
+  // This function adds a tag to the filter, or removes it if it is already picked.
   const tagFilter = (e, tag) => {
     if (!filterByTags.includes(tag)) {
       let newArr = [...filterByTags, tag];
@@ -724,6 +730,7 @@ const Projects = ({ mobile, portrait, pathName }) => {
     // console.log(e.target.checked);
     // console.log(tag);
   };
+  // This useEffect applies the filter whenever the picked tags change. It shows the projects that have every picked tag; if none do, it shows the projects that have any of them. The shown projects alternate between images-left and images-right again.
   useEffect(() => {
     // console.log(filterByTags);
     let IndexofShowProjects = [];
@@ -800,6 +807,7 @@ const Projects = ({ mobile, portrait, pathName }) => {
     //   })
     // );
   }, [filterByTags]);
+  // This useEffect runs when the page opens. It sets the tab title, resets the left and right order, and listens for clicks on the big images to open the lightbox.
   useEffect(() => {
     document.title = 'Projects by Me';
 
@@ -822,6 +830,7 @@ const Projects = ({ mobile, portrait, pathName }) => {
     };
   }, []);
   // console.log(a.props);
+  // This loop collects every tag used by any project, once each, in alphabetical order.
   let tags = [];
   for (let i in projects) {
     for (let j in projects[i].props.tags) {
@@ -832,6 +841,7 @@ const Projects = ({ mobile, portrait, pathName }) => {
   }
   tags.sort();
   // console.log(tags);
+  // This loop makes a filter button for each tag. A picked button is filled in and its cross turns.
   let tagsElement = [];
   for (let i in tags) {
     tagsElement.push(
@@ -858,6 +868,7 @@ const Projects = ({ mobile, portrait, pathName }) => {
   const windowHeight = hydrated ? `${window.innerHeight}px` : undefined;
   return (
     <>
+      {/* This is the lightbox: a dark cover with the clicked image in the middle, shown while isClicked is true. */}
       <div
         id="expanded-wrapper1"
         onClick={null}
@@ -885,6 +896,7 @@ const Projects = ({ mobile, portrait, pathName }) => {
           }
         />
       </div>
+      {/* This row holds the tag filters. On mobile they are wrapped in .tag-filters, which lets them wrap into lines in portrait. */}
       <div className="flex v-centre tags-mob">
         <p className="tag-checkbox">
           Filter by:

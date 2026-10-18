@@ -1,10 +1,15 @@
 import React, { useRef, useState, useEffect } from 'react';
 
+// This component draws an article's gallery: the big images in a sideways scrolling strip and, when there is more than one, a row of thumbnails under it. Each image is [id, src, caption, style].
 const Images = ({ img }) => {
+  // This ref points to the strip of big images.
   const mainImgRef = useRef(null);
+  // This state stores which image is shown in the strip.
   const [currentImg, setCurrentImg] = useState(0);
+  // This state counts the big images that have loaded. Nothing reads it.
   const [imagesLoaded, setImagesLoaded] = useState(0);
 
+  // This function returns one <img> for an image, with the given class and click and load handlers.
   const getImageDom = (img, type, options = {}) => {
     options = {
       ...{
@@ -31,15 +36,18 @@ const Images = ({ img }) => {
     );
   };
 
+  // This function runs when a big image loads. It scrolls the strip back to the start and counts the image.
   const imageLoaded = () => {
     mainImgRef.current.parentNode.scroll(0, 0);
 
     setImagesLoaded(imagesLoaded + 1);
   };
 
+  // This function shows image i in the strip.
   const imageClicked = (e = null, i = currentImg) => {
     setCurrentImg(i);
   };
+  // This useEffect scrolls the strip to the current image whenever it changes.
   useEffect(() => {
     mainImgRef.current.parentNode.scroll(
       currentImg * mainImgRef.current.childNodes[0].offsetWidth,
@@ -47,21 +55,25 @@ const Images = ({ img }) => {
     );
   }, [currentImg]);
 
+  // This useEffect shows the first image when the gallery appears.
   useEffect(() => {
     imageClicked();
   }, []);
 
+  // This loop is meant to give each image an empty style when it has none. It reads img.image, which does not exist, so it never runs.
   for (let image in img.image) {
     if (img.images[image].length === 3) {
       img.images[image].push({});
     }
   }
 
+  // These variables hold the result, the big images and the thumbnails. gallery is not used.
   let images = [],
     gallery = [],
     bigImages = [],
     gImages = [];
 
+  // This loop makes a big image with its caption and a thumbnail for each image. The thumbnail of the current image is highlighted.
   for (let i in img.images) {
     bigImages.push(
       <div className="big-picture-wrapper">
@@ -78,6 +90,7 @@ const Images = ({ img }) => {
       })
     );
   }
+  // This check shows a single image on its own, and several images as a strip with thumbnails.
   if (img.images.length === 1) {
     images = bigImages;
   } else {
