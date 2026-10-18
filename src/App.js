@@ -50,6 +50,14 @@ function App({ children }) {
 
   // In the Next version location is the real path, like '/~/projects/', instead of react-router's location object.
   let location = usePathname();
+  // This state is new in the Next version. react-router's location also changed when only the hash changed, like typing #glasseye after /p; usePathname does not, so this state counts hash changes and is added to the page-change effect below.
+  const [hashChanges, setHashChanges] = useState(0);
+  // This useEffect is new in the Next version and counts hash changes.
+  useEffect(() => {
+    const onHashChange = () => setHashChanges((n) => n + 1);
+    window.addEventListener('hashchange', onHashChange);
+    return () => window.removeEventListener('hashchange', onHashChange);
+  }, []);
   // This function is new in the Next version. The React version kept the whole route in window.location.hash, like '#/projects' or '#/p#spy-sim'. This function builds that same string from the real path (without the /~ prefix) and the hash, so the checks below and in Navbar.js work unchanged.
   const getHashPath = (hash) =>
     '#' +
@@ -121,7 +129,8 @@ function App({ children }) {
       console.log(window.location.hash.match(/#([^/?=]+)/g)[0].slice(1));
       scrollIntoView(window.location.hash);
     }
-  }, [location]);
+    // In the Next version hashChanges is a dependency too (see above).
+  }, [location, hashChanges]);
 
   // This useEffect runs after every resize and updates portrait and mobile when they no longer match the window.
   useEffect(() => {
