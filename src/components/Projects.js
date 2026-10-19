@@ -19,6 +19,8 @@ import amp_plan1 from '../images/AMP Relax/AMP-Plan1.png';
 import amp_plan2 from '../images/AMP Relax/AMP-Plan2.png';
 import amp_plan3 from '../images/AMP Relax/AMP-Plan3.png';
 import amp_section from '../images/AMP Relax/AMP-Section.png';
+import amp_3d_poster from '../images/AMP Relax/AMP-3D-poster.jpg';
+import amp_model from '../images/AMP Relax/AMP.glb';
 import draggy_point1 from '../images/Draggy/draggy-point1.png';
 import draggy_point2 from '../images/Draggy/draggy-point2.png';
 import tri_1 from '../images/Triangles/tri-1.svg';
@@ -302,6 +304,12 @@ const Projects = ({ mobile, portrait, pathName }) => {
       img={{
         type: 'big-picture',
         images: [
+          [
+            amp_3d_poster,
+            'AMP on the Omiya campus in 3D. Drag to look around.',
+            {},
+            amp_model,
+          ],
           [amp_plan1, 'Plan of ground floor of AMP.'],
           [amp_section, 'Sectional view of AMP.'],
           [amp_birdseye, "A Bird's Eye view of AMP (blue)."],

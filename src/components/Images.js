@@ -1,4 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
+import Model3D from './Model3D';
 
 // This component draws an article's gallery: the big images in a sideways scrolling strip and, when there is more than one, a row of thumbnails under it. Each image is [id, src, caption, style].
 const Images = ({ img }) => {
@@ -77,7 +78,16 @@ const Images = ({ img }) => {
   for (let i in img.images) {
     bigImages.push(
       <div className="big-picture-wrapper">
-        {getImageDom(img.images[i], img.type, { onLoad: imageLoaded })}
+        {/* An image with a fifth item is a 3D model: the big picture becomes Model3D, with the image as its poster and thumbnail. */}
+        {img.images[i][4] ? (
+          <Model3D
+            src={img.images[i][4]}
+            poster={img.images[i][1].src}
+            alt={img.images[i][2]}
+          />
+        ) : (
+          getImageDom(img.images[i], img.type, { onLoad: imageLoaded })
+        )}
         <p style={{ marginLeft: '5px', marginRight: '5px' }}>
           {img.images[i][2]}
         </p>

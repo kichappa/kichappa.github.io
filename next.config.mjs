@@ -14,7 +14,7 @@ const nextConfig = (phase) => ({
   agentRules: false,
   // Next's own files are served from /~/_next/ instead of /_next/, so a repo named _next can never take that path on GitHub Pages. postbuild.js moves the folder to match.
   assetPrefix: phase === PHASE_PRODUCTION_BUILD ? '/~' : undefined,
-  webpack(config) {
+  webpack(config, { isServer }) {
     // This is Next's rule that turns an imported image into an object like { src, width, height }.
     const imageRule = config.module.rules.find(
       (rule) => rule && rule.loader === 'next-image-loader'
@@ -44,7 +44,16 @@ const nextConfig = (phase) => ({
         ],
       },
       // Next stops using its image rule for .svg files once a custom .svg rule like the one above exists. This copy of the image rule keeps every other SVG an image object, as before.
-      { ...imageRule, test: /\.svg$/i, exclude: /Cross\.svg$/ }
+      { ...imageRule, test: /\.svg$/i, exclude: /Cross\.svg$/ },
+      // This rule makes an imported .glb 3D model a plain URL, like CRA's file-loader did for other files. Only the browser build writes the file out; the server build only needs the same URL.
+      {
+        test: /\.glb$/i,
+        type: 'asset/resource',
+        generator: {
+          filename: 'static/media/[name].[hash:8][ext]',
+          emit: !isServer,
+        },
+      }
     );
     return config;
   },

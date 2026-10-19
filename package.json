@@ -4,6 +4,7 @@
   "homepage": "https://kichappa.github.io/#",
   "private": true,
   "dependencies": {
+    "@google/model-viewer": "^4.4.0",
     "better-react-mathjax": "^2.0.2",
     "next": "^16.4.2",
     "react": "^19.3.1",
