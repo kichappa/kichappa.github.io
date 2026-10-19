@@ -1,0 +1,13 @@
+{
+  "aspect": "16 / 10",
+  "posterTime": 12.6,
+  "attributes": {
+    "autoplay": true,
+    "camera-target": "0m 0.174m 0m",
+    "camera-orbit": "70deg 76deg 1.1m",
+    "field-of-view": "24deg",
+    "min-camera-orbit": "auto 46deg 0.42m",
+    "max-camera-orbit": "auto 93deg 1.87m",
+    "rotation-per-second": "12deg"
+  }
+}

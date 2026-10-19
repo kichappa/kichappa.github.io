@@ -37,6 +37,16 @@ import CS_2 from '../images/Spatial Modelling of Urban Growth/CS-2.png';
 import CS_3 from '../images/Spatial Modelling of Urban Growth/CS-3.gif';
 import GE_Glasses from '../images/GlassEye/GE-Glasses.png';
 import GE_Braille from '../images/GlassEye/GE-Braille.png';
+import onion_3d from '../images/Spring Onion/SpringOnion.model.js';
+import onion_pipeline from '../images/Spring Onion/pipeline.png';
+import onion_examples from '../images/Spring Onion/examples.png';
+import onion_blade from '../images/Spring Onion/blade.png';
+import onion_slots from '../images/Spring Onion/slot-model.png';
+import onion_refinement from '../images/Spring Onion/refinement.png';
+import onion_chart_refinement from '../images/Spring Onion/chart-refinement.png';
+import onion_chart_dust3r from '../images/Spring Onion/chart-dust3r.png';
+import onion_chart_time from '../images/Spring Onion/chart-time.png';
+import onion_renders from '../images/Spring Onion/renders.png';
 import Article from './Article';
 import { makeAuthors, makeLink } from './Article';
 import { documentOnClick } from './Artworks';
@@ -60,6 +70,185 @@ const Projects = ({ mobile, portrait, pathName }) => {
 
   // This variable holds every project as an Article, in the order they are shown.
   let projects = [
+    <Article
+      key={shortid.generate().substring(0, 6)}
+      id={'spring-onion'}
+      type={'2c'}
+      portrait={portrait}
+      options={{ ltr: true }}
+      tags={[
+        'computation',
+        'computer-vision',
+        'machine-learning',
+        'math',
+        'modeling',
+        'gpu',
+      ]}
+      img={{
+        type: 'big-picture',
+        images: [
+          [
+            onion_3d.poster,
+            'An animated spring onion grows inside the ten cameras that photograph it. Drag to look around.',
+            {},
+            onion_3d,
+          ],
+          [
+            onion_pipeline,
+            'The pipeline, following one test onion from its photos to its Fourier surrogate. Numbers in the nodes are test-set results.',
+          ],
+          [
+            onion_examples,
+            "The slot model's spines over two photos (coral, truth dashed) and the refined spines in 3D (lime), for test onions ranked from the 3rd percentile to the worst of 300.",
+          ],
+          [
+            onion_blade,
+            'Each blade is a Fourier spine with a taper, the tapered tube that the onion generator draws.',
+          ],
+          [
+            onion_slots,
+            'Stage 3, the blade-slot model: ten learned queries attend to frozen DUSt3R tokens from every view, and each decodes one blade.',
+          ],
+          [
+            onion_refinement,
+            'Stage 4, refinement: the predicted spines move onto distance maps of the learned spine and the silhouette, built once per view.',
+          ],
+          [
+            onion_chart_refinement,
+            'Refinement cuts the mean blade-curve error by 55 to 68%.',
+          ],
+          [
+            onion_chart_dust3r,
+            'Per-pixel 3D error on pairs of views, 1.6 to 2.5 times below DUSt3R at every view separation.',
+          ],
+          [
+            onion_chart_time,
+            'Time per onion: 25 h for acquire, 3.2 s for slot + refine from 10 views.',
+          ],
+          [
+            onion_renders,
+            'Generated onions rendered in Blender, each in its own pot and scene, for training and testing.',
+          ],
+        ],
+      }}
+      authors={[
+        ['Kishore Shenoy'],
+        ['Dr. Emily D. Sanders', 'https://www.me.gatech.edu/faculty/sanders'],
+      ]}
+      heading={'How quickly+easily+well can we measure an onion?'}
+      tagline={
+        'Every blade of a spring onion in 3D, from a few calibrated photos instead of a scan'
+      }
+      text={
+        <>
+          <p>
+            A plant's growth is a trajectory of 3D shapes, one for every day,
+            and recording that trajectory for many plants needs a measurement
+            quick enough to repeat daily and accurate enough to trust. Spring
+            onions make a clean test case, since each plant is a handful of
+            thin, curved blades. We photograph the onion with a few calibrated
+            cameras instead of scanning it, and recover every blade as a
+            Fourier surrogate: the Fourier-parameterized tapered tube that our
+            onion generator draws, made of a spine curve and a taper that
+            scales a circular cross-section along it.
+          </p>
+          <p>
+            <MathJax className="math">
+              In its own frame, a blade of length {'\\(L\\)'} has the spine
+              {
+                '$$\\mathbf{s}(z)=\\mathbf{b}+R_{\\hat{\\mathbf{d}}}\\left[\\mathbf{g}(z)-\\mathbf{g}(0)\\right],\\qquad z\\in[0,L],$$'
+              }
+              {
+                '$$\\mathbf{g}(z)=\\big(g_x(z),\\,g_y(z),\\,z\\big),\\qquad g_\\star(z)=\\sum_{k=1}^{6}a^\\star_k\\cos\\omega_k z+b^\\star_k\\sin\\omega_k z,\\qquad \\omega_k=\\frac{2\\pi k}{10L},$$'
+              }
+              where {'\\(\\mathbf{b}\\)'} is the blade's base and{' '}
+              {'\\(R_{\\hat{\\mathbf{d}}}\\)'} turns the blade's own axis onto
+              its initial direction {'\\(\\hat{\\mathbf{d}}\\)'}.
+            </MathJax>
+          </p>
+          <p>
+            The pure-optimization fit we started from, which we call acquire,
+            fits one blade at a time to two silhouettes by Nelder–Mead and
+            re-renders both views at every step. Recorded fits take 4.1 to 20.9
+            hours per blade, so an onion of 4.5 blades, the median, takes about
+            25 hours, which rules out measuring every plant every day.
+          </p>
+          <p>
+            Our pipeline replaces most of that search with a prediction, in
+            four stages. Stage 1 calibrates the cameras once. In stage 2, a
+            mask+spine network (two ResNet-34 U-Nets) finds the plant's pixels
+            and its spine in each photo, and a frozen{' '}
+            {makeLink(
+              'DUSt3R',
+              'https://arxiv.org/abs/2312.14132',
+              [],
+              'Open paper'
+            )}{' '}
+            ViT-L encoder turns the image patches on the plant into tokens, each
+            carrying its camera ray in Plücker coordinates in the plant's frame.
+            In stage 3, a blade-slot model, a cross-attention decoder in the
+            style of{' '}
+            {makeLink(
+              'DETR',
+              'https://arxiv.org/abs/2005.12872',
+              [],
+              'Open paper'
+            )}
+            , lets ten learned queries attend to the tokens of every view, and
+            each query decodes one blade's existence and its Fourier
+            parameters; a count threshold fitted on held-out plants decides how
+            many blades to keep.
+          </p>
+          <p>
+            Refinement, stage 4, keeps acquire's medial-axis fit but starts
+            from the slot model's output. It builds two distance maps once per
+            view, one to the learned spine and one to the silhouette, and moves
+            all blades together for 300 Adam steps so that every projected
+            spine lies on the learned spine, every learned-spine pixel is
+            explained by some blade, every blade stays inside the silhouette,
+            and each base and length stays near the prediction. Since nothing
+            is rendered inside the loop, refinement takes about 2 s per onion.
+          </p>
+          <p>
+            We train and score on synthetic onions, since a generated plant
+            comes with exact spines and camera poses. We render 5,700 generator
+            plants in Blender, each from 10 calibrated views, and every result
+            below is on 300 held-out onions, with errors in millimetres for an
+            onion 30 cm tall.
+          </p>
+          <p>
+            From 10 views, the median test onion is off by 1.6 mm along its
+            blades, 0.5% of its height, and the blade count is exact for 86% of
+            onions (78% with 3 views). Refinement cuts the slot model's mean
+            blade-curve error by 68% with 10 views and by 55% with 3. With blade
+            thickness from the network, the full 3D surface of 150 test onions
+            has a median depth error of 0.5 mm per pixel, and 97% of its pixels
+            lie within 3.9 mm.
+          </p>
+          <p>
+            Against DUSt3R on pairs of views of 100 test onions, scored with
+            its own evaluation protocol, our per-pixel 3D error is 1.6 to 2.5
+            times lower at every view separation, although our pipeline is
+            given the calibrated cameras and DUSt3R is not.
+          </p>
+          <p>
+            Counting and crowded plants remain the largest errors, and
+            per-blade masks from the mask+spine network's blade embedding
+            target both. Real photographs will also need the plant's frame,
+            which we will take from the pot rim.
+          </p>
+          <p>
+            The whole pipeline takes 3.2 s per onion with 10 views, or 1.8 s
+            with 3, on one RTX PRO 6000 GPU, against about a day for acquire,
+            so measuring every plant every day becomes practical.
+          </p>
+          <p>
+            This work is funded by a Haythornthwaite Foundation Research
+            Initiation Grant.
+          </p>
+        </>
+      }
+    ></Article>,
     <Article
       key={shortid.generate().substring(0, 6)}
       id={'spy-sim'}
