@@ -1,0 +1,53 @@
+# This workflow is new with the Next version. It builds the static site on every push, and publishes it to GitHub Pages when the push is to main.
+# For the publishing step, Settings > Pages > Build and deployment > Source must be set to "GitHub Actions".
+name: Build and deploy to GitHub Pages
+
+on:
+  push:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+# Only one build per branch runs at a time. A newer push waits instead of cancelling a deployment halfway.
+concurrency:
+  group: pages-${{ github.ref }}
+  cancel-in-progress: false
+
+env:
+  NEXT_TELEMETRY_DISABLED: 1
+
+jobs:
+  # This job builds the site, so any branch can be checked before it reaches main.
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      # npm runs postbuild.js after the build, which moves Next's files to out/~/_next.
+      - run: npm run build
+      - uses: actions/configure-pages@v6
+        if: github.ref == 'refs/heads/main'
+      - uses: actions/upload-pages-artifact@v5
+        if: github.ref == 'refs/heads/main'
+        with:
+          path: out
+
+  # This job publishes the build. It only runs for main.
+  deploy:
+    if: github.ref == 'refs/heads/main'
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v5
