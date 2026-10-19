@@ -153,7 +153,7 @@ export default function RootLayout({ children }) {
         <script dangerouslySetInnerHTML={{ __html: beforePaint }} />
       </head>
       <body>
-        <noscript>You need to enable JavaScript to run this app.</noscript>
+        {/* The React version had <noscript>You need to enable JavaScript to run this app.</noscript> here. It is removed because every page is now built as full HTML and reads fine without JavaScript. */}
         <div id="root">
           <Index>{children}</Index>
         </div>
