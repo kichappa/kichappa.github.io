@@ -1,6 +1,7 @@
 /* This file is new and styles Model3D.js. The model takes the place of a big picture in the gallery, so it has the same width, and the 16:10 shape of the 2022 Blender camera. */
 .big-model {
   display: block;
+  position: relative;
   width: var(--article-item-width);
   /* model-viewer gives itself a height of 150px; auto lets aspect-ratio set it. */
   height: auto;
@@ -8,6 +9,27 @@
   background-color: var(--bg-color);
   scroll-snap-align: center;
   --poster-color: var(--bg-color);
+}
+/* The Revolve button sits in the bottom right corner and looks like the tag filters on the projects page: outlined when off, filled when on. */
+.model-revolve {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  z-index: 1;
+  font-family: var(--content-font);
+  font-size: calc(var(--content-size) - 2px);
+  color: var(--accent-color);
+  background-color: var(--bg-color);
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 0 0 2px var(--accent-color);
+  padding: 2.5px 7px;
+  cursor: pointer;
+  transition: var(--std-transition);
+}
+.model-revolve.on {
+  color: var(--bg-color);
+  background-color: var(--accent-color);
 }
 .big-model-poster {
   display: block;
