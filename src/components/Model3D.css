@@ -10,10 +10,11 @@
   scroll-snap-align: center;
   --poster-color: var(--bg-color);
 }
-/* The Revolve button sits in the bottom right corner and looks like the tag filters on the projects page: outlined when off, filled when on. */
+/* The Revolve button sits centred at the bottom of the frame and looks like the tag filters on the projects page: outlined when off, filled when on. */
 .model-revolve {
   position: absolute;
-  right: 10px;
+  left: 50%;
+  transform: translateX(-50%);
   bottom: 10px;
   z-index: 1;
   font-family: var(--content-font);
