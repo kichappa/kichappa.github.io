@@ -81,3 +81,12 @@ npm run model -- "D:/Books/Architecture/Architectural Design Studio/Student's ce
 
 `--reset-view` replaces an existing `NAME.view.json` with the Blender camera's view. `--exclude a,b` leaves objects out. `--bake-px 4096` and `--samples 256` set the bake size and quality. `--quality 85`
 is the WebP quality. `--save-blend file.blend` keeps the processed scene. `--keep-work` keeps the temporary files.
+
+## Models made elsewhere
+
+`SpringOnion` in `src/images/Spring Onion` is not made by this tool but by `render/blender/web_model.py` in the
+growth-rl repository, which writes the same `.glb`, `.view.json` and `.model.js`; `npm run posters` then makes its
+poster. Its view adds two settings: `autoplay` (true) in `attributes`, which plays the model's animation, and
+`posterTime`, the moment of the animation (in seconds) that the poster shows. Where Google Chrome is not installed,
+for example on a cluster node, set `CHROME` to any Chromium build for `npm run posters`, such as Playwright's
+headless shell; without a GPU it draws in software.

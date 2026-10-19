@@ -36,7 +36,7 @@ const update = async (viewPath, force) => {
   }
   if (!force && readStamp(poster) === viewStamp(view)) return;
   const started = Date.now();
-  await makePoster(glb, view, poster, readWidth(poster) || 1600);
+  await makePoster(glb, view, poster, readWidth(poster) || 1600, process.env.CHROME || null);
   console.log(`${label} remade for ${(view.attributes || {})['camera-orbit'] || 'the automatic view'} in ${((Date.now() - started) / 1000).toFixed(1)} s`);
 };
 

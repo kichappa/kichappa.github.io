@@ -48,6 +48,9 @@ const writeStamp = (jpg, stamp) => {
 
 // This function serves the model with model-viewer from a small local server, opens it in headless Chrome at the
 // starting view, and saves a screenshot as the poster, so the poster matches the first frame of the model exactly.
+// For an animated model, view.posterTime (in seconds) is the moment of the animation the poster shows instead.
+// A Chrome given by path (chromePath, or $CHROME for posters.mjs) may have no GPU, as on a cluster node; it then
+// draws WebGL in software (SwiftShader), which Chrome only allows with --enable-unsafe-swiftshader.
 export const makePoster = async (glb, view, outJpg, width = 1600, chromePath = null) => {
   const [aw, ah] = (view.aspect || '16 / 10').split('/').map(Number);
   const height = Math.round((width * ah) / aw);
@@ -73,11 +76,23 @@ export const makePoster = async (glb, view, outJpg, width = 1600, chromePath = n
     res.end(entry[1].startsWith('<!doctype') ? entry[1] : fs.readFileSync(entry[1]));
   });
   await new Promise((resolve) => server.listen(0, '127.0.0.1', resolve));
-  const browser = await chromium.launch(chromePath ? { executablePath: chromePath } : { channel: 'chrome', args: ['--ignore-gpu-blocklist'] });
+  const browser = await chromium.launch(
+    chromePath
+      ? { executablePath: chromePath, args: ['--ignore-gpu-blocklist', '--enable-unsafe-swiftshader'] }
+      : { channel: 'chrome', args: ['--ignore-gpu-blocklist'] }
+  );
   try {
     const page = await browser.newPage({ viewport: { width, height } });
     await page.goto(`http://127.0.0.1:${server.address().port}/`);
     await page.waitForFunction(() => document.querySelector('model-viewer')?.loaded, null, { timeout: 180000 });
+    // An animated model is paused at posterTime; the wait below then lets that moment be drawn.
+    if (typeof view.posterTime === 'number') {
+      await page.evaluate((t) => {
+        const viewer = document.querySelector('model-viewer');
+        viewer.pause();
+        viewer.currentTime = t;
+      }, view.posterTime);
+    }
     await page.waitForTimeout(1500);
     // The screenshot goes to a temporary file first, so the site never picks up a half-written poster.
     const temp = outJpg + '.tmp.jpg';
