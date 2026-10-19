@@ -137,7 +137,7 @@ const Projects = ({ mobile, portrait, pathName }) => {
       ]}
       heading={'How quickly+easily+well can we measure an onion?'}
       tagline={
-        'Every blade of a spring onion in 3D, from a few calibrated photos instead of a scan'
+        'Capturing every blade of a spring onion in 3D from a few calibrated photos.'
       }
       text={
         <>
@@ -147,10 +147,10 @@ const Projects = ({ mobile, portrait, pathName }) => {
             quick enough to repeat daily and accurate enough to trust. Spring
             onions make a clean test case, since each plant is a handful of
             thin, curved blades. We photograph the onion with a few calibrated
-            cameras instead of scanning it, and recover every blade as a
-            Fourier surrogate: the Fourier-parameterized tapered tube that our
-            onion generator draws, made of a spine curve and a taper that
-            scales a circular cross-section along it.
+            cameras instead of scanning it, and recover every blade as a Fourier
+            surrogate: the Fourier-parameterized tapered tube that our onion
+            generator draws, made of a spine curve and a taper that scales a
+            circular cross-section along it.
           </p>
           <p>
             <MathJax className="math">
@@ -174,8 +174,8 @@ const Projects = ({ mobile, portrait, pathName }) => {
             25 hours, which rules out measuring every plant every day.
           </p>
           <p>
-            Our pipeline replaces most of that search with a prediction, in
-            four stages. Stage 1 calibrates the cameras once. In stage 2, a
+            Our pipeline replaces most of that search with a prediction, in four
+            stages. Stage 1 calibrates the cameras once. In stage 2, a
             mask+spine network (two ResNet-34 U-Nets) finds the plant's pixels
             and its spine in each photo, and a frozen{' '}
             {makeLink(
@@ -195,19 +195,19 @@ const Projects = ({ mobile, portrait, pathName }) => {
               'Open paper'
             )}
             , lets ten learned queries attend to the tokens of every view, and
-            each query decodes one blade's existence and its Fourier
-            parameters; a count threshold fitted on held-out plants decides how
-            many blades to keep.
+            each query decodes one blade's existence and its Fourier parameters;
+            a count threshold fitted on held-out plants decides how many blades
+            to keep.
           </p>
           <p>
-            Refinement, stage 4, keeps acquire's medial-axis fit but starts
-            from the slot model's output. It builds two distance maps once per
-            view, one to the learned spine and one to the silhouette, and moves
-            all blades together for 300 Adam steps so that every projected
-            spine lies on the learned spine, every learned-spine pixel is
-            explained by some blade, every blade stays inside the silhouette,
-            and each base and length stays near the prediction. Since nothing
-            is rendered inside the loop, refinement takes about 2 s per onion.
+            Refinement, stage 4, keeps acquire's medial-axis fit but starts from
+            the slot model's output. It builds two distance maps once per view,
+            one to the learned spine and one to the silhouette, and moves all
+            blades together for 300 Adam steps so that every projected spine
+            lies on the learned spine, every learned-spine pixel is explained by
+            some blade, every blade stays inside the silhouette, and each base
+            and length stays near the prediction. Since nothing is rendered
+            inside the loop, refinement takes about 2 s per onion.
           </p>
           <p>
             We train and score on synthetic onions, since a generated plant
@@ -226,21 +226,21 @@ const Projects = ({ mobile, portrait, pathName }) => {
             lie within 3.9 mm.
           </p>
           <p>
-            Against DUSt3R on pairs of views of 100 test onions, scored with
-            its own evaluation protocol, our per-pixel 3D error is 1.6 to 2.5
-            times lower at every view separation, although our pipeline is
-            given the calibrated cameras and DUSt3R is not.
+            Against DUSt3R on pairs of views of 100 test onions, scored with its
+            own evaluation protocol, our per-pixel 3D error is 1.6 to 2.5 times
+            lower at every view separation, although our pipeline is given the
+            calibrated cameras and DUSt3R is not.
           </p>
           <p>
-            Counting and crowded plants remain the largest errors, and
-            per-blade masks from the mask+spine network's blade embedding
-            target both. Real photographs will also need the plant's frame,
-            which we will take from the pot rim.
+            Counting and crowded plants remain the largest errors, and per-blade
+            masks from the mask+spine network's blade embedding target both.
+            Real photographs will also need the plant's frame, which we will
+            take from the pot rim.
           </p>
           <p>
             The whole pipeline takes 3.2 s per onion with 10 views, or 1.8 s
-            with 3, on one RTX PRO 6000 GPU, against about a day for acquire,
-            so measuring every plant every day becomes practical.
+            with 3, on one RTX PRO 6000 GPU, against about a day for acquire, so
+            measuring every plant every day becomes practical.
           </p>
           <p>
             This work is funded by a Haythornthwaite Foundation Research
