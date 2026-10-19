@@ -24,3 +24,6 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# Python bytecode from the blend2web Blender scripts
+__pycache__/

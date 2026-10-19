@@ -35,6 +35,7 @@ const defaults = {
   chrome: process.env.CHROME || null,
   'save-blend': null,
   'keep-work': false,
+  'reset-view': false,
 };
 
 // This function reads the command line into the file name and an options object.
@@ -85,6 +86,7 @@ const runBlender = (blend, opts, work) => {
     bake_px: Number(opts['bake-px']),
     samples: Number(opts.samples),
     quality: Number(opts.quality),
+    glass_alpha: Number(opts['glass-alpha']),
     zoom_in: Number(opts['zoom-in']),
     zoom_out: Number(opts['zoom-out']),
     work,
@@ -151,9 +153,17 @@ const main = async () => {
     const { rawGlb, view } = runBlender(blend, opts, work);
     const glb = path.join(out, `${opts.name}.glb`);
     await finishGlb(rawGlb, glb, Number(opts['glass-alpha']));
-    fs.writeFileSync(path.join(out, `${opts.name}.view.json`), JSON.stringify(view, null, 2) + '\n');
+    // A .view.json that is already there may have been edited by hand, so it is kept unless --reset-view is given.
+    const viewPath = path.join(out, `${opts.name}.view.json`);
+    let startView = view;
+    if (fs.existsSync(viewPath) && !opts['reset-view']) {
+      startView = JSON.parse(fs.readFileSync(viewPath, 'utf8'));
+      console.log(`Kept the existing ${opts.name}.view.json; --reset-view takes the view from the Blender camera instead.`);
+    } else {
+      fs.writeFileSync(viewPath, JSON.stringify(view, null, 2) + '\n');
+    }
     const poster = path.join(out, `${opts.name}-poster.jpg`);
-    await makePoster(glb, view, poster, Number(opts['poster-width']), opts.chrome);
+    await makePoster(glb, startView, poster, Number(opts['poster-width']), opts.chrome);
     writeModule(out, opts.name, blend);
     const mb = (f) => (fs.statSync(f).size / 1048576).toFixed(1) + ' MB';
     console.log(`\nMade in ${out}:\n  ${opts.name}.glb (${mb(glb)})\n  ${opts.name}-poster.jpg (${mb(poster)})\n  ${opts.name}.view.json\n  ${opts.name}.model.js`);

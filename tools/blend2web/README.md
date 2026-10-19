@@ -16,7 +16,7 @@ It needs Blender (4.2 or newer; it looks in `D:\Tools` and `C:\Program Files\Ble
 |---|---|
 | `NAME.glb` | The model: Draco-compressed geometry and WebP textures. |
 | `NAME-poster.jpg` | A screenshot of the model at its starting view, taken in model-viewer itself. It is shown until the model loads, and is the gallery thumbnail. |
-| `NAME.view.json` | The starting view: `aspect` (the frame's shape) and `attributes` (model-viewer settings such as `camera-orbit`). Edit it by hand to change the view; the poster follows (see below). |
+| `NAME.view.json` | The starting view: `aspect` (the frame's shape) and `attributes` (model-viewer settings such as `camera-orbit`). Edit it by hand to change the view; the poster follows (see below). Running the tool again keeps it; `--reset-view` takes the view from the Blender camera again. |
 | `NAME.model.js` | One import that holds all three, for the gallery. |
 
 Then in the project's page, for example `src/components/Projects.js`:
@@ -64,7 +64,7 @@ Without a camera, model-viewer frames the model by itself.
 - `--mode bake` (default): Blender's lighting (lamps, world, shadows, colour management) is baked into textures with
   Cycles, and the browser shows them unlit. The model then looks like Blender's render from every side. Use this for
   buildings and anything where the look matters. See-through materials are baked separately and shown 35% opaque
-  (`--glass-alpha`).
+  (`--glass-alpha`); the `amp` recipe uses the same value for the glass in its facade skin.
 - `--mode pbr`: materials stay as they are and the browser lights them with a neutral studio light. Faster to make and
   better for glass and shiny objects, but it will not match Blender's render.
 
@@ -79,5 +79,5 @@ npm run model -- "D:/Books/Architecture/Architectural Design Studio/Student's ce
 
 ## Other options
 
-`--exclude a,b` leaves objects out. `--bake-px 4096` and `--samples 256` set the bake size and quality. `--quality 85`
+`--reset-view` replaces an existing `NAME.view.json` with the Blender camera's view. `--exclude a,b` leaves objects out. `--bake-px 4096` and `--samples 256` set the bake size and quality. `--quality 85`
 is the WebP quality. `--save-blend file.blend` keeps the processed scene. `--keep-work` keeps the temporary files.

@@ -382,5 +382,9 @@ view = view_from_camera(cam, cam_matrix, tone)
 json.dump(view, open(cfg['view_json'], 'w'), indent=2)
 export_glb('pbr' if tone != 'none' else 'bake')
 if cfg.get('save_blend'):
+    # The baked pictures live in a temporary folder that is deleted afterwards, so they are packed into the file,
+    # after the original textures and materials that nothing uses any more are dropped.
+    bpy.data.orphans_purge(do_local_ids=True, do_linked_ids=True, do_recursive=True)
+    bpy.ops.file.pack_all()
     bpy.ops.wm.save_as_mainfile(filepath=cfg['save_blend'], compress=True)
 log('done')
