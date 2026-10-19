@@ -78,10 +78,10 @@ const Images = ({ img }) => {
   for (let i in img.images) {
     bigImages.push(
       <div className="big-picture-wrapper">
-        {/* An image with a fifth item is a 3D model: the big picture becomes Model3D, with the image as its poster and thumbnail. */}
+        {/* An image with a fifth item is a 3D model, the object from a .model.js made by tools/blend2web ({ src, poster, view }). The big picture becomes Model3D, with the image as its poster and thumbnail and the model's view as its starting angle. */}
         {img.images[i][4] ? (
           <Model3D
-            src={img.images[i][4]}
+            {...img.images[i][4]}
             poster={img.images[i][1].src}
             alt={img.images[i][2]}
           />

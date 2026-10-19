@@ -1,4 +1,4 @@
-/* This file is new and styles Model3D.js. The model takes the place of a big picture in the gallery, so it has the same width, and the 16:10 shape of the 2022 Blender camera. */
+/* This file is new and styles Model3D.js. The model takes the place of a big picture in the gallery, so it has the same width. Its shape comes from the model's view (16:10 when there is none). */
 .big-model {
   display: block;
   position: relative;

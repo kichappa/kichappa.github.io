@@ -1,0 +1,11 @@
+{
+  "aspect": "16 / 10",
+  "attributes": {
+    "tone-mapping": "none",
+    "camera-target": "1.21m 8.13m 2.86m",
+    "camera-orbit": "-19.6deg 65.4deg 528.7m",
+    "field-of-view": "25.4deg",
+    "min-camera-orbit": "auto 35deg 200.9m",
+    "max-camera-orbit": "auto 82deg 898.8m"
+  }
+}
