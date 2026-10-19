@@ -18,7 +18,9 @@
     "start": "next dev --webpack",
     "build": "next build --webpack",
     "postbuild": "node postbuild.js",
-    "model": "node tools/blend2web/blend2web.mjs"
+    "model": "node tools/blend2web/blend2web.mjs",
+    "posters": "node tools/blend2web/posters.mjs",
+    "dev": "node tools/blend2web/dev.mjs"
   },
   "browserslist": {
     "production": [

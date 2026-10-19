@@ -3,7 +3,6 @@
 // It writes NAME.glb, NAME-poster.jpg, NAME.view.json and NAME.model.js into DIR.
 import { spawnSync } from 'node:child_process';
 import fs from 'node:fs';
-import http from 'node:http';
 import os from 'node:os';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -11,10 +10,9 @@ import { NodeIO } from '@gltf-transform/core';
 import { ALL_EXTENSIONS, KHRDracoMeshCompression } from '@gltf-transform/extensions';
 import { dedup, prune } from '@gltf-transform/functions';
 import draco3d from 'draco3dgltf';
-import { chromium } from 'playwright-core';
+import { makePoster } from './poster.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
-const root = path.resolve(here, '..', '..');
 
 // This object lists every option with its default; README.md explains them.
 const defaults = {
@@ -127,50 +125,10 @@ const finishGlb = async (rawGlb, outGlb, glassAlpha) => {
   await io.write(outGlb, doc);
 };
 
-// This function serves the model with model-viewer from a small local server, opens it in headless Chrome at the
-// starting view, and saves a screenshot as the poster, so the poster matches the first frame of the model exactly.
-const makePoster = async (glb, view, outJpg, width, chromePath) => {
-  const [aw, ah] = (view.aspect || '16 / 10').split('/').map(Number);
-  const height = Math.round((width * ah) / aw);
-  const attrs = Object.entries(view.attributes || {}).map(([k, v]) => `${k}="${v}"`).join(' ');
-  const files = {
-    '/': ['text/html', `<!doctype html><style>body{margin:0;background:#000}model-viewer{width:${width}px;height:${height}px;background:#000}</style>
-<script>self.ModelViewerElement = { dracoDecoderLocation: '/draco/' };</script>
-<script type="module" src="/model-viewer.min.js"></script>
-<model-viewer src="/model.glb" ${attrs} interaction-prompt="none"></model-viewer>`],
-    '/model-viewer.min.js': ['text/javascript', path.join(root, 'node_modules/@google/model-viewer/dist/model-viewer.min.js')],
-    '/model.glb': ['model/gltf-binary', glb],
-  };
-  const dracoDir = path.join(root, 'node_modules/three/examples/jsm/libs/draco/gltf');
-  const server = http.createServer((req, res) => {
-    const url = req.url.split('?')[0];
-    const draco = url.startsWith('/draco/') ? path.join(dracoDir, path.basename(url)) : null;
-    const entry = files[url] || (draco && fs.existsSync(draco) ? [url.endsWith('.wasm') ? 'application/wasm' : 'text/javascript', draco] : null);
-    if (!entry) {
-      res.writeHead(404);
-      return res.end();
-    }
-    res.writeHead(200, { 'Content-Type': entry[0] });
-    res.end(entry[1].startsWith('<!doctype') ? entry[1] : fs.readFileSync(entry[1]));
-  });
-  await new Promise((resolve) => server.listen(0, '127.0.0.1', resolve));
-  const browser = await chromium.launch(chromePath ? { executablePath: chromePath } : { channel: 'chrome', args: ['--ignore-gpu-blocklist'] });
-  try {
-    const page = await browser.newPage({ viewport: { width, height } });
-    await page.goto(`http://127.0.0.1:${server.address().port}/`);
-    await page.waitForFunction(() => document.querySelector('model-viewer')?.loaded, null, { timeout: 180000 });
-    await page.waitForTimeout(1500);
-    await page.locator('model-viewer').screenshot({ path: outJpg, type: 'jpeg', quality: 88 });
-  } finally {
-    await browser.close();
-    server.close();
-  }
-};
-
 // This function writes the module the site imports: the model, the poster and the view, as one object for Model3D.
 const writeModule = (out, name, blend) => {
   const text = `// This file was made by tools/blend2web from ${path.basename(blend)}; run it again rather than editing the model files.
-// The starting view is in ${name}.view.json and can be edited by hand.
+// The starting view is in ${name}.view.json and can be edited by hand; npm run posters (or npm run dev) then remakes the poster.
 import src from './${name}.glb';
 import poster from './${name}-poster.jpg';
 import view from './${name}.view.json';

@@ -16,7 +16,7 @@ It needs Blender (4.2 or newer; it looks in `D:\Tools` and `C:\Program Files\Ble
 |---|---|
 | `NAME.glb` | The model: Draco-compressed geometry and WebP textures. |
 | `NAME-poster.jpg` | A screenshot of the model at its starting view, taken in model-viewer itself. It is shown until the model loads, and is the gallery thumbnail. |
-| `NAME.view.json` | The starting view: `aspect` (the frame's shape) and `attributes` (model-viewer settings such as `camera-orbit`). Edit it by hand to change the view; then make a new poster by running the tool again. |
+| `NAME.view.json` | The starting view: `aspect` (the frame's shape) and `attributes` (model-viewer settings such as `camera-orbit`). Edit it by hand to change the view; the poster follows (see below). |
 | `NAME.model.js` | One import that holds all three, for the gallery. |
 
 Then in the project's page, for example `src/components/Projects.js`:
@@ -29,6 +29,26 @@ images: [
   // ... the other images
 ],
 ```
+
+## Changing the view by hand
+
+```
+npm run dev -- -p 4200
+```
+
+is the dev server (`npm start`) plus a watcher: each time a `.view.json` under `src/` is saved, its poster is remade
+in a few seconds and the page shows the new one. `npm run posters` does the same once, for every poster whose view has
+changed; `npm run posters -- --force` remakes them all. Each poster keeps a stamp of the view it was made from, so an
+unchanged view is skipped.
+
+To find a view, switch Revolve off, drag the model, and run this in the browser console; it prints a `camera-orbit`:
+
+```js
+o = document.querySelector('model-viewer').getCameraOrbit(); (o.theta*180/Math.PI).toFixed(1) + 'deg ' + (o.phi*180/Math.PI).toFixed(1) + 'deg ' + o.radius.toFixed(1) + 'm'
+```
+
+model-viewer keeps `field-of-view` at 12 degrees or more unless `min-field-of-view` is set lower, and keeps the orbit
+within `min-camera-orbit` and `max-camera-orbit`.
 
 ## How the starting view is chosen
 
